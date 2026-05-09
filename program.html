@@ -2,30 +2,84 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Предвыборочная программа</title>
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
 background:#f4f7ff;
 }
 
+/* HEADER */
+
 header{
 background:#00154d;
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
 color:white;
-padding:25px;
-text-align:center;
-font-size:40px;
+font-size:30px;
 font-weight:bold;
 }
 
+nav{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+padding:10px 18px;
+border-radius:12px;
+transition:0.3s;
+}
+
+nav a:hover{
+background:#d52b1e;
+}
+
+/* HERO */
+
+.hero{
+height:350px;
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url("https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1974&auto=format&fit=crop");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:65px;
+}
+
+/* PROGRAM */
+
 .container{
 max-width:1300px;
-margin:40px auto;
+margin:50px auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
 gap:30px;
 padding:20px;
 }
@@ -33,13 +87,13 @@ padding:20px;
 .card{
 background:white;
 padding:35px;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-10px);
 }
 
 .card h2{
@@ -49,15 +103,17 @@ margin-bottom:20px;
 
 .card p{
 line-height:1.8;
-font-size:17px;
+font-size:18px;
 }
 
+/* FOOTER */
+
 footer{
-text-align:center;
+background:#00154d;
 padding:40px;
-font-size:22px;
-font-weight:bold;
-color:#0039a6;
+text-align:center;
+color:white;
+margin-top:60px;
 }
 
 </style>
@@ -66,12 +122,38 @@ color:#0039a6;
 <body>
 
 <header>
-Предвыборочная программа
+
+<div class="logo">
+Россия Для Всех Вместе
+</div>
+
+<nav>
+
+<a href="index.html">Главная</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="citizens.html">Обращения</a>
+<a href="news.html">Новости</a>
+<a href="ustav.html">Устав</a>
+<a href="gimn.html">Гимн</a>
+<a href="program.html">Программа</a>
+
+</nav>
+
 </header>
+
+<section class="hero">
+
+<h1>
+Предвыборочная программа
+</h1>
+
+</section>
 
 <div class="container">
 
 <div class="card">
+
 <h2>
 Законодательные инициативы
 </h2>
@@ -81,66 +163,75 @@ color:#0039a6;
 <br>
 • Отзыв депутата
 <br>
-• Публичность лоббизма
-<br>
 • Борьба с коррупцией
+<br>
+• Публичность власти
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>
-Экономические проекты
+Экономика
 </h2>
 
 <p>
-• Суверенный кэшбек
+• Поддержка отечественных товаров
 <br>
-• Беспилотная логистика
+• Развитие регионов
 <br>
-• Дальневосточный гектар+
+• Новые рабочие места
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>
-Право и безопасность
+Безопасность
 </h2>
 
 <p>
 • Цифровой паспорт безопасности
 <br>
-• Безопасный интернет
+• Защита граждан
 <br>
-• Независимый комитет
+• Безопасный интернет
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>
 Гражданское общество
 </h2>
 
 <p>
-• Электронный референдум
+• Электронные референдумы
 <br>
 • Народный контроль бюджета
 <br>
-• Школьный парламент
+• Развитие демократии
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>
-Коммуникация и отчётность
+Коммуникация
 </h2>
 
 <p>
-• Прямой эфир министра
+• Прямые эфиры министров
 <br>
-• Прозрачный депутат
+• Прозрачная власть
 <br>
-• Автоматическая жалоба
+• Быстрые ответы гражданам
 </p>
+
 </div>
 
 </div>
@@ -148,8 +239,7 @@ color:#0039a6;
 <footer>
 
 «Не обещаем — делаем.
-Не отчитываемся — показываем.
-Будущее — это ты и закон»
+Не отчитываемся — показываем.»
 
 </footer>
 
