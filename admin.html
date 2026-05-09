@@ -145,9 +145,12 @@ background:#d52b1e;
 
 let currentUser=JSON.parse(localStorage.getItem("currentUser"));
 
-if(!currentUser||currentUser.role!=="admin"){
-alert("Доступ запрещен");
-window.location.href="login.html";
+if(
+!currentUser ||
+(
+currentUser.role !== "admin" &&
+currentUser.role !== "owner"
+){
 }
 
 let users=JSON.parse(localStorage.getItem("users"))||[];
@@ -164,11 +167,13 @@ usersDiv.innerHTML+=`
 
 <div class="user">
 
-<div>
-<b>${user.name}</b><br>
-${user.login}<br>
-Роль: ${user.role}
-</div>
+Роль: ${
+user.role === "owner"
+? "Владелец"
+: user.role === "admin"
+? "Администратор"
+: "Пользователь"
+}
 
 <button onclick="makeAdmin(${index})">
 Сделать админом
