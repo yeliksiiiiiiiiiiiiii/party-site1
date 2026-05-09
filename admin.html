@@ -1,329 +1,212 @@
+<!-- ADMIN.HTML -->
+
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Админ Панель</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Админ панель
+</title>
 
 <style>
 
-*{
+body{
+
 margin:0;
 padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial;
+background:#071739;
+color:white;
+
 }
 
-body{
-background:#f4f7ff;
-display:flex;
-}
+header{
 
-/* SIDEBAR */
-
-.sidebar{
-width:260px;
-height:100vh;
 background:#00154d;
-padding:30px 20px;
-position:fixed;
-left:-190px;
-transition:0.4s;
-z-index:1000;
-}
-
-.sidebar:hover{
-left:0;
-}
-
-.sidebar h2{
-color:white;
-margin-bottom:30px;
-font-size:28px;
-}
-
-.sidebar a{
-display:block;
-color:white;
-text-decoration:none;
-padding:15px;
-margin-bottom:10px;
-border-radius:12px;
-transition:0.3s;
-font-size:18px;
-}
-
-.sidebar a:hover{
-background:#0039a6;
-}
-
-/* MAIN */
-
-.main{
-margin-left:80px;
-padding:40px;
-width:100%;
-}
-
-.title{
-font-size:45px;
-margin-bottom:35px;
-color:#0039a6;
-}
-
-/* CARDS */
-
-.card{
-background:white;
 padding:25px;
-border-radius:25px;
+text-align:center;
+font-size:35px;
+font-weight:bold;
+box-shadow:0 0 20px black;
+
+}
+
+.container{
+
+width:90%;
+max-width:1200px;
+margin:50px auto;
+
+}
+
+.app-card{
+
+background:#0b1d57;
+padding:25px;
+border-radius:20px;
 margin-bottom:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-animation:fade 0.5s ease;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+
 }
 
-.card h2{
-margin-bottom:15px;
-color:#0039a6;
-}
+.app-card h2{
 
-.card p{
-margin-bottom:10px;
-font-size:18px;
-}
+margin-top:0;
 
-/* BUTTONS */
+}
 
 .buttons{
-margin-top:20px;
+
 display:flex;
 gap:15px;
+margin-top:20px;
+
+}
+
+.buttons button{
+
+padding:14px 20px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
+
 }
 
 .approve{
-background:#1fa34a;
-color:white;
-border:none;
-padding:12px 25px;
-border-radius:12px;
-cursor:pointer;
-font-size:16px;
-transition:0.3s;
-}
 
-.approve:hover{
-background:#158037;
+background:green;
+color:white;
+
 }
 
 .delete{
-background:#d52b1e;
+
+background:red;
 color:white;
-border:none;
-padding:12px 25px;
-border-radius:12px;
-cursor:pointer;
-font-size:16px;
-transition:0.3s;
+
 }
 
-.delete:hover{
-background:#a61f15;
-}
+.buttons button:hover{
 
-/* NEWS */
+transform:scale(1.05);
 
-.news-panel{
-background:white;
-padding:30px;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-margin-top:50px;
-}
-
-.news-panel h2{
-margin-bottom:25px;
-color:#0039a6;
-}
-
-.news-panel input,
-.news-panel textarea{
-width:100%;
-padding:15px;
-margin-bottom:20px;
-border:none;
-background:#eef3ff;
-border-radius:15px;
-font-size:17px;
-}
-
-.news-panel textarea{
-height:150px;
-resize:none;
-}
-
-.news-panel button{
-width:100%;
-padding:15px;
-background:#0039a6;
-border:none;
-color:white;
-font-size:18px;
-border-radius:15px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.news-panel button:hover{
-background:#d52b1e;
-}
-
-/* ANIMATION */
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
+<header>
+Админ панель
+</header>
 
-<div class="sidebar">
+<div class="container">
 
-<h2>Админка</h2>
+<div id="applicationsList">
 
-<a href="#applications">
-Проверка заявок
-</a>
-
-<a href="#news">
-Публикация новостей
-</a>
-
-</div>
-
-<!-- MAIN -->
-
-<div class="main">
-
-<h1 class="title">
-Административная панель
-</h1>
-
-<!-- APPLICATIONS -->
-
-<div id="applications">
-
-<h1 class="title">
-Проверка заявок
-</h1>
-
-<div id="applicationsContainer"></div>
-
-</div>
-
-<!-- NEWS -->
-
-<div class="news-panel" id="news">
-
-<h2>Публикация новостей</h2>
-
-<input
-type="text"
-id="newsTitle"
-placeholder="Название новости">
-
-<textarea
-id="newsText"
-placeholder="Текст новости"></textarea>
-
-<input
-type="text"
-id="newsImage"
-placeholder="Ссылка на фото">
-
-<button onclick="publishNews()">
-Опубликовать новость
-</button>
+<h2>
+Загрузка заявок...
+</h2>
 
 </div>
 
 </div>
 
-<script>
+<script type="module">
 
-/* APPLICATIONS */
+import {
+db,
+collection,
+getDocs,
+deleteDoc,
+doc,
+updateDoc
+}
+from './firebase.js';
 
-let applications =
-JSON.parse(
-localStorage.getItem(
-"partyApplications"
-)
-) || [];
-
-let container =
+const container =
 document.getElementById(
-"applicationsContainer"
+"applicationsList"
 );
 
-function loadApplications(){
+async function loadApps(){
 
 container.innerHTML = "";
 
-if(applications.length===0){
+const querySnapshot =
+await getDocs(
+collection(db,"applications")
+);
 
-container.innerHTML = `
-<div class="card">
-<h2>Заявок нет</h2>
-<p>
-На данный момент заявлений нет.
-</p>
-</div>
-`;
+querySnapshot.forEach((d)=>{
 
-return;
-
-}
-
-applications.forEach((app,index)=>{
+const app = d.data();
 
 container.innerHTML += `
 
-<div class="card">
+<div class="app-card">
 
-<h2>${app.fullname}</h2>
+<h2>
+${app.fullname}
+</h2>
 
-<p><b>Возраст IC:</b> ${app.ageic}</p>
+<p>
+<b>Discord:</b>
+${app.discord}
+</p>
 
-<p><b>Возраст OOC:</b> ${app.ageooc}</p>
+<p>
+<b>IC возраст:</b>
+${app.icage}
+</p>
 
-<p><b>Discord:</b> ${app.discord}</p>
+<p>
+<b>OOC возраст:</b>
+${app.oocage}
+</p>
 
-<p><b>Почему партия:</b><br>
-${app.reason}</p>
+<p>
+<b>Почему хочет вступить:</b>
+<br>
+${app.why}
+</p>
 
-<p><b>Поддержка партии:</b><br>
-${app.support}</p>
+<p>
+<b>Чем поможет:</b>
+<br>
+${app.help}
+</p>
+
+<p>
+<b>Статус:</b>
+${app.status}
+</p>
 
 <div class="buttons">
 
-<button class="approve"
-onclick="approveApplication(${index})">
+<button
+class="approve"
+onclick="approveApp('${d.id}')"
+>
 Одобрить
 </button>
 
-<button class="delete"
-onclick="deleteApplication(${index})">
+<button
+class="delete"
+onclick="deleteApp('${d.id}')"
+>
 Удалить
 </button>
 
@@ -337,129 +220,32 @@ onclick="deleteApplication(${index})">
 
 }
 
-/* APPROVE */
+window.deleteApp =
+async function(id){
 
-function approveApplication(index){
-
-let approved =
-JSON.parse(
-localStorage.getItem(
-"approvedApplications"
-)
-) || [];
-
-approved.push(applications[index]);
-
-localStorage.setItem(
-"approvedApplications",
-JSON.stringify(approved)
+await deleteDoc(
+doc(db,"applications",id)
 );
 
-applications.splice(index,1);
-
-localStorage.setItem(
-"partyApplications",
-JSON.stringify(applications)
-);
-
-loadApplications();
-
-alert(
-"Заявка одобрена!"
-);
+loadApps();
 
 }
 
-/* DELETE */
+window.approveApp =
+async function(id){
 
-function deleteApplication(index){
-
-if(confirm("Удалить заявку?")){
-
-applications.splice(index,1);
-
-localStorage.setItem(
-"partyApplications",
-JSON.stringify(applications)
+await updateDoc(
+doc(db,"applications",id),
+{
+status:"approved"
+}
 );
 
-loadApplications();
+loadApps();
 
 }
 
-}
-
-/* NEWS */
-
-function publishNews(){
-
-let title =
-document.getElementById(
-"newsTitle"
-).value;
-
-let text =
-document.getElementById(
-"newsText"
-).value;
-
-let image =
-document.getElementById(
-"newsImage"
-).value;
-
-if(
-title==="" ||
-text==="" ||
-image===""){
-
-alert("Заполните все поля");
-return;
-
-}
-
-let news =
-JSON.parse(
-localStorage.getItem(
-"partyNews"
-)
-) || [];
-
-news.push({
-
-title:title,
-text:text,
-image:image,
-date:new Date().toLocaleString()
-
-});
-
-localStorage.setItem(
-"partyNews",
-JSON.stringify(news)
-);
-
-alert(
-"Новость опубликована!"
-);
-
-document.getElementById(
-"newsTitle"
-).value="";
-
-document.getElementById(
-"newsText"
-).value="";
-
-document.getElementById(
-"newsImage"
-).value="";
-
-}
-
-/* LOAD */
-
-loadApplications();
+loadApps();
 
 </script>
 
