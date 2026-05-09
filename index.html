@@ -1,10 +1,17 @@
+<!-- НОВЫЙ INDEX.HTML -->
+
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Либеральная Партия России</title>
+<title>
+Либеральная Партия России
+</title>
 
 <style>
 
@@ -12,398 +19,556 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-scroll-behavior:smooth;
+font-family:Arial;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#f5f7ff;
-color:#222;
+background:#f4f7fb;
 overflow-x:hidden;
 }
 
 /* HEADER */
 
 header{
-height:100vh;
-background:
-linear-gradient(
-to right,
-rgba(0,25,90,0.92),
-rgba(0,25,90,0.75)
-),
-url('https://images.unsplash.com/photo-1513326738677-b964603b136d?q=80&w=1974&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-display:flex;
-flex-direction:column;
-}
 
-/* NAVIGATION */
+position:fixed;
+top:0;
+left:0;
 
-nav{
+width:100%;
+
+background:#0b2d82;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:25px 70px;
-background:rgba(0,0,0,0.15);
-backdrop-filter:blur(6px);
+
+padding:20px 50px;
+
+z-index:1000;
+
 }
+
+/* LOGO */
 
 .logo{
 display:flex;
 align-items:center;
 gap:15px;
-color:white;
-font-size:28px;
-font-weight:bold;
 }
 
 .logo img{
-width:60px;
+width:65px;
+background:white;
+padding:5px;
+border-radius:12px;
 }
 
-.menu a{
+.logo-text h1{
+color:white;
+font-size:36px;
+line-height:1;
+}
+
+.logo-text p{
+color:#dbe4ff;
+margin-top:5px;
+font-size:18px;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+nav a{
+
 color:white;
 text-decoration:none;
-margin-left:30px;
-font-size:18px;
+
+padding:12px 18px;
+
+border-radius:12px;
+
 font-weight:bold;
+
 transition:0.3s;
-position:relative;
+
 }
 
-.menu a:hover{
-color:#ff3b3b;
-}
+nav a:hover{
 
-.menu a::after{
-content:'';
-position:absolute;
-width:0%;
-height:3px;
-background:#ff3b3b;
-left:0;
-bottom:-8px;
-transition:0.3s;
-}
+background:rgba(255,255,255,0.15);
 
-.menu a:hover::after{
-width:100%;
 }
 
 /* HERO */
 
 .hero{
-flex:1;
+
+height:100vh;
+
+background:
+linear-gradient(
+rgba(11,45,130,0.72),
+rgba(11,45,130,0.72)
+),
+
+url("banner.jpg");
+
+background-size:cover;
+background-position:center;
+
 display:flex;
 align-items:center;
-padding:0 90px;
+
+padding:140px 80px;
+
+color:white;
+
 }
 
 .hero-content{
-max-width:700px;
-animation:fadeUp 1.3s ease;
+max-width:800px;
 }
 
-.hero h1{
-font-size:78px;
-color:white;
-line-height:1.1;
-margin-bottom:25px;
+.hero h2{
+
+font-size:110px;
+line-height:0.95;
+
+margin-bottom:30px;
+
+font-weight:900;
+
 }
 
 .hero p{
-font-size:28px;
-color:#dbe7ff;
-margin-bottom:40px;
+
+font-size:38px;
+
+margin-bottom:50px;
+
 }
 
-.hero-btn{
+/* BUTTON */
+
+.btn{
+
 display:inline-block;
-padding:18px 38px;
-background:#d52b1e;
+
+padding:22px 42px;
+
+background:#ff3b30;
+
 color:white;
+
 text-decoration:none;
-font-size:20px;
+
+border-radius:18px;
+
+font-size:24px;
 font-weight:bold;
-border-radius:14px;
+
 transition:0.3s;
-box-shadow:0 10px 30px rgba(0,0,0,0.25);
+
 }
 
-.hero-btn:hover{
+.btn:hover{
+
 transform:translateY(-5px);
-background:#ff2b2b;
+
+background:#ff564d;
+
 }
 
-/* ABOUT */
+/* SECTION */
 
 .section{
-padding:90px 20px;
-}
 
-.container{
-max-width:1200px;
-margin:auto;
+padding:120px 80px;
+
 }
 
 .section-title{
-text-align:center;
-font-size:48px;
-margin-bottom:20px;
-color:#0039a6;
+
+font-size:70px;
+
+color:#0b2d82;
+
+margin-bottom:25px;
+
+font-weight:900;
+
 }
 
-.section-sub{
-text-align:center;
-font-size:20px;
-color:#666;
-margin-bottom:60px;
+.section-text{
+
+font-size:24px;
+
+line-height:1.8;
+
+color:#333;
+
+max-width:1200px;
+
 }
+
+/* CARDS */
 
 .cards{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
+
 gap:30px;
+
+margin-top:60px;
+
 }
 
 .card{
+
 background:white;
+
 padding:40px;
-border-radius:25px;
+
+border-radius:30px;
+
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
-transition:0.4s;
-position:relative;
-overflow:hidden;
+
+transition:0.3s;
+
 }
 
 .card:hover{
-transform:translateY(-10px);
-}
 
-.card::before{
-content:'';
-position:absolute;
-width:100%;
-height:6px;
-background:linear-gradient(
-90deg,
-#0039a6,
-white,
-#d52b1e
-);
-top:0;
-left:0;
+transform:translateY(-10px);
+
 }
 
 .card h3{
-font-size:30px;
-margin-bottom:18px;
-color:#0039a6;
+
+font-size:34px;
+
+margin-bottom:20px;
+
+color:#0b2d82;
+
 }
 
 .card p{
-font-size:18px;
-line-height:1.6;
-color:#444;
-}
 
-/* DISCORD */
-
-.discord{
-background:#0039a6;
-padding:60px 20px;
-text-align:center;
-color:white;
-}
-
-.discord h2{
-font-size:42px;
-margin-bottom:20px;
-}
-
-.discord a{
-display:inline-block;
-margin-top:20px;
-padding:18px 36px;
-background:#5865F2;
-color:white;
-text-decoration:none;
 font-size:20px;
-font-weight:bold;
-border-radius:14px;
-transition:0.3s;
-}
 
-.discord a:hover{
-transform:scale(1.05);
+line-height:1.7;
+
+color:#444;
+
 }
 
 /* FOOTER */
 
 footer{
-background:#001b5e;
-color:white;
+
+background:#0b2d82;
+
+padding:50px;
+
 text-align:center;
-padding:35px;
-font-size:17px;
-}
 
-/* ANIMATION */
+color:white;
 
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(50px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
+font-size:20px;
 
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:1200px){
 
-nav{
+.hero h2{
+font-size:75px;
+}
+
+.hero p{
+font-size:28px;
+}
+
+}
+
+@media(max-width:950px){
+
+header{
 flex-direction:column;
 gap:20px;
 padding:25px;
 }
 
-.menu{
-display:flex;
-flex-wrap:wrap;
+nav{
 justify-content:center;
 }
 
 .hero{
-padding:40px;
-text-align:center;
-justify-content:center;
+padding:180px 40px 100px;
 }
 
-.hero h1{
-font-size:52px;
+.hero h2{
+font-size:58px;
 }
 
 .hero p{
-font-size:22px;
+font-size:24px;
+}
+
+.section{
+padding:80px 30px;
+}
+
+.section-title{
+font-size:50px;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero h2{
+font-size:42px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+.logo{
+flex-direction:column;
+text-align:center;
+}
+
+.logo-text h1{
+font-size:28px;
+}
+
+nav{
+gap:10px;
+}
+
+nav a{
+font-size:14px;
+padding:10px 14px;
+}
+
+.btn{
+font-size:18px;
+padding:18px 28px;
+}
+
+.section-title{
+font-size:36px;
+}
+
+.section-text{
+font-size:18px;
+}
+
+.card h3{
+font-size:26px;
+}
+
+.card p{
+font-size:17px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
+<!-- HEADER -->
 
-<nav>
+<header>
 
 <div class="logo">
 
 <img src="logo.png">
 
-<div>
-Либеральная<br>
-Партия России
-</div>
-
-</div>
-
-<div class="menu">
-
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="profile.html">Профиль</a>
-<a href="admin.html">Админ</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
-<a href="program.html">Программа</a>
-
-</div>
-
-</nav>
-
-<div class="hero">
-
-<div class="hero-content">
+<div class="logo-text">
 
 <h1>
-ЛИБЕРАЛЬНАЯ<br>
-ПАРТИЯ РОССИИ
+Либеральная
+Партия России
 </h1>
 
 <p>
-Для Всех Вместе
+Россия Для Всех Вместе
 </p>
 
-<a href="apply.html" class="hero-btn">
+</div>
+
+</div>
+
+<nav>
+
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="profile.html">
+Профиль
+</a>
+
+<a href="admin.html">
+Админ
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="program.html">
+Программа
+</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h2>
+
+ЛИБЕРАЛЬНАЯ
+ПАРТИЯ РОССИИ
+
+</h2>
+
+<p>
+
+Для Всех Вместе
+
+</p>
+
+<a
+href="apply.html"
+class="btn"
+>
+
 Вступить в партию
+
 </a>
 
 </div>
 
-</div>
+</section>
 
-</header>
+<!-- ABOUT -->
 
 <section class="section">
 
-<div class="container">
-
 <h2 class="section-title">
-О НАС
+
+О партии
+
 </h2>
 
-<p class="section-sub">
-Наша партия объединяет граждан России
-ради сильного, свободного и справедливого будущего.
+<p class="section-text">
+
+Либеральная Партия России —
+современное политическое объединение,
+созданное для развития государства,
+поддержки граждан,
+защиты свободы слова
+и построения сильного общества.
+
+<br><br>
+
+Партия объединяет людей,
+которые хотят видеть страну
+сильной,
+справедливой
+и современной.
+
 </p>
 
 <div class="cards">
 
 <div class="card">
 
-<h3>О ПАРТИИ</h3>
+<h3>
+Новости
+</h3>
 
 <p>
-Мы объединяем граждан для построения
-сильной, современной и свободной России.
+
+Следите за обновлениями,
+мероприятиями,
+официальными обращениями
+и важными решениями партии.
+
 </p>
 
 </div>
 
 <div class="card">
 
-<h3>НАША ЦЕЛЬ</h3>
+<h3>
+Руководство
+</h3>
 
 <p>
-Развитие государства, поддержка граждан
-и создание будущего для каждого человека.
+
+Ознакомьтесь
+с руководящим составом партии,
+структурой управления
+и политическими лидерами.
+
 </p>
 
 </div>
 
 <div class="card">
 
-<h3>НОВОСТИ</h3>
+<h3>
+Программа
+</h3>
 
 <p>
-Следите за последними событиями
-и деятельностью партии.
-</p>
 
-</div>
+Изучите предвыборочную программу,
+инициативы,
+законы
+и планы развития государства.
+
+</p>
 
 </div>
 
@@ -411,28 +576,56 @@ font-size:22px;
 
 </section>
 
-<section class="discord">
+<!-- JOIN -->
 
-<h2>
-Наш Discord сервер
+<section class="section">
+
+<h2 class="section-title">
+
+Вступление в партию
+
 </h2>
 
-<p>
-Присоединяйтесь к сообществу партии
-и участвуйте в развитии проекта.
+<p class="section-text">
+
+Каждый гражданин
+может подать заявление
+на вступление в партию.
+
+<br><br>
+
+После рассмотрения заявления
+руководство партии
+свяжется с кандидатом
+для дальнейшего собеседования.
+
 </p>
 
-<a href="https://discord.gg/KHjFC6sDz2" target="_blank">
+<div style="margin-top:50px;">
 
-Перейти в Discord
+<a
+href="apply.html"
+class="btn"
+>
+
+Подать заявление
 
 </a>
 
+</div>
+
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 
-© 2025 Либеральная Партия России
+© 2025
+Либеральная Партия России
+
+<br><br>
+
+Россия Для Всех Вместе
 
 </footer>
 
