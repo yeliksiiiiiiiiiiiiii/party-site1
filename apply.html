@@ -1,609 +1,78 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Заявление в партию</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Arial,sans-serif;
-background:#eef2ff;
-overflow-x:hidden;
-}
-
-/* АНИМАЦИЯ ФЛАГА */
-
-.flag-line{
-width:100%;
-height:8px;
-
-background:linear-gradient(
-90deg,
-white,
-#0039a6,
-#d52b1e,
-white
-);
-
-background-size:300%;
-
-animation:flagMove 5s linear infinite;
-}
-
-@keyframes flagMove{
-
-0%{
-background-position:0%;
-}
-
-100%{
-background-position:300%;
-}
-
-}
-
-/* HEADER */
-
-header{
-
-background:linear-gradient(
-135deg,
-#0039a6,
-#00246b
-);
-
-color:white;
-text-align:center;
-padding:70px 20px;
-position:relative;
-overflow:hidden;
-
-}
-
-header h1{
-font-size:58px;
-margin-bottom:10px;
-animation:fadeUp 1s ease;
-}
-
-header p{
-font-size:24px;
-animation:fadeUp 1.4s ease;
-}
-
-/* АНИМАЦИЯ */
-
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-/* NAV */
-
-nav{
-background:#00246b;
 padding:18px;
-text-align:center;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-size:18px;
-font-weight:bold;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#ffcccc;
-}
-
-/* MAIN */
-
-.container{
-max-width:950px;
-margin:auto;
-padding:60px 20px;
-}
-
-/* FORM */
-
-.form-box{
-background:white;
-padding:40px;
-border-radius:25px;
-box-shadow:0 15px 35px rgba(0,0,0,0.08);
-animation:fadeUp 1s ease;
-position:relative;
-overflow:hidden;
-}
-
-.form-box::before{
-
-content:"";
-
-position:absolute;
-top:0;
-left:0;
-
-width:100%;
-height:6px;
-
-background:linear-gradient(
-90deg,
-white,
-#0039a6,
-#d52b1e
-);
-
-}
-
-.form-box h2{
-text-align:center;
-font-size:40px;
-color:#0039a6;
-margin-bottom:35px;
-}
-
-/* INPUTS */
-
-.input-group{
-margin-bottom:22px;
-}
-
-.input-group label{
-display:block;
-margin-bottom:10px;
-font-weight:bold;
-color:#0039a6;
-font-size:17px;
-}
-
-input,
-textarea{
-
-width:100%;
-padding:16px;
-
-border-radius:14px;
-border:2px solid #ccd8ff;
-
-font-size:16px;
-
-transition:0.3s;
-
-background:#f8faff;
-
-}
-
-input:focus,
-textarea:focus{
-
-border-color:#0039a6;
-outline:none;
-
-box-shadow:
-0 0 15px rgba(0,57,166,0.2);
-
-background:white;
-
-}
-
-textarea{
-min-height:150px;
-resize:vertical;
-}
-
-/* BUTTON */
-
-button{
-
-width:100%;
-padding:18px;
-
-background:linear-gradient(
-135deg,
-#0039a6,
-#00246b
-);
-
+background:#2563eb;
 color:white;
 border:none;
 border-radius:14px;
-
-font-size:20px;
-font-weight:bold;
-
+font-size:18px;
 cursor:pointer;
-transition:0.3s;
-
-box-shadow:
-0 0 15px rgba(0,57,166,0.4);
-
 }
 
 button:hover{
-
-background:linear-gradient(
-135deg,
-#d52b1e,
-#a50000
-);
-
-transform:scale(1.02);
-
-box-shadow:
-0 0 25px rgba(213,43,30,0.5);
-
+background:#dc2626;
 }
-
-/* FOOTER */
-
-footer{
-background:#0039a6;
-color:white;
-text-align:center;
-padding:30px;
-margin-top:70px;
-}
-
-/* DISCORD */
-
-.discord-box{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:20px;
-margin-bottom:20px;
-flex-wrap:wrap;
-}
-
-.discord-logo{
-width:70px;
-height:70px;
-animation:floatDiscord 3s ease-in-out infinite;
-}
-
-@keyframes floatDiscord{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-8px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-.discord-box a{
-
-display:inline-block;
-
-padding:12px 22px;
-
-background:#5865F2;
-color:white;
-
-text-decoration:none;
-
-border-radius:12px;
-
-font-weight:bold;
-
-transition:0.3s;
-
-}
-
-.discord-box a:hover{
-
-background:#4752c4;
-
-transform:scale(1.05);
-
-}
-
-/* PARTICLES */
-
-.particle{
-
-position:absolute;
-
-width:8px;
-height:8px;
-
-background:rgba(255,255,255,0.4);
-
-border-radius:50%;
-
-animation:particleMove linear infinite;
-
-}
-
-@keyframes particleMove{
-
-from{
-transform:translateY(0);
-opacity:1;
-}
-
-to{
-transform:translateY(-800px);
-opacity:0;
-}
-
-}
-
 </style>
 </head>
-
 <body>
 
-<div class="flag-line"></div>
-
-<header>
-
-<h1>Либеральная Партия России</h1>
-
-<p>Для Всех Вместе</p>
-
-</header>
-
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="admin.html">Админ панель</a>
-
-</nav>
-
 <div class="container">
-
 <div class="form-box">
 
-<h2>Заявление на вступление</h2>
+<h1>Заявление на вступление</h1>
 
 <form id="partyForm">
 
-<div class="input-group">
+<input type="text" id="fullname" placeholder="Ваше ФИО" required>
 
-<label>
-Ваше ФИО
-</label>
+<input type="number" id="ageic" placeholder="Сколько вам лет? (IC)" required>
 
-<input
-type="text"
-id="fullname"
-required>
+<input type="number" id="ageooc" placeholder="Сколько вам лет? (OOC)" required>
 
-</div>
+<input type="text" id="discord" placeholder="Ваш Discord" required>
 
-<div class="input-group">
+<textarea id="reason" placeholder="Почему именно наша партия?" required></textarea>
 
-<label>
-Сколько вам лет? (IC)
-</label>
+<textarea id="support" placeholder="Как вы будете поддерживать партию?" required></textarea>
 
-<input
-type="number"
-id="ageic"
-required>
-
-</div>
-
-<div class="input-group">
-
-<label>
-Сколько вам лет? (OOC)
-</label>
-
-<input
-type="number"
-id="ageooc"
-required>
-
-</div>
-
-<div class="input-group">
-
-<label>
-Ваш Discord
-</label>
-
-<input
-type="text"
-id="discord"
-required>
-
-</div>
-
-<div class="input-group">
-
-<label>
-Почему именно наша партия?
-</label>
-
-<textarea
-id="reason"
-required></textarea>
-
-</div>
-
-<div class="input-group">
-
-<label>
-Как вы будете поддерживать партию?
-</label>
-
-<textarea
-id="support"
-required></textarea>
-
-</div>
-
-<button type="submit">
-Отправить заявление
-</button>
+<button type="submit">Отправить заявление</button>
 
 </form>
 
 </div>
-
 </div>
-
-<footer>
-
-<div class="discord-box">
-
-<img
-src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png"
-class="discord-logo">
-
-<div>
-
-<h3>Наш Discord сервер</h3>
-
-<a
-href="https://discord.gg/KHjFC6sDz2"
-target="_blank">
-
-Перейти в Discord
-
-</a>
-
-</div>
-
-</div>
-
-<p>
-
-© 2025 Либеральная Партия России
-
-</p>
-
-</footer>
 
 <script>
-
-/* СОХРАНЕНИЕ ЗАЯВОК */
 
 document.getElementById(
 "partyForm"
 ).addEventListener("submit",function(e){
 
-e.preventDefault();
+ e.preventDefault();
 
-let application = {
+ let application={
+ fullname:document.getElementById("fullname").value,
+ ageic:document.getElementById("ageic").value,
+ ageooc:document.getElementById("ageooc").value,
+ discord:document.getElementById("discord").value,
+ reason:document.getElementById("reason").value,
+ support:document.getElementById("support").value
+ };
 
-fullname:
-document.getElementById(
-"fullname"
-).value,
+ let applications=
+ JSON.parse(localStorage.getItem("partyApplications")) || [];
 
-ageic:
-document.getElementById(
-"ageic"
-).value,
+ applications.push(application);
 
-ageooc:
-document.getElementById(
-"ageooc"
-).value,
+ localStorage.setItem(
+ "partyApplications",
+ JSON.stringify(applications)
+ );
 
-discord:
-document.getElementById(
-"discord"
-).value,
+ alert("Заявление успешно отправлено!");
 
-reason:
-document.getElementById(
-"reason"
-).value,
-
-support:
-document.getElementById(
-"support"
-).value
-
-};
-
-let applications =
-JSON.parse(
-localStorage.getItem(
-"partyApplications"
-)
-) || [];
-
-applications.push(application);
-
-localStorage.setItem(
-"partyApplications",
-JSON.stringify(applications)
-);
-
-alert(
-"Ваше заявление успешно отправлено!"
-);
-
-document.getElementById(
-"partyForm"
-).reset();
+ document.getElementById("partyForm").reset();
 
 });
-
-/* ЧАСТИЦЫ */
-
-for(let i = 0; i < 35; i++){
-
-let particle =
-document.createElement("div");
-
-particle.classList.add(
-"particle"
-);
-
-particle.style.left =
-Math.random() * 100 + "%";
-
-particle.style.top =
-Math.random() * 100 + "%";
-
-particle.style.animationDuration =
-(5 + Math.random() * 10) + "s";
-
-particle.style.opacity =
-Math.random();
-
-document.querySelector(
-"header"
-).appendChild(particle);
-
-}
 
 </script>
 
