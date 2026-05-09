@@ -5,53 +5,59 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Новости партии</title>
+<title>Новости</title>
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Arial,sans-serif;
-background:#eef2ff;
+background:#f4f7ff;
 }
 
 header{
-background:linear-gradient(135deg,#0039a6,#00246b);
+background:linear-gradient(135deg,#0039a6,#001b5e);
 color:white;
-text-align:center;
 padding:60px 20px;
+text-align:center;
 }
 
 header h1{
-font-size:50px;
-margin:0;
+font-size:54px;
 }
 
 nav{
-background:#00246b;
+background:white;
 padding:18px;
 text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
 
 nav a{
-color:white;
 text-decoration:none;
-margin:0 15px;
+color:#0039a6;
+margin:0 18px;
 font-weight:bold;
+font-size:18px;
 }
 
 .container{
 max-width:1200px;
 margin:auto;
-padding:50px 20px;
+padding:60px 20px;
 }
 
 .news-card{
 background:white;
 border-radius:20px;
 overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-margin-bottom:30px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+margin-bottom:35px;
 }
 
 .news-card img{
@@ -61,20 +67,20 @@ object-fit:cover;
 }
 
 .news-content{
-padding:25px;
+padding:30px;
 }
 
 .news-content h2{
 color:#0039a6;
-margin-top:0;
+margin-bottom:15px;
 }
 
 footer{
 background:#0039a6;
 color:white;
 text-align:center;
-padding:25px;
-margin-top:50px;
+padding:30px;
+margin-top:60px;
 }
 
 </style>
@@ -157,6 +163,8 @@ container.innerHTML += `
 <h2>${item.title}</h2>
 
 <p>${item.text}</p>
+
+<br>
 
 <p>
 <b>Дата:</b>
