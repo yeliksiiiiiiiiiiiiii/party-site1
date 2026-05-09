@@ -2,25 +2,28 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Проверка заявок</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Админ панель</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#f4f6fb;
+background:#eef2ff;
 }
 
 header{
 background:#0039a6;
 color:white;
 text-align:center;
-padding:30px;
+padding:35px;
 }
 
 .container{
-max-width:1000px;
+max-width:1100px;
 margin:auto;
 padding:40px 20px;
 }
@@ -30,6 +33,7 @@ padding:40px 20px;
 background:white;
 padding:30px;
 border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .admin-panel{
@@ -37,12 +41,18 @@ display:none;
 margin-top:20px;
 }
 
-input{
+input,
+textarea{
 width:100%;
 padding:15px;
 margin-bottom:15px;
-border-radius:10px;
+border-radius:12px;
 border:2px solid #ccd8ff;
+box-sizing:border-box;
+}
+
+textarea{
+min-height:150px;
 }
 
 button{
@@ -51,15 +61,28 @@ padding:15px;
 background:#0039a6;
 color:white;
 border:none;
-border-radius:10px;
+border-radius:12px;
 font-size:18px;
+cursor:pointer;
 }
 
-.application{
+.application,
+.news-preview{
 background:#eef3ff;
 padding:20px;
 border-radius:15px;
 margin-top:20px;
+}
+
+.news-preview img{
+width:100%;
+border-radius:15px;
+margin-top:15px;
+}
+
+.delete-btn{
+background:#d52b1e;
+margin-top:10px;
 }
 
 </style>
@@ -68,7 +91,9 @@ margin-top:20px;
 <body>
 
 <header>
-<h1>Панель проверки заявок</h1>
+
+<h1>Админ панель партии</h1>
+
 </header>
 
 <div class="container">
@@ -77,9 +102,13 @@ margin-top:20px;
 
 <h2>Вход администратора</h2>
 
-<input type="text" id="login" placeholder="Логин">
+<input type="text"
+id="login"
+placeholder="Логин">
 
-<input type="password" id="password" placeholder="Пароль">
+<input type="password"
+id="password"
+placeholder="Пароль">
 
 <button onclick="loginAdmin()">
 Войти
@@ -89,9 +118,27 @@ margin-top:20px;
 
 <div class="admin-panel" id="adminPanel">
 
-<h2>Список заявок</h2>
+<h2>Создать новость</h2>
 
-<div id="applications"></div>
+<input type="text"
+id="newsTitle"
+placeholder="Заголовок">
+
+<textarea
+id="newsText"
+placeholder="Текст новости"></textarea>
+
+<input type="text"
+id="newsImage"
+placeholder="Ссылка на фото">
+
+<button onclick="publishNews()">
+Опубликовать
+</button>
+
+<h2>Новости</h2>
+
+<div id="newsList"></div>
 
 </div>
 
@@ -101,15 +148,26 @@ margin-top:20px;
 
 function loginAdmin(){
 
-let login = document.getElementById("login").value;
-let password = document.getElementById("password").value;
+let login =
+document.getElementById("login").value;
 
-if(login === "Admin" && password === "1234567890mtrp9"){
+let password =
+document.getElementById("password").value;
 
-document.getElementById("loginBox").style.display = "none";
-document.getElementById("adminPanel").style.display = "block";
+if(
+login === "Admin" &&
+password === "1234567890mtrp9"
+){
 
-loadApplications();
+document.getElementById(
+"loginBox"
+).style.display = "none";
+
+document.getElementById(
+"adminPanel"
+).style.display = "block";
+
+loadNews();
 
 }else{
 
@@ -119,38 +177,104 @@ alert("Неверный логин или пароль");
 
 }
 
-function loadApplications(){
+function publishNews(){
 
-let applications = JSON.parse(localStorage.getItem("partyApplications")) || [];
+let title =
+document.getElementById("newsTitle").value;
 
-let container = document.getElementById("applications");
+let text =
+document.getElementById("newsText").value;
 
-container.innerHTML = "";
+let image =
+document.getElementById("newsImage").value;
 
-if(applications.length === 0){
+if(title === "" || text === ""){
 
-container.innerHTML = "<p>Заявок пока нет.</p>";
+alert("Заполните поля");
+
 return;
 
 }
 
-applications.forEach((app,index)=>{
+let news =
+JSON.parse(localStorage.getItem("partyNews")) || [];
+
+news.push({
+
+title:title,
+text:text,
+image:image,
+date:new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+"partyNews",
+JSON.stringify(news)
+);
+
+alert("Новость опубликована");
+
+document.getElementById("newsTitle").value = "";
+document.getElementById("newsText").value = "";
+document.getElementById("newsImage").value = "";
+
+loadNews();
+
+}
+
+function deleteNews(index){
+
+let news =
+JSON.parse(localStorage.getItem("partyNews")) || [];
+
+news.splice(index,1);
+
+localStorage.setItem(
+"partyNews",
+JSON.stringify(news)
+);
+
+loadNews();
+
+}
+
+function loadNews(){
+
+let news =
+JSON.parse(localStorage.getItem("partyNews")) || [];
+
+let container =
+document.getElementById("newsList");
+
+container.innerHTML = "";
+
+if(news.length === 0){
+
+container.innerHTML =
+"<p>Новостей пока нет.</p>";
+
+return;
+
+}
+
+news.reverse().forEach((item,index)=>{
 
 container.innerHTML += `
 
-<div class="application">
+<div class="news-preview">
 
-<h3>Заявка #${index + 1}</h3>
+<h3>${item.title}</h3>
 
-<p><strong>ФИО:</strong> ${app.fullname}</p>
+<p>${item.text}</p>
 
-<p><strong>Возраст IC:</strong> ${app.ageic}</p>
+<img src="${item.image}">
 
-<p><strong>Возраст OOC:</strong> ${app.ageooc}</p>
-
-<p><strong>Почему партия:</strong> ${app.reason}</p>
-
-<p><strong>Поддержка партии:</strong> ${app.support}</p>
+<button
+class="delete-btn"
+onclick="deleteNews(${news.length - 1 - index})">
+Удалить
+</button>
 
 </div>
 
