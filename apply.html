@@ -1,4 +1,4 @@
-<!-- APPLY.HTML -->
+<!-- APPLY.HTML LIGHT THEME -->
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -22,86 +22,114 @@ body{
 margin:0;
 padding:0;
 font-family:Arial;
-background:#071739;
-color:white;
+background:#f4f7fb;
+color:#1a1a1a;
 }
 
+/* HEADER */
+
 header{
-background:#00154d;
+background:white;
 padding:25px;
 text-align:center;
 font-size:35px;
 font-weight:bold;
-box-shadow:0 0 20px black;
+color:#0051ff;
+box-shadow:0 2px 15px rgba(0,0,0,0.1);
 }
+
+/* NAVIGATION */
 
 nav{
 display:flex;
 justify-content:center;
 gap:20px;
 padding:20px;
-background:#0b1d57;
+background:#ffffff;
 flex-wrap:wrap;
+border-bottom:1px solid #dbe4f0;
 }
 
 nav a{
-color:white;
+color:#0051ff;
 text-decoration:none;
 padding:12px 20px;
 border-radius:12px;
-background:#132b75;
+background:#edf3ff;
 transition:0.3s;
 font-size:17px;
+font-weight:bold;
 }
 
 nav a:hover{
 background:#0051ff;
+color:white;
 transform:translateY(-3px);
 }
+
+/* CONTAINER */
 
 .container{
 width:90%;
 max-width:800px;
-margin:50px auto;
+margin:60px auto;
 }
 
+/* FORM */
+
 .form-box{
-background:#0b1d57;
-padding:40px;
-border-radius:25px;
-box-shadow:0 0 20px rgba(0,0,0,0.5);
+background:white;
+padding:45px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 .form-box h1{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:35px;
+font-size:40px;
+color:#0051ff;
 }
+
+/* INPUTS */
 
 input,
 textarea{
 width:100%;
-padding:15px;
-margin-bottom:20px;
+padding:16px;
+margin-bottom:22px;
 border:none;
-border-radius:15px;
+border-radius:16px;
 font-size:17px;
-background:#132b75;
-color:white;
+background:#f0f4fa;
+color:#1a1a1a;
+outline:none;
+transition:0.3s;
+box-sizing:border-box;
+}
+
+input:focus,
+textarea:focus{
+background:white;
+box-shadow:0 0 0 3px #cfe0ff;
 }
 
 textarea{
-height:150px;
+height:160px;
 resize:none;
 }
+
+/* BUTTON */
 
 button{
 width:100%;
 padding:18px;
 border:none;
-border-radius:15px;
+border-radius:18px;
 background:#0051ff;
 color:white;
 font-size:20px;
+font-weight:bold;
 cursor:pointer;
 transition:0.3s;
 }
@@ -109,6 +137,29 @@ transition:0.3s;
 button:hover{
 background:#2f6dff;
 transform:scale(1.02);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.form-box{
+padding:25px;
+}
+
+.form-box h1{
+font-size:30px;
+}
+
+nav{
+gap:10px;
+}
+
+nav a{
+font-size:15px;
+padding:10px 14px;
+}
+
 }
 
 </style>
