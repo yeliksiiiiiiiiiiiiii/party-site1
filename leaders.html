@@ -1,9 +1,20 @@
+<!-- НОВЫЙ LEADERS.HTML -->
+
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Руководство партии</title>
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Руководство партии
+</title>
 
 <style>
 
@@ -11,167 +22,570 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial;
 }
 
 body{
-background:#f4f7ff;
-color:#111;
+background:#f4f7fb;
+overflow-x:hidden;
 }
 
 /* HEADER */
 
 header{
-background:#00154d;
-padding:20px 50px;
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+
+background:#0b2d82;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
+
+padding:20px 50px;
+
+z-index:1000;
+
 }
 
+/* LOGO */
+
 .logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:65px;
+background:white;
+padding:5px;
+border-radius:12px;
+}
+
+.logo-text h1{
 color:white;
-font-size:30px;
-font-weight:bold;
+font-size:36px;
+line-height:1;
+}
+
+.logo-text p{
+color:#dbe4ff;
+margin-top:5px;
+font-size:18px;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
 nav a{
+
 color:white;
 text-decoration:none;
-margin-left:25px;
-font-size:18px;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+font-weight:bold;
+
 transition:0.3s;
+
 }
 
 nav a:hover{
-color:#d52b1e;
+
+background:rgba(255,255,255,0.15);
+
 }
 
-/* MAIN */
+/* HERO */
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:60px 20px;
+.hero{
+
+height:55vh;
+
+background:
+linear-gradient(
+rgba(11,45,130,0.75),
+rgba(11,45,130,0.75)
+),
+
+url("banner.jpg");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+
+padding:140px 80px;
+
+color:white;
+
 }
 
-.title{
-font-size:50px;
-text-align:center;
-margin-bottom:50px;
-color:#0039a6;
+.hero h2{
+
+font-size:90px;
+font-weight:900;
+
 }
 
-.card{
+/* PAGE */
+
+.page{
+
+width:92%;
+max-width:1500px;
+
+margin:80px auto;
+
+}
+
+/* TITLE */
+
+.page-title{
+
+font-size:70px;
+
+color:#0b2d82;
+
+margin-bottom:30px;
+
+font-weight:900;
+
+}
+
+.page-text{
+
+font-size:24px;
+
+line-height:1.8;
+
+color:#444;
+
+margin-bottom:70px;
+
+}
+
+/* LEADERS GRID */
+
+.leaders-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
+
+gap:35px;
+
+}
+
+/* CARD */
+
+.leader-card{
+
 background:white;
-padding:30px;
-border-radius:25px;
-margin-bottom:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+border-radius:35px;
+
+overflow:hidden;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
 transition:0.3s;
+
 }
 
-.card:hover{
-transform:translateY(-5px);
+.leader-card:hover{
+
+transform:translateY(-10px);
+
 }
 
-.card h2{
-font-size:30px;
-margin-bottom:10px;
-color:#0039a6;
+/* IMAGE */
+
+.leader-image{
+
+width:100%;
+height:420px;
+
+object-fit:cover;
+
 }
 
-.card p{
+/* CONTENT */
+
+.leader-content{
+
+padding:35px;
+
+}
+
+.leader-content h3{
+
+font-size:38px;
+
+margin-bottom:15px;
+
+color:#0b2d82;
+
+}
+
+.position{
+
+font-size:22px;
+
+color:#ff3b30;
+
+font-weight:bold;
+
+margin-bottom:25px;
+
+}
+
+.description{
+
 font-size:20px;
+
+line-height:1.8;
+
+color:#444;
+
 }
 
 /* FOOTER */
 
 footer{
-background:#00154d;
-padding:25px;
+
+background:#0b2d82;
+
+padding:50px;
+
 text-align:center;
+
 color:white;
-margin-top:60px;
+
+font-size:20px;
+
+margin-top:100px;
+
 }
 
-footer a{
-color:white;
-text-decoration:none;
+/* MOBILE */
+
+@media(max-width:1100px){
+
+header{
+flex-direction:column;
+gap:20px;
+padding:25px;
+}
+
+nav{
+justify-content:center;
+}
+
+.hero{
+padding:190px 40px 100px;
+}
+
+.hero h2{
+font-size:60px;
+}
+
+}
+
+@media(max-width:700px){
+
+.logo{
+flex-direction:column;
+text-align:center;
+}
+
+.logo-text h1{
+font-size:28px;
+}
+
+nav a{
+font-size:14px;
+padding:10px 14px;
+}
+
+.hero h2{
+font-size:42px;
+}
+
+.page-title{
+font-size:42px;
+}
+
+.page-text{
 font-size:18px;
 }
 
+.leader-content h3{
+font-size:30px;
+}
+
+.position{
+font-size:18px;
+}
+
+.description{
+font-size:17px;
+}
+
+.leaders-grid{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
 <div class="logo">
+
+<img src="logo.png">
+
+<div class="logo-text">
+
+<h1>
+
+Либеральная
+Партия России
+
+</h1>
+
+<p>
+
 Россия Для Всех Вместе
+
+</p>
+
+</div>
+
 </div>
 
 <nav>
-<a href="index.html">Главная</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="news.html">Новости</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
-<a href="program.html">Программа</a>
+
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="profile.html">
+Профиль
+</a>
+
+<a href="admin.html">
+Админ
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="program.html">
+Программа
+</a>
+
 </nav>
 
 </header>
 
-<div class="container">
+<!-- HERO -->
 
-<h1 class="title">
-Руководство партии
+<section class="hero">
+
+<h2>
+
+Руководство
+партии
+
+</h2>
+
+</section>
+
+<!-- PAGE -->
+
+<div class="page">
+
+<h1 class="page-title">
+
+Состав руководства
+
 </h1>
 
-<div class="card">
-<h2>Председатель Правительства</h2>
-<p>Алексей Кузнецов</p>
+<p class="page-text">
+
+Руководство партии
+занимается развитием организации,
+контролем деятельности,
+проведением мероприятий
+и управлением структурой партии.
+
+</p>
+
+<!-- LEADERS -->
+
+<div class="leaders-grid">
+
+<!-- CARD -->
+
+<div class="leader-card">
+
+<img
+src="leader1.png"
+class="leader-image"
+>
+
+<div class="leader-content">
+
+<h3>
+
+Имя Фамилия
+
+</h3>
+
+<div class="position">
+
+Председатель партии
+
 </div>
 
-<div class="card">
-<h2>Заместитель Председателя</h2>
-<p>Тимур Райтман</p>
-</div>
+<p class="description">
 
-<div class="card">
-<h2>Руководитель Высшего Совета</h2>
-<p>Вакантно</p>
-</div>
+Руководит партией,
+принимает ключевые решения,
+представляет интересы организации
+и контролирует развитие структуры.
 
-<div class="card">
-<h2>Руководитель Президиума Высшего Совета</h2>
-<p>Вакантно</p>
-</div>
+</p>
 
-<div class="card">
-<h2>Секретарь Генерального Совета</h2>
-<p>Вакантно</p>
-</div>
-
-<div class="card">
-<h2>Руководитель Центрального Исполнительного Комитета</h2>
-<p>Вакантно</p>
-</div>
-
-<div class="card">
-<h2>Председатель Гос.Думы</h2>
-<p>Вакантно</p>
 </div>
 
 </div>
+
+<!-- CARD -->
+
+<div class="leader-card">
+
+<img
+src="leader2.png"
+class="leader-image"
+>
+
+<div class="leader-content">
+
+<h3>
+
+Имя Фамилия
+
+</h3>
+
+<div class="position">
+
+Заместитель председателя
+
+</div>
+
+<p class="description">
+
+Отвечает
+за внутреннюю организацию,
+координацию отделов
+и взаимодействие с гражданами.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="leader-card">
+
+<img
+src="leader3.png"
+class="leader-image"
+>
+
+<div class="leader-content">
+
+<h3>
+
+Имя Фамилия
+
+</h3>
+
+<div class="position">
+
+Министр информации
+
+</div>
+
+<p class="description">
+
+Контролирует публикацию новостей,
+работу СМИ партии
+и информационное развитие организации.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
 
 <footer>
-<a href="https://discord.gg/KHjFC6sDz2">
-Наш Discord сервер
-</a>
+
+© 2025
+Либеральная Партия России
+
+<br><br>
+
+Россия Для Всех Вместе
+
 </footer>
 
 </body>
