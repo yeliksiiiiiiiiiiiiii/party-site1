@@ -7,113 +7,26 @@
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
+    margin:0;
     font-family:Arial,sans-serif;
     background:#eef2ff;
-    overflow-x:hidden;
 }
-
-/* Анимированная линия флага */
-
-.flag-line{
-    width:100%;
-    height:8px;
-    background:linear-gradient(
-        90deg,
-        white,
-        #0039a6,
-        #d52b1e,
-        white
-    );
-    background-size:300%;
-    animation:flagMove 5s linear infinite;
-}
-
-@keyframes flagMove{
-
-    0%{
-        background-position:0%;
-    }
-
-    100%{
-        background-position:300%;
-    }
-
-}
-
-/* Header */
 
 header{
-    background:linear-gradient(
-        135deg,
-        #0039a6,
-        #00246b
-    );
-
+    background:linear-gradient(135deg,#0039a6,#00246b);
     color:white;
     text-align:center;
-    padding:60px 20px;
-    position:relative;
-    overflow:hidden;
-}
-
-/* Анимация появления */
-
-.fade-up{
-    opacity:0;
-    transform:translateY(50px);
-    animation:fadeUp 1.2s ease forwards;
-}
-
-@keyframes fadeUp{
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
+    padding:70px 20px;
 }
 
 header h1{
-    font-size:58px;
-    margin-bottom:15px;
+    font-size:56px;
 }
 
 header p{
     font-size:24px;
 }
-
-/* Логотип */
-
-.logo{
-    width:180px;
-    margin-bottom:25px;
-    animation:floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-
-}
-
-/* Навигация */
 
 nav{
     background:#00246b;
@@ -124,187 +37,43 @@ nav{
 nav a{
     color:white;
     text-decoration:none;
-    margin:0 18px;
-    font-size:18px;
+    margin:0 15px;
     font-weight:bold;
-    transition:0.3s;
 }
 
-nav a:hover{
-    color:#ffcccc;
-}
-
-/* Главный блок */
-
-.main{
+.container{
     max-width:1200px;
     margin:auto;
-    padding:60px 20px;
-}
-
-/* Карточки */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    padding:50px 20px;
 }
 
 .card{
     background:white;
     border-radius:20px;
     padding:35px;
+    margin-bottom:30px;
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:0.4s;
-    opacity:0;
-    transform:translateY(50px);
-    animation:cardShow 1s ease forwards;
 }
 
-.card:nth-child(2){
-    animation-delay:0.3s;
+.discord{
+    background:#5865F2;
+    color:white;
+    text-align:center;
+    padding:35px;
+    margin-top:50px;
 }
 
-.card:nth-child(3){
-    animation-delay:0.6s;
-}
-
-@keyframes cardShow{
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-.card:hover{
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 15px 35px rgba(0,0,0,0.15);
-}
-
-.card h2{
-    color:#0039a6;
-    margin-bottom:15px;
-}
-
-.card p{
-    line-height:1.6;
-}
-
-/* Кнопки */
-
-.glow-button{
-    display:inline-block;
-    margin-top:20px;
-    padding:15px 30px;
-    background:#0039a6;
+.discord a{
     color:white;
     text-decoration:none;
-    border-radius:12px;
-    font-size:18px;
-    transition:0.3s;
-    box-shadow:0 0 15px rgba(0,57,166,0.5);
+    font-size:22px;
 }
-
-.glow-button:hover{
-    background:#d52b1e;
-    transform:scale(1.05);
-    box-shadow:0 0 25px rgba(213,43,30,0.9);
-}
-
-/* Footer */
 
 footer{
     background:#0039a6;
     color:white;
-    margin-top:70px;
-    padding:40px 20px;
-}
-
-/* Discord */
-
-.discord-box{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-bottom:20px;
-}
-
-.discord-logo{
-    width:70px;
-    height:70px;
-    animation:discordFloat 3s ease-in-out infinite;
-}
-
-@keyframes discordFloat{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-
-}
-
-.discord-box h3{
-    margin-bottom:10px;
-    font-size:24px;
-}
-
-.discord-box a{
-    display:inline-block;
-    padding:12px 22px;
-    background:#5865F2;
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.discord-box a:hover{
-    background:#4752c4;
-    transform:scale(1.05);
-}
-
-.copyright{
     text-align:center;
-    margin-top:20px;
-    font-size:15px;
-}
-
-/* Частицы */
-
-.particle{
-    position:absolute;
-    width:8px;
-    height:8px;
-    background:rgba(255,255,255,0.4);
-    border-radius:50%;
-    animation:particleMove linear infinite;
-}
-
-@keyframes particleMove{
-
-    from{
-        transform:translateY(0);
-        opacity:1;
-    }
-
-    to{
-        transform:translateY(-800px);
-        opacity:0;
-    }
-
+    padding:20px;
 }
 
 </style>
@@ -312,135 +81,87 @@ footer{
 
 <body>
 
-<div class="flag-line"></div>
-
 <header>
-
-<div class="fade-up">
-
-<img src="logo.png" class="logo">
 
 <h1>Либеральная Партия России</h1>
 
 <p>Для Всех Вместе</p>
-
-<a href="apply.html" class="glow-button">
-Подать заявление
-</a>
-
-</div>
 
 </header>
 
 <nav>
 
 <a href="index.html">Главная</a>
+<a href="news.html">Новости</a>
 <a href="leaders.html">Руководство</a>
-<a href="profile.html">Личный кабинет</a>
 <a href="apply.html">Заявление</a>
 <a href="admin.html">Админ панель</a>
 
 </nav>
 
-<div class="main">
-
-<div class="cards">
+<div class="container">
 
 <div class="card">
 
-<h2>Наша цель</h2>
+<h2>Добро пожаловать</h2>
 
 <p>
-Объединение граждан России ради свободы,
-развития и справедливости.
+Официальный сайт Либеральной Партии России.
 </p>
-
-<a href="leaders.html" class="glow-button">
-Руководство
-</a>
 
 </div>
 
 <div class="card">
 
-<h2>Вступление в партию</h2>
+<h2>Последние новости</h2>
 
-<p>
-Каждый гражданин может стать частью
-политического движения.
-</p>
+<div id="latestNews"></div>
 
-<a href="apply.html" class="glow-button">
-Подать заявление
+</div>
+
+</div>
+
+<div class="discord">
+
+<h2>Наш Discord сервер</h2>
+
+<a href="https://discord.gg/KHjFC6sDz2"
+target="_blank">
+discord.gg/KHjFC6sDz2
 </a>
-
-</div>
-
-<div class="card">
-
-<h2>Личный кабинет</h2>
-
-<p>
-Следите за новостями партии
-и статусом заявок.
-</p>
-
-<a href="profile.html" class="glow-button">
-Перейти
-</a>
-
-</div>
-
-</div>
 
 </div>
 
 <footer>
 
-<div class="discord-box">
-
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png"
-class="discord-logo">
-
-<div>
-
-<h3>Наш Discord сервер</h3>
-
-<a href="https://discord.gg/KHjFC6sDz2"
-target="_blank">
-Перейти в Discord
-</a>
-
-</div>
-
-</div>
-
-<p class="copyright">
-© 2025 Либеральная Партия России — Для Всех Вместе
-</p>
+© 2025 Либеральная Партия России
 
 </footer>
 
 <script>
 
-/* Создание частиц */
+let news =
+JSON.parse(localStorage.getItem("partyNews")) || [];
 
-for(let i = 0; i < 40; i++){
+let latest =
+document.getElementById("latestNews");
 
-    let particle = document.createElement("div");
+if(news.length === 0){
 
-    particle.classList.add("particle");
+latest.innerHTML =
+"<p>Новостей пока нет.</p>";
 
-    particle.style.left = Math.random() * 100 + "%";
+}else{
 
-    particle.style.top = Math.random() * 100 + "%";
+let item = news[news.length - 1];
 
-    particle.style.animationDuration =
-        (5 + Math.random() * 10) + "s";
+latest.innerHTML = `
 
-    particle.style.opacity = Math.random();
+<h3>${item.title}</h3>
 
-    document.querySelector("header").appendChild(particle);
+<p>${item.text}</p>
+
+`;
 
 }
 
