@@ -1,307 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Заявление в партию</title>
-
-<style>
-
-body{
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
-background:#eef2ff;
-}
-
-/* HEADER */
-
-header{
-background:linear-gradient(
-135deg,
-#0039a6,
-#00246b
-);
-
-color:white;
-text-align:center;
-padding:60px 20px;
-}
-
-header h1{
-margin:0;
-font-size:52px;
-}
-
-header p{
-font-size:22px;
-margin-top:10px;
-}
-
-/* NAV */
-
-nav{
-background:#00246b;
-padding:18px;
-text-align:center;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-weight:bold;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#ffcccc;
-}
-
-/* CONTAINER */
-
-.container{
-max-width:900px;
-margin:auto;
-padding:50px 20px;
-}
-
-/* FORM */
-
-.form-box{
-background:white;
-padding:35px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-animation:fadeUp 1s ease;
-}
-
-.form-box h2{
-text-align:center;
-color:#0039a6;
-margin-bottom:30px;
-font-size:36px;
-}
-
-/* INPUTS */
-
-input,
-textarea{
-width:100%;
-padding:16px;
-margin-bottom:20px;
-border-radius:12px;
-border:2px solid #ccd8ff;
-font-size:16px;
-box-sizing:border-box;
-transition:0.3s;
-}
-
-input:focus,
-textarea:focus{
-border-color:#0039a6;
-outline:none;
-box-shadow:0 0 10px rgba(0,57,166,0.2);
-}
-
-textarea{
-min-height:140px;
-resize:vertical;
-}
-
-/* BUTTON */
-
-button{
-width:100%;
-padding:18px;
-background:#0039a6;
-color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#d52b1e;
-transform:scale(1.02);
-}
-
-/* ANIMATION */
-
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-/* FOOTER */
-
-footer{
-background:#0039a6;
-color:white;
-margin-top:60px;
-padding:35px 20px;
-text-align:center;
-}
-
-/* DISCORD */
-
-.discord-box{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-bottom:20px;
-}
-
-.discord-logo{
-width:70px;
-height:70px;
-animation:floatDiscord 3s ease-in-out infinite;
-}
-
-@keyframes floatDiscord{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(-8px);
-}
-
-100%{
-transform:translateY(0px);
-}
-
-}
-
-.discord-box a{
-display:inline-block;
-padding:12px 24px;
-background:#5865F2;
-color:white;
-text-decoration:none;
-border-radius:12px;
-font-weight:bold;
-transition:0.3s;
-}
-
-.discord-box a:hover{
-background:#4752c4;
-transform:scale(1.05);
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-
-<h1>Либеральная Партия России</h1>
-
-<p>Для Всех Вместе</p>
-
-</header>
-
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="admin.html">Админ панель</a>
-
-</nav>
-
-<div class="container">
-
-<div class="form-box">
-
-<h2>Заявление на вступление</h2>
-
-<form id="partyForm">
-
-<input type="text"
-id="fullname"
-placeholder="Ваше ФИО"
-required>
-
-<input type="number"
-id="ageic"
-placeholder="Сколько вам лет? (IC)"
-required>
-
-<input type="number"
-id="ageooc"
-placeholder="Сколько вам лет? (OOC)"
-required>
-
-<input type="text"
-id="discord"
-placeholder="Ваш Discord?"
-required>
-
-<textarea
-id="reason"
-placeholder="Почему именно наша партия?"
-required></textarea>
-
-<textarea
-id="support"
-placeholder="Как вы будете поддерживать партию?"
-required></textarea>
-
-<button type="submit">
-Отправить заявление
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<footer>
-
-<div class="discord-box">
-
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png"
-class="discord-logo">
-
-<div>
-
-<h3>Наш Discord сервер</h3>
-
-<a href="https://discord.gg/KHjFC6sDz2"
-target="_blank">
-Перейти в Discord
-</a>
-
-</div>
-
-</div>
-
-<p>
-© 2025 Либеральная Партия России
-</p>
-
-</footer>
-
 <script>
 
 document.getElementById(
@@ -332,7 +28,7 @@ document.getElementById("support").value
 
 };
 
-/* LOCAL STORAGE */
+/* СОХРАНЕНИЕ ЗАЯВОК */
 
 let applications =
 JSON.parse(
@@ -351,7 +47,7 @@ JSON.stringify(applications)
 /* DISCORD WEBHOOK */
 
 fetch(
-"https://discord.com/api/webhooks/1502344640538476735/pCpfZCXfaqEZncuGgAWJTA40s8A13NkQRN3MAuYb1UWMfixXu17dT2EMdr1oT5UGr5Hh",
+"https://discord.com/api/webhooks/1502654265284362321/ZsEt4asD9JKcjQ-_9IzUQ2cxrCbCR_wvWIjBZMgiW6jRWWAGgJWR0HgKdqtx_9GKE8j2",
 
 {
 
@@ -363,9 +59,17 @@ headers:{
 
 body:JSON.stringify({
 
+username:"Либеральная Партия России",
+
+avatar_url:
+"https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+
 embeds:[{
 
 title:"📨 Новая заявка в партию",
+
+description:
+"Поступила новая заявка с сайта партии.",
 
 color:3447003,
 
@@ -373,34 +77,34 @@ fields:[
 
 {
 name:"👤 ФИО",
-value:application.fullname
+value:application.fullname || "Не указано"
 },
 
 {
 name:"🎂 Возраст IC",
-value:application.ageic,
+value:application.ageic || "Не указано",
 inline:true
 },
 
 {
 name:"🧍 Возраст OOC",
-value:application.ageooc,
+value:application.ageooc || "Не указано",
 inline:true
 },
 
 {
 name:"💬 Discord",
-value:application.discord
+value:application.discord || "Не указано"
 },
 
 {
 name:"📌 Почему партия",
-value:application.reason
+value:application.reason || "Не указано"
 },
 
 {
 name:"🤝 Поддержка партии",
-value:application.support
+value:application.support || "Не указано"
 }
 
 ],
@@ -415,9 +119,11 @@ timestamp:new Date()
 
 })
 
-});
+}
 
-/* SUCCESS */
+)
+
+.then(() => {
 
 alert(
 "Ваше заявление успешно отправлено!"
@@ -427,9 +133,16 @@ document.getElementById(
 "partyForm"
 ).reset();
 
+})
+
+.catch(() => {
+
+alert(
+"Ошибка отправки заявления!"
+);
+
+});
+
 });
 
 </script>
-
-</body>
-</html>
