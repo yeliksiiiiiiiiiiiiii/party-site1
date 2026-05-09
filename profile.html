@@ -1,70 +1,56 @@
-<!-- ========================= -->
-<!-- ФАЙЛ: profile.html -->
-<!-- ========================= -->
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Личный кабинет</title>
 
 <style>
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f6fb;
+margin:0;
+font-family:Arial;
+background:#f4f6fb;
 }
 
 header{
-    background:#0039a6;
-    color:white;
-    text-align:center;
-    padding:30px;
+background:#0039a6;
+color:white;
+text-align:center;
+padding:30px;
 }
 
 nav{
-    background:#00246b;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    padding:15px;
-    flex-wrap:wrap;
+background:#00246b;
+padding:15px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
 }
 
 nav a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+color:white;
+text-decoration:none;
+font-weight:bold;
 }
 
 .container{
-    max-width:1000px;
-    margin:auto;
-    padding:40px 20px;
+max-width:900px;
+margin:auto;
+padding:40px 20px;
 }
 
 .card{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+background:white;
+padding:30px;
+border-radius:20px;
 }
 
 .info{
-    margin-top:20px;
-    padding:20px;
-    background:#eef3ff;
-    border-radius:12px;
-}
-
-footer{
-    margin-top:40px;
-    background:#0039a6;
-    color:white;
-    text-align:center;
-    padding:20px;
+margin-top:20px;
+padding:20px;
+background:#eef3ff;
+border-radius:12px;
 }
 
 </style>
@@ -73,41 +59,34 @@ footer{
 <body>
 
 <header>
-    <h1>Личный кабинет</h1>
+<h1>Личный кабинет</h1>
 </header>
 
 <nav>
-    <a href="index.html">Главная</a>
-    <a href="leaders.html">Руководство</a>
-    <a href="profile.html">Личный кабинет</a>
-    <a href="apply.html">Заявление</a>
+<a href="index.html">Главная</a>
+<a href="leaders.html">Руководство</a>
+<a href="profile.html">Личный кабинет</a>
+<a href="apply.html">Заявление</a>
+<a href="admin.html">Проверка заявок</a>
 </nav>
 
 <div class="container">
 
-    <div class="card">
+<div class="card">
 
-        <h2>Информация пользователя</h2>
+<h2>Информация пользователя</h2>
 
-        <div class="info">
-            <strong>Статус:</strong> Кандидат партии
-        </div>
+<div class="info">
+Статус: Кандидат партии
+</div>
 
-        <div class="info">
-            <strong>Последнее заявление:</strong> На рассмотрении
-        </div>
-
-        <div class="info">
-            <strong>Уровень доступа:</strong> Базовый
-        </div>
-
-    </div>
+<div class="info">
+Заявление: На рассмотрении
+</div>
 
 </div>
 
-<footer>
-    © 2026 Либеральная Партия России для всех вместе!
-</footer>
+</div>
 
 </body>
 </html>
