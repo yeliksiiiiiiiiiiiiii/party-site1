@@ -1,4 +1,4 @@
-<!-- ADMIN.HTML РАБОЧАЯ ВЕРСИЯ -->
+<!-- ADMIN.HTML С ПОЛЬЗОВАТЕЛЯМИ -->
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -80,11 +80,12 @@ margin:40px auto;
 .title{
 font-size:32px;
 margin-bottom:30px;
+margin-top:50px;
 }
 
-/* APPLICATION CARD */
+/* CARD */
 
-.app-card{
+.card{
 background:#0b1d57;
 padding:25px;
 border-radius:20px;
@@ -93,12 +94,12 @@ box-shadow:0 0 20px rgba(0,0,0,0.4);
 animation:fade 0.3s;
 }
 
-.app-card h2{
+.card h2{
 margin-bottom:15px;
 color:#4da3ff;
 }
 
-.app-card p{
+.card p{
 margin-bottom:12px;
 line-height:1.6;
 }
@@ -129,6 +130,11 @@ color:white;
 
 .delete{
 background:red;
+color:white;
+}
+
+.admin{
+background:#0051ff;
 color:white;
 }
 
@@ -213,6 +219,8 @@ transform:translateY(0);
 
 <div class="container">
 
+<!-- APPLICATIONS -->
+
 <h1 class="title">
 Проверка заявлений
 </h1>
@@ -221,6 +229,20 @@ transform:translateY(0);
 
 <div class="empty">
 Загрузка заявок...
+</div>
+
+</div>
+
+<!-- USERS -->
+
+<h1 class="title">
+Пользователи
+</h1>
+
+<div id="usersList">
+
+<div class="empty">
+Загрузка пользователей...
 </div>
 
 </div>
@@ -239,30 +261,27 @@ updateDoc
 }
 from './firebase.js';
 
-const container =
+/* APPLICATIONS */
+
+const appsContainer =
 document.getElementById(
 "applicationsList"
 );
-
-/* LOAD APPLICATIONS */
 
 async function loadApps(){
 
 try{
 
-container.innerHTML =
-"<div class='empty'>Загрузка...</div>";
+appsContainer.innerHTML = "";
 
 const querySnapshot =
 await getDocs(
 collection(db,"applications")
 );
 
-container.innerHTML = "";
-
 if(querySnapshot.empty){
 
-container.innerHTML = `
+appsContainer.innerHTML = `
 
 <div class="empty">
 
@@ -285,7 +304,7 @@ const card =
 document.createElement("div");
 
 card.className =
-"app-card";
+"card";
 
 card.innerHTML = `
 
@@ -345,11 +364,11 @@ data-id="${documentData.id}"
 
 `;
 
-container.appendChild(card);
+appsContainer.appendChild(card);
 
 });
 
-/* APPROVE BUTTONS */
+/* APPROVE */
 
 document
 .querySelectorAll(".approve")
@@ -376,7 +395,7 @@ loadApps();
 
 });
 
-/* DELETE BUTTONS */
+/* DELETE */
 
 document
 .querySelectorAll(".delete")
@@ -402,17 +421,139 @@ loadApps();
 
 }catch(error){
 
-console.error(error);
-
-container.innerHTML = `
+appsContainer.innerHTML = `
 
 <div class="empty">
 
 Ошибка загрузки заявок
 
-<br><br>
+</div>
 
-${error.message}
+`;
+
+}
+
+}
+
+/* USERS */
+
+const usersContainer =
+document.getElementById(
+"usersList"
+);
+
+async function loadUsers(){
+
+try{
+
+usersContainer.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+collection(db,"users")
+);
+
+if(querySnapshot.empty){
+
+usersContainer.innerHTML = `
+
+<div class="empty">
+
+Пользователей пока нет
+
+</div>
+
+`;
+
+return;
+
+}
+
+querySnapshot.forEach((documentData)=>{
+
+const user =
+documentData.data();
+
+const card =
+document.createElement("div");
+
+card.className =
+"card";
+
+card.innerHTML = `
+
+<h2>
+${user.email || "Без email"}
+</h2>
+
+<p>
+<b>Роль:</b>
+${user.role || "user"}
+</p>
+
+<p>
+<b>Дата регистрации:</b>
+${user.created || ""}
+</p>
+
+<div class="buttons">
+
+<button
+class="admin"
+data-id="${documentData.id}"
+>
+Выдать Admin
+</button>
+
+<button
+class="delete"
+data-id="${documentData.id}"
+>
+Удалить
+</button>
+
+</div>
+
+`;
+
+usersContainer.appendChild(card);
+
+});
+
+/* ADMIN ROLE */
+
+document
+.querySelectorAll(".admin")
+.forEach((button)=>{
+
+button.addEventListener(
+"click",
+async()=>{
+
+const id =
+button.dataset.id;
+
+await updateDoc(
+doc(db,"users",id),
+{
+role:"admin"
+}
+);
+
+loadUsers();
+
+}
+);
+
+});
+
+}catch(error){
+
+usersContainer.innerHTML = `
+
+<div class="empty">
+
+Ошибка загрузки пользователей
 
 </div>
 
@@ -425,6 +566,8 @@ ${error.message}
 /* START */
 
 loadApps();
+
+loadUsers();
 
 </script>
 
