@@ -5,7 +5,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Новости</title>
+<title>Новости партии</title>
 
 <style>
 
@@ -13,38 +13,37 @@ content="width=device-width, initial-scale=1.0">
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-font-family:Arial,sans-serif;
 background:#f4f7ff;
 }
 
+/* HEADER */
+
 header{
-background:linear-gradient(135deg,#0039a6,#001b5e);
+background:#00154d;
+padding:20px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
 color:white;
-padding:60px 20px;
-text-align:center;
-}
-
-header h1{
-font-size:54px;
-}
-
-nav{
-background:white;
-padding:18px;
-text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.08);
+font-size:30px;
+font-weight:bold;
 }
 
 nav a{
+color:white;
 text-decoration:none;
-color:#0039a6;
-margin:0 18px;
-font-weight:bold;
+margin-left:25px;
 font-size:18px;
 }
+
+/* NEWS */
 
 .container{
 max-width:1200px;
@@ -52,35 +51,59 @@ margin:auto;
 padding:60px 20px;
 }
 
+.title{
+text-align:center;
+font-size:50px;
+margin-bottom:50px;
+color:#0039a6;
+}
+
 .news-card{
 background:white;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+padding:30px;
+border-radius:25px;
 margin-bottom:35px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.news-card:hover{
+transform:translateY(-5px);
 }
 
 .news-card img{
 width:100%;
+border-radius:20px;
+margin-top:20px;
 max-height:450px;
 object-fit:cover;
 }
 
-.news-content{
-padding:30px;
+.news-card h2{
+font-size:35px;
+margin-bottom:15px;
+color:#0039a6;
 }
 
-.news-content h2{
-color:#0039a6;
-margin-bottom:15px;
+.news-card p{
+font-size:20px;
+margin-top:10px;
 }
+
+/* FOOTER */
 
 footer{
-background:#0039a6;
-color:white;
+background:#00154d;
+padding:25px;
 text-align:center;
-padding:30px;
+color:white;
 margin-top:60px;
+}
+
+footer a{
+color:white;
+text-decoration:none;
+font-size:18px;
 }
 
 </style>
@@ -90,33 +113,36 @@ margin-top:60px;
 
 <header>
 
-<h1>Новости партии</h1>
+<div class="logo">
+Россия Для Всех Вместе
+</div>
+
+<nav>
+<a href="index.html">Главная</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="news.html">Новости</a>
+</nav>
 
 </header>
 
-<nav>
+<div class="container">
 
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="admin.html">Админ панель</a>
+<h1 class="title">
+Новости партии
+</h1>
 
-</nav>
-
-<div class="container" id="newsContainer">
+<div id="newsContainer"></div>
 
 </div>
 
 <footer>
-
-© 2025 Либеральная Партия России
-
+<a href="https://discord.gg/KHjFC6sDz2">
+Наш Discord сервер
+</a>
 </footer>
 
 <script>
-
-function loadNews(){
 
 let news =
 JSON.parse(
@@ -130,41 +156,30 @@ document.getElementById(
 "newsContainer"
 );
 
-container.innerHTML = "";
-
-if(news.length === 0){
+if(news.length===0){
 
 container.innerHTML = `
 <div class="news-card">
-<div class="news-content">
 <h2>Новостей пока нет</h2>
 <p>
-Новости появятся после публикации
-в админ панели.
+Ожидайте публикаций администрации.
 </p>
-</div>
 </div>
 `;
 
-return;
-
 }
 
-news.reverse().forEach((item)=>{
+news.reverse().forEach(item=>{
 
 container.innerHTML += `
 
 <div class="news-card">
 
-<img src="${item.image}">
-
-<div class="news-content">
-
 <h2>${item.title}</h2>
 
 <p>${item.text}</p>
 
-<br>
+<img src="${item.image}">
 
 <p>
 <b>Дата:</b>
@@ -173,15 +188,9 @@ ${item.date}
 
 </div>
 
-</div>
-
 `;
 
 });
-
-}
-
-loadNews();
 
 </script>
 
