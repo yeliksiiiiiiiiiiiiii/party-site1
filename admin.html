@@ -1,4 +1,4 @@
-<!-- ADMIN.HTML -->
+<!-- ADMIN.HTML РАБОЧАЯ ВЕРСИЯ -->
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -18,13 +18,19 @@ content="width=device-width, initial-scale=1.0"
 
 <style>
 
-body{
+*{
 margin:0;
 padding:0;
+box-sizing:border-box;
 font-family:Arial;
+}
+
+body{
 background:#071739;
 color:white;
 }
+
+/* HEADER */
 
 header{
 background:#00154d;
@@ -34,6 +40,8 @@ font-size:35px;
 font-weight:bold;
 box-shadow:0 0 20px black;
 }
+
+/* NAVIGATION */
 
 nav{
 display:flex;
@@ -59,11 +67,22 @@ background:#0051ff;
 transform:translateY(-3px);
 }
 
+/* CONTAINER */
+
 .container{
 width:90%;
 max-width:1200px;
-margin:50px auto;
+margin:40px auto;
 }
+
+/* TITLES */
+
+.title{
+font-size:32px;
+margin-bottom:30px;
+}
+
+/* APPLICATION CARD */
 
 .app-card{
 background:#0b1d57;
@@ -71,16 +90,26 @@ padding:25px;
 border-radius:20px;
 margin-bottom:25px;
 box-shadow:0 0 20px rgba(0,0,0,0.4);
+animation:fade 0.3s;
 }
 
 .app-card h2{
-margin-top:0;
+margin-bottom:15px;
+color:#4da3ff;
 }
+
+.app-card p{
+margin-bottom:12px;
+line-height:1.6;
+}
+
+/* BUTTONS */
 
 .buttons{
 display:flex;
 gap:15px;
 margin-top:20px;
+flex-wrap:wrap;
 }
 
 .buttons button{
@@ -90,6 +119,7 @@ border-radius:12px;
 cursor:pointer;
 font-size:16px;
 transition:0.3s;
+font-weight:bold;
 }
 
 .approve{
@@ -106,6 +136,31 @@ color:white;
 transform:scale(1.05);
 }
 
+/* EMPTY */
+
+.empty{
+text-align:center;
+padding:60px;
+font-size:25px;
+opacity:0.7;
+}
+
+/* ANIMATION */
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
 </style>
 
 </head>
@@ -113,7 +168,7 @@ transform:scale(1.05);
 <body>
 
 <header>
-Админ панель
+Админ панель партии
 </header>
 
 <nav>
@@ -134,6 +189,10 @@ transform:scale(1.05);
 Заявление
 </a>
 
+<a href="chat.html">
+Чат
+</a>
+
 <a href="program.html">
 Программа
 </a>
@@ -149,20 +208,20 @@ transform:scale(1.05);
 <a href="admin.html">
 Админ панель
 </a>
-  
-<a href="chat.html">
-Общий чат
-</a>
 
 </nav>
 
 <div class="container">
 
+<h1 class="title">
+Проверка заявлений
+</h1>
+
 <div id="applicationsList">
 
-<h2>
+<div class="empty">
 Загрузка заявок...
-</h2>
+</div>
 
 </div>
 
@@ -185,98 +244,123 @@ document.getElementById(
 "applicationsList"
 );
 
+/* LOAD APPLICATIONS */
+
 async function loadApps(){
 
-container.innerHTML = "";
+try{
+
+container.innerHTML =
+"<div class='empty'>Загрузка...</div>";
 
 const querySnapshot =
 await getDocs(
 collection(db,"applications")
 );
 
-querySnapshot.forEach((d)=>{
+container.innerHTML = "";
 
-const app = d.data();
+if(querySnapshot.empty){
 
-container.innerHTML += `
+container.innerHTML = `
 
-<div class="app-card">
+<div class="empty">
+
+Заявок пока нет
+
+</div>
+
+`;
+
+return;
+
+}
+
+querySnapshot.forEach((documentData)=>{
+
+const app =
+documentData.data();
+
+const card =
+document.createElement("div");
+
+card.className =
+"app-card";
+
+card.innerHTML = `
 
 <h2>
-${app.fullname}
+${app.fullname || "Без имени"}
 </h2>
 
 <p>
 <b>Discord:</b>
-${app.discord}
+${app.discord || "Не указан"}
 </p>
 
 <p>
 <b>IC возраст:</b>
-${app.icage}
+${app.icage || "Не указан"}
 </p>
 
 <p>
 <b>OOC возраст:</b>
-${app.oocage}
+${app.oocage || "Не указан"}
 </p>
 
 <p>
 <b>Почему хочет вступить:</b>
-<br>
-${app.why}
+<br><br>
+${app.why || "Нет текста"}
 </p>
 
 <p>
-<b>Чем поможет:</b>
-<br>
-${app.help}
+<b>Чем поможет партии:</b>
+<br><br>
+${app.help || "Нет текста"}
 </p>
 
 <p>
 <b>Статус:</b>
-${app.status}
+${app.status || "pending"}
 </p>
 
 <div class="buttons">
 
 <button
 class="approve"
-onclick="approveApp('${d.id}')"
+data-id="${documentData.id}"
 >
 Одобрить
 </button>
 
 <button
 class="delete"
-onclick="deleteApp('${d.id}')"
+data-id="${documentData.id}"
 >
 Удалить
 </button>
 
 </div>
 
-</div>
-
 `;
+
+container.appendChild(card);
 
 });
 
-}
+/* APPROVE BUTTONS */
 
-window.deleteApp =
-async function(id){
+document
+.querySelectorAll(".approve")
+.forEach((button)=>{
 
-await deleteDoc(
-doc(db,"applications",id)
-);
+button.addEventListener(
+"click",
+async()=>{
 
-loadApps();
-
-}
-
-window.approveApp =
-async function(id){
+const id =
+button.dataset.id;
 
 await updateDoc(
 doc(db,"applications",id),
@@ -288,6 +372,57 @@ status:"approved"
 loadApps();
 
 }
+);
+
+});
+
+/* DELETE BUTTONS */
+
+document
+.querySelectorAll(".delete")
+.forEach((button)=>{
+
+button.addEventListener(
+"click",
+async()=>{
+
+const id =
+button.dataset.id;
+
+await deleteDoc(
+doc(db,"applications",id)
+);
+
+loadApps();
+
+}
+);
+
+});
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML = `
+
+<div class="empty">
+
+Ошибка загрузки заявок
+
+<br><br>
+
+${error.message}
+
+</div>
+
+`;
+
+}
+
+}
+
+/* START */
 
 loadApps();
 
