@@ -2,36 +2,90 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Гимн партии</title>
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
 background:#00154d;
-font-family:Arial;
 color:white;
+}
+
+/* HEADER */
+
+header{
+padding:20px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#000d33;
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+}
+
+nav{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+padding:10px 18px;
+border-radius:12px;
+transition:0.3s;
+}
+
+nav a:hover{
+background:#d52b1e;
+}
+
+/* HERO */
+
+.hero{
+height:300px;
+display:flex;
+justify-content:center;
+align-items:center;
 text-align:center;
 }
 
+.hero h1{
+font-size:70px;
+}
+
+/* CONTENT */
+
 .container{
 max-width:1000px;
-margin:50px auto;
-padding:40px;
-}
-
-h1{
-font-size:60px;
-margin-bottom:40px;
-}
-
-.lyrics{
-background:rgba(255,255,255,0.1);
-padding:40px;
-border-radius:25px;
-line-height:2;
-font-size:22px;
+margin:0 auto 70px;
+background:rgba(255,255,255,0.08);
+padding:50px;
+border-radius:30px;
 backdrop-filter:blur(10px);
+line-height:2;
+font-size:23px;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+background:#000d33;
 }
 
 </style>
@@ -39,18 +93,43 @@ backdrop-filter:blur(10px);
 
 <body>
 
-<div class="container">
+<header>
+
+<div class="logo">
+Россия Для Всех Вместе
+</div>
+
+<nav>
+
+<a href="index.html">Главная</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="citizens.html">Обращения</a>
+<a href="news.html">Новости</a>
+<a href="ustav.html">Устав</a>
+<a href="gimn.html">Гимн</a>
+<a href="program.html">Программа</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
 
 <h1>
 Гимн партии
 </h1>
 
-<div class="lyrics">
+</section>
+
+<div class="container">
 
 <p>
 Россия для всех — это наша присяга,
 Россия для всех — это общая цель!
 </p>
+
+<br>
 
 <p>
 В единстве и силе,
@@ -59,12 +138,16 @@ backdrop-filter:blur(10px);
 сквозь любую метель.
 </p>
 
+<br>
+
 <p>
 Рука об руку,
 плечом к плечу,
 Строим будущее,
 о котором мечтали.
 </p>
+
+<br>
 
 <p>
 Россия для всех!
@@ -75,7 +158,11 @@ backdrop-filter:blur(10px);
 
 </div>
 
-</div>
+<footer>
+
+© 2025 Россия Для Всех Вместе
+
+</footer>
 
 </body>
 </html>
