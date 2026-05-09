@@ -2,9 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Руководство партии</title>
 
 <style>
@@ -13,64 +11,95 @@ content="width=device-width, initial-scale=1.0">
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-font-family:Arial,sans-serif;
 background:#f4f7ff;
+color:#111;
 }
+
+/* HEADER */
 
 header{
-background:linear-gradient(135deg,#0039a6,#001b5e);
+background:#00154d;
+padding:20px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.logo{
 color:white;
-padding:60px 20px;
-text-align:center;
-}
-
-header h1{
-font-size:54px;
-}
-
-nav{
-background:white;
-padding:18px;
-text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.08);
+font-size:30px;
+font-weight:bold;
 }
 
 nav a{
+color:white;
 text-decoration:none;
-color:#0039a6;
-margin:0 18px;
-font-weight:bold;
+margin-left:25px;
 font-size:18px;
+transition:0.3s;
 }
 
+nav a:hover{
+color:#d52b1e;
+}
+
+/* MAIN */
+
 .container{
-max-width:1000px;
+max-width:1200px;
 margin:auto;
 padding:60px 20px;
+}
+
+.title{
+font-size:50px;
+text-align:center;
+margin-bottom:50px;
+color:#0039a6;
 }
 
 .card{
 background:white;
 padding:30px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+border-radius:25px;
 margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .card h2{
-color:#0039a6;
+font-size:30px;
 margin-bottom:10px;
+color:#0039a6;
 }
 
+.card p{
+font-size:20px;
+}
+
+/* FOOTER */
+
 footer{
-background:#0039a6;
-color:white;
+background:#00154d;
+padding:25px;
 text-align:center;
-padding:30px;
+color:white;
 margin-top:60px;
+}
+
+footer a{
+color:white;
+text-decoration:none;
+font-size:18px;
 }
 
 </style>
@@ -80,21 +109,24 @@ margin-top:60px;
 
 <header>
 
-<h1>Руководство партии</h1>
+<div class="logo">
+Россия Для Всех Вместе
+</div>
+
+<nav>
+<a href="index.html">Главная</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="news.html">Новости</a>
+</nav>
 
 </header>
 
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="admin.html">Админ панель</a>
-
-</nav>
-
 <div class="container">
+
+<h1 class="title">
+Руководство партии
+</h1>
 
 <div class="card">
 <h2>Председатель Правительства</h2>
@@ -112,17 +144,17 @@ margin-top:60px;
 </div>
 
 <div class="card">
-<h2>Руководителя Президиума Высшего Совета</h2>
+<h2>Руководитель Президиума Высшего Совета</h2>
 <p>Вакантно</p>
 </div>
 
 <div class="card">
-<h2>Секретарь Генерального совета</h2>
+<h2>Секретарь Генерального Совета</h2>
 <p>Вакантно</p>
 </div>
 
 <div class="card">
-<h2>Руководитель Центрального исполнительного комитета</h2>
+<h2>Руководитель Центрального Исполнительного Комитета</h2>
 <p>Вакантно</p>
 </div>
 
@@ -134,9 +166,9 @@ margin-top:60px;
 </div>
 
 <footer>
-
-© 2025 Либеральная Партия России
-
+<a href="https://discord.gg/KHjFC6sDz2">
+Наш Discord сервер
+</a>
 </footer>
 
 </body>
