@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Заявление</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f6fb;
+}
+
+header{
+background:#0039a6;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+nav{
+background:#00246b;
+padding:15px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+form{
+background:white;
+padding:35px;
+border-radius:20px;
+}
+
+input,
+textarea{
+width:100%;
+padding:15px;
+margin-bottom:20px;
+border-radius:12px;
+border:2px solid #ccd8ff;
+}
+
+textarea{
+min-height:120px;
+}
+
+button{
+width:100%;
+padding:18px;
+background:#0039a6;
+color:white;
+border:none;
+border-radius:12px;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Заявление в партию</h1>
+</header>
+
+<nav>
+<a href="index.html">Главная</a>
+<a href="leaders.html">Руководство</a>
+<a href="profile.html">Личный кабинет</a>
+<a href="apply.html">Заявление</a>
+<a href="admin.html">Проверка заявок</a>
+</nav>
+
+<div class="container">
+
+<form id="partyForm">
+
+<input type="text" id="fullname" placeholder="Ваше ФИО" required>
+
+<input type="number" id="ageic" placeholder="Сколько вам лет? (IC)" required>
+
+<input type="number" id="ageooc" placeholder="Сколько вам лет? (OOC)" required>
+
+<textarea id="reason" placeholder="Почему именно наша партия?" required></textarea>
+
+<textarea id="support" placeholder="Как вы будете поддерживать партию?" required></textarea>
+
+<button type="submit">
+Отправить заявление
+</button>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("partyForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let application = {
+
+fullname: document.getElementById("fullname").value,
+ageic: document.getElementById("ageic").value,
+ageooc: document.getElementById("ageooc").value,
+reason: document.getElementById("reason").value,
+support: document.getElementById("support").value
+
+};
+
+let applications = JSON.parse(localStorage.getItem("partyApplications")) || [];
+
+applications.push(application);
+
+localStorage.setItem("partyApplications",JSON.stringify(applications));
+
+alert("Заявление успешно отправлено!");
+
+document.getElementById("partyForm").reset();
+
+});
+
+</script>
+
+</body>
+</html>
