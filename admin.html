@@ -2,75 +2,64 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Панель проверок заявок</title>
+<title>Проверка заявок</title>
 
 <style>
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f6fb;
+margin:0;
+font-family:Arial;
+background:#f4f6fb;
 }
 
 header{
-    background:#0039a6;
-    color:white;
-    text-align:center;
-    padding:25px;
+background:#0039a6;
+color:white;
+text-align:center;
+padding:30px;
 }
 
 .container{
-    max-width:1000px;
-    margin:auto;
-    padding:30px;
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
 }
 
 .login-box,
 .admin-panel{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+background:white;
+padding:30px;
+border-radius:20px;
 }
 
 .admin-panel{
-    display:none;
+display:none;
+margin-top:20px;
 }
 
 input{
-    width:100%;
-    padding:15px;
-    margin-bottom:15px;
-    border-radius:10px;
-    border:2px solid #ccd8ff;
-    font-size:16px;
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border-radius:10px;
+border:2px solid #ccd8ff;
 }
 
 button{
-    width:100%;
-    padding:15px;
-    border:none;
-    background:#0039a6;
-    color:white;
-    font-size:18px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#d52b1e;
+width:100%;
+padding:15px;
+background:#0039a6;
+color:white;
+border:none;
+border-radius:10px;
+font-size:18px;
 }
 
 .application{
-    background:#eef3ff;
-    padding:20px;
-    border-radius:15px;
-    margin-top:20px;
-}
-
-.application h3{
-    color:#0039a6;
+background:#eef3ff;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
 }
 
 </style>
@@ -79,36 +68,32 @@ button:hover{
 <body>
 
 <header>
-    <h1>Панель проверки заявок</h1>
+<h1>Панель проверки заявок</h1>
 </header>
 
 <div class="container">
 
-    <!-- АВТОРИЗАЦИЯ -->
+<div class="login-box" id="loginBox">
 
-    <div class="login-box" id="loginBox">
+<h2>Вход администратора</h2>
 
-        <h2>Вход администратора</h2>
+<input type="text" id="login" placeholder="Логин">
 
-        <input type="text" id="login" placeholder="Логин">
+<input type="password" id="password" placeholder="Пароль">
 
-        <input type="password" id="password" placeholder="Пароль">
+<button onclick="loginAdmin()">
+Войти
+</button>
 
-        <button onclick="loginAdmin()">
-            Войти
-        </button>
+</div>
 
-    </div>
+<div class="admin-panel" id="adminPanel">
 
-    <!-- ПАНЕЛЬ -->
+<h2>Список заявок</h2>
 
-    <div class="admin-panel" id="adminPanel">
+<div id="applications"></div>
 
-        <h2>Список заявок</h2>
-
-        <div id="applications"></div>
-
-    </div>
+</div>
 
 </div>
 
@@ -116,62 +101,62 @@ button:hover{
 
 function loginAdmin(){
 
-    let login = document.getElementById("login").value;
-    let password = document.getElementById("password").value;
+let login = document.getElementById("login").value;
+let password = document.getElementById("password").value;
 
-    if(login === "Admin" && password === "1234567890mtrp9"){
+if(login === "Admin" && password === "1234567890mtrp9"){
 
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("adminPanel").style.display = "block";
+document.getElementById("loginBox").style.display = "none";
+document.getElementById("adminPanel").style.display = "block";
 
-        loadApplications();
+loadApplications();
 
-    }else{
+}else{
 
-        alert("Неверный логин или пароль");
+alert("Неверный логин или пароль");
 
-    }
+}
 
 }
 
 function loadApplications(){
 
-    let applications = JSON.parse(localStorage.getItem("partyApplications")) || [];
+let applications = JSON.parse(localStorage.getItem("partyApplications")) || [];
 
-    let container = document.getElementById("applications");
+let container = document.getElementById("applications");
 
-    container.innerHTML = "";
+container.innerHTML = "";
 
-    if(applications.length === 0){
+if(applications.length === 0){
 
-        container.innerHTML = "<p>Заявок пока нет.</p>";
-        return;
+container.innerHTML = "<p>Заявок пока нет.</p>";
+return;
 
-    }
+}
 
-    applications.forEach((app,index)=>{
+applications.forEach((app,index)=>{
 
-        container.innerHTML += `
-        
-        <div class="application">
+container.innerHTML += `
 
-            <h3>Заявка #${index + 1}</h3>
+<div class="application">
 
-            <p><strong>ФИО:</strong> ${app.fullname}</p>
+<h3>Заявка #${index + 1}</h3>
 
-            <p><strong>Возраст IC:</strong> ${app.ageic}</p>
+<p><strong>ФИО:</strong> ${app.fullname}</p>
 
-            <p><strong>Возраст OOC:</strong> ${app.ageooc}</p>
+<p><strong>Возраст IC:</strong> ${app.ageic}</p>
 
-            <p><strong>Почему партия:</strong> ${app.reason}</p>
+<p><strong>Возраст OOC:</strong> ${app.ageooc}</p>
 
-            <p><strong>Поддержка партии:</strong> ${app.support}</p>
+<p><strong>Почему партия:</strong> ${app.reason}</p>
 
-        </div>
+<p><strong>Поддержка партии:</strong> ${app.support}</p>
 
-        `;
+</div>
 
-    });
+`;
+
+});
 
 }
 
