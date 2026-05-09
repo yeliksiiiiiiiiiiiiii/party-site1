@@ -1,0 +1,382 @@
+<!-- CHAT.HTML С УДАЛЕНИЕМ СООБЩЕНИЙ -->
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Чат партии
+</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+font-family:Arial;
+background:#071739;
+color:white;
+display:flex;
+flex-direction:column;
+height:100vh;
+}
+
+/* HEADER */
+
+header{
+background:#00154d;
+padding:25px;
+text-align:center;
+font-size:35px;
+font-weight:bold;
+box-shadow:0 0 20px black;
+}
+
+/* NAVIGATION */
+
+nav{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:20px;
+background:#0b1d57;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+padding:12px 20px;
+border-radius:12px;
+background:#132b75;
+transition:0.3s;
+font-size:17px;
+}
+
+nav a:hover{
+background:#0051ff;
+transform:translateY(-3px);
+}
+
+/* CHAT */
+
+.chat-container{
+flex:1;
+display:flex;
+flex-direction:column;
+width:90%;
+max-width:1000px;
+margin:30px auto;
+background:#0b1d57;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+.messages{
+flex:1;
+padding:25px;
+overflow-y:auto;
+}
+
+.message{
+background:#132b75;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+animation:fade 0.3s;
+position:relative;
+}
+
+.message b{
+color:#4da3ff;
+font-size:18px;
+}
+
+.message-text{
+margin-top:10px;
+line-height:1.6;
+}
+
+.delete-btn{
+
+position:absolute;
+top:15px;
+right:15px;
+
+background:red;
+border:none;
+padding:8px 12px;
+border-radius:10px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+
+}
+
+.delete-btn:hover{
+
+background:#ff3b3b;
+transform:scale(1.05);
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* INPUT */
+
+.chat-input{
+display:flex;
+padding:20px;
+background:#09163f;
+gap:15px;
+}
+
+.chat-input input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:15px;
+background:#132b75;
+color:white;
+font-size:17px;
+}
+
+.chat-input button{
+padding:15px 25px;
+border:none;
+border-radius:15px;
+background:#0051ff;
+color:white;
+font-size:17px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.chat-input button:hover{
+background:#2f6dff;
+transform:scale(1.03);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+Чат партии
+</header>
+
+<nav>
+
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="chat.html">
+Чат
+</a>
+
+<a href="program.html">
+Программа
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="admin.html">
+Админ панель
+</a>
+
+</nav>
+
+<div class="chat-container">
+
+<div
+class="messages"
+id="messages"
+>
+
+</div>
+
+<div class="chat-input">
+
+<input
+type="text"
+id="username"
+placeholder="Ваше имя"
+>
+
+<input
+type="text"
+id="messageInput"
+placeholder="Введите сообщение..."
+>
+
+<button onclick="sendMessage()">
+Отправить
+</button>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import {
+db,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc
+}
+from './firebase.js';
+
+const messagesDiv =
+document.getElementById(
+"messages"
+);
+
+async function loadMessages(){
+
+messagesDiv.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+collection(db,"chat")
+);
+
+querySnapshot.forEach((d)=>{
+
+const msg = d.data();
+
+messagesDiv.innerHTML += `
+
+<div class="message">
+
+<button
+class="delete-btn"
+onclick="deleteMessage('${d.id}')"
+>
+Удалить
+</button>
+
+<b>
+${msg.username}
+</b>
+
+<div class="message-text">
+
+${msg.text}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+messagesDiv.scrollTop =
+messagesDiv.scrollHeight;
+
+}
+
+window.sendMessage =
+async function(){
+
+const username =
+document.getElementById(
+"username"
+).value;
+
+const text =
+document.getElementById(
+"messageInput"
+).value;
+
+if(
+username=="" ||
+text==""
+)return;
+
+await addDoc(
+collection(db,"chat"),
+{
+
+username:username,
+text:text,
+created:new Date()
+
+}
+);
+
+document.getElementById(
+"messageInput"
+).value = "";
+
+loadMessages();
+
+}
+
+window.deleteMessage =
+async function(id){
+
+await deleteDoc(
+doc(db,"chat",id)
+);
+
+loadMessages();
+
+}
+
+loadMessages();
+
+setInterval(
+loadMessages,
+2000
+);
+
+</script>
+
+</body>
+</html>
