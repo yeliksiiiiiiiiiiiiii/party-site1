@@ -1,53 +1,21 @@
-<!-- APPLY.HTML LIGHT THEME -->
-
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
-
-<title>
-Заявление в партию
-</title>
+<!-- ЗАМЕНИ ТОЛЬКО CSS ДЛЯ NAV -->
 
 <style>
-
-body{
-margin:0;
-padding:0;
-font-family:Arial;
-background:#f4f7fb;
-color:#1a1a1a;
-}
-
-/* HEADER */
-
-header{
-background:white;
-padding:25px;
-text-align:center;
-font-size:35px;
-font-weight:bold;
-color:#0051ff;
-box-shadow:0 2px 15px rgba(0,0,0,0.1);
-}
 
 /* NAVIGATION */
 
 nav{
 display:flex;
-justify-content:center;
+justify-content:flex-end;
+align-items:center;
 gap:20px;
-padding:20px;
+padding:20px 40px;
 background:#ffffff;
-flex-wrap:wrap;
 border-bottom:1px solid #dbe4f0;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 nav a{
@@ -67,91 +35,13 @@ color:white;
 transform:translateY(-3px);
 }
 
-/* CONTAINER */
-
-.container{
-width:90%;
-max-width:800px;
-margin:60px auto;
-}
-
-/* FORM */
-
-.form-box{
-background:white;
-padding:45px;
-border-radius:30px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-.form-box h1{
-text-align:center;
-margin-bottom:35px;
-font-size:40px;
-color:#0051ff;
-}
-
-/* INPUTS */
-
-input,
-textarea{
-width:100%;
-padding:16px;
-margin-bottom:22px;
-border:none;
-border-radius:16px;
-font-size:17px;
-background:#f0f4fa;
-color:#1a1a1a;
-outline:none;
-transition:0.3s;
-box-sizing:border-box;
-}
-
-input:focus,
-textarea:focus{
-background:white;
-box-shadow:0 0 0 3px #cfe0ff;
-}
-
-textarea{
-height:160px;
-resize:none;
-}
-
-/* BUTTON */
-
-button{
-width:100%;
-padding:18px;
-border:none;
-border-radius:18px;
-background:#0051ff;
-color:white;
-font-size:20px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#2f6dff;
-transform:scale(1.02);
-}
-
 /* MOBILE */
 
 @media(max-width:700px){
 
-.form-box{
-padding:25px;
-}
-
-.form-box h1{
-font-size:30px;
-}
-
 nav{
+justify-content:center;
+padding:15px;
 gap:10px;
 }
 
@@ -163,192 +53,3 @@ padding:10px 14px;
 }
 
 </style>
-
-</head>
-
-<body>
-
-<header>
-Заявление в партию
-</header>
-
-<nav>
-
-<a href="index.html">
-Главная
-</a>
-
-<a href="news.html">
-Новости
-</a>
-
-<a href="leaders.html">
-Руководство
-</a>
-
-<a href="apply.html">
-Заявление
-</a>
-
-<a href="program.html">
-Программа
-</a>
-
-<a href="ustav.html">
-Устав
-</a>
-
-<a href="gimn.html">
-Гимн
-</a>
-
-<a href="admin.html">
-Админ панель
-</a>
-
-<a href="chat.html">
-Общий чат
-</a>
-
-</nav>
-
-<div class="container">
-
-<div class="form-box">
-
-<h1>
-Подать заявление
-</h1>
-
-<form id="applicationForm">
-
-<input
-type="text"
-id="fullname"
-placeholder="Ваше имя"
-required
->
-
-<input
-type="number"
-id="icage"
-placeholder="IC возраст"
-required
->
-
-<input
-type="number"
-id="oocage"
-placeholder="OOC возраст"
-required
->
-
-<input
-type="text"
-id="discord"
-placeholder="Discord"
-required
->
-
-<textarea
-id="why"
-placeholder="Почему хотите вступить?"
-></textarea>
-
-<textarea
-id="help"
-placeholder="Чем будете полезны партии?"
-></textarea>
-
-<button type="submit">
-Отправить заявление
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<script type="module">
-
-import {
-db,
-collection,
-addDoc
-}
-from './firebase.js';
-
-const form =
-document.getElementById(
-"applicationForm"
-);
-
-form.addEventListener(
-"submit",
-async(e)=>{
-
-e.preventDefault();
-
-try{
-
-await addDoc(
-collection(db,"applications"),
-{
-
-fullname:
-document.getElementById(
-"fullname"
-).value,
-
-icage:
-document.getElementById(
-"icage"
-).value,
-
-oocage:
-document.getElementById(
-"oocage"
-).value,
-
-discord:
-document.getElementById(
-"discord"
-).value,
-
-why:
-document.getElementById(
-"why"
-).value,
-
-help:
-document.getElementById(
-"help"
-).value,
-
-status:"pending",
-
-created:
-new Date()
-
-}
-);
-
-alert(
-"Заявление отправлено"
-);
-
-form.reset();
-
-}catch(error){
-
-alert(error.message);
-
-}
-
-});
-
-</script>
-
-</body>
-</html>
