@@ -1,172 +1,167 @@
+<!-- APPLY.HTML -->
+
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
 
-<title>Заявление</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Заявление в партию
+</title>
 
 <style>
 
-*{
+body{
+
 margin:0;
 padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+font-family:Arial;
+background:#071739;
+color:white;
 
-body{
-background:#f4f7ff;
 }
-
-/* HEADER */
 
 header{
+
 background:#00154d;
-padding:20px 50px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-color:white;
-font-size:30px;
+padding:25px;
+text-align:center;
+font-size:35px;
 font-weight:bold;
-}
+box-shadow:0 0 20px black;
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-size:18px;
 }
-
-/* MAIN */
 
 .container{
-max-width:900px;
-margin:60px auto;
-background:white;
-padding:40px;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+
+width:90%;
+max-width:800px;
+margin:50px auto;
+
 }
 
-.title{
+.form-box{
+
+background:#0b1d57;
+padding:40px;
+border-radius:25px;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+
+}
+
+.form-box h1{
+
 text-align:center;
-font-size:45px;
-margin-bottom:35px;
-color:#0039a6;
+margin-bottom:30px;
+
 }
 
 input,
 textarea{
+
 width:100%;
-padding:18px;
+padding:15px;
 margin-bottom:20px;
 border:none;
-background:#eef3ff;
 border-radius:15px;
-font-size:18px;
+font-size:17px;
+background:#132b75;
+color:white;
+
 }
 
 textarea{
+
 height:150px;
 resize:none;
+
 }
 
 button{
+
 width:100%;
 padding:18px;
 border:none;
-background:#0039a6;
+border-radius:15px;
+background:#0051ff;
 color:white;
 font-size:20px;
-border-radius:15px;
 cursor:pointer;
 transition:0.3s;
+
 }
 
 button:hover{
-background:#d52b1e;
-}
 
-footer{
-background:#00154d;
-padding:25px;
-text-align:center;
-color:white;
-margin-top:60px;
-}
+background:#2f6dff;
+transform:scale(1.02);
 
-footer a{
-color:white;
-text-decoration:none;
-font-size:18px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-Россия Для Всех Вместе
-</div>
-
-<nav>
-<a href="index.html">Главная</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="news.html">Новости</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
-<a href="program.html">Программа</a>
-</nav>
-
+Заявление в партию
 </header>
 
 <div class="container">
 
-<h1 class="title">
-Заявление в партию
+<div class="form-box">
+
+<h1>
+Подать заявление
 </h1>
 
 <form id="applicationForm">
 
-<input type="text"
+<input
+type="text"
 id="fullname"
-placeholder="Ваше ФИО"
-required>
+placeholder="Ваше имя"
+required
+>
 
-<input type="text"
-id="ageic"
-placeholder="Сколько вам лет? (IC)"
-required>
+<input
+type="number"
+id="icage"
+placeholder="IC возраст"
+required
+>
 
-<input type="text"
-id="ageooc"
-placeholder="Сколько вам лет? (OOC)"
-required>
+<input
+type="number"
+id="oocage"
+placeholder="OOC возраст"
+required
+>
 
-<input type="text"
+<input
+type="text"
 id="discord"
-placeholder="Ваш Discord?"
-required>
+placeholder="Discord"
+required
+>
 
 <textarea
-id="reason"
-placeholder="Почему именно наша партия?"
-required></textarea>
+id="why"
+placeholder="Почему хотите вступить?"
+></textarea>
 
 <textarea
-id="support"
-placeholder="Как вы будете поддерживать партию?"
-required></textarea>
+id="help"
+placeholder="Чем будете полезны партии?"
+></textarea>
 
 <button type="submit">
 Отправить заявление
@@ -176,44 +171,47 @@ required></textarea>
 
 </div>
 
-<footer>
-<a href="https://discord.gg/KHjFC6sDz2">
-Наш Discord сервер
-</a>
-</footer>
+</div>
 
-<script>
+<script type="module">
 
+import {
+db,
+collection,
+addDoc
+}
+from './firebase.js';
+
+const form =
 document.getElementById(
 "applicationForm"
-).addEventListener(
+);
+
+form.addEventListener(
 "submit",
-function(e){
+async(e)=>{
 
 e.preventDefault();
 
-let applications =
-JSON.parse(
-localStorage.getItem(
-"partyApplications"
-)
-) || [];
+try{
 
-applications.push({
+await addDoc(
+collection(db,"applications"),
+{
 
 fullname:
 document.getElementById(
 "fullname"
 ).value,
 
-ageic:
+icage:
 document.getElementById(
-"ageic"
+"icage"
 ).value,
 
-ageooc:
+oocage:
 document.getElementById(
-"ageooc"
+"oocage"
 ).value,
 
 discord:
@@ -221,30 +219,35 @@ document.getElementById(
 "discord"
 ).value,
 
-reason:
+why:
 document.getElementById(
-"reason"
+"why"
 ).value,
 
-support:
+help:
 document.getElementById(
-"support"
-).value
+"help"
+).value,
 
-});
+status:"pending",
 
-localStorage.setItem(
-"partyApplications",
-JSON.stringify(applications)
+created:
+new Date()
+
+}
 );
 
 alert(
-"Заявление отправлено!"
+"Заявление отправлено"
 );
 
-document.getElementById(
-"applicationForm"
-).reset();
+form.reset();
+
+}catch(error){
+
+alert(error.message);
+
+}
 
 });
 
