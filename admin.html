@@ -1,77 +1,77 @@
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Руководство</title>
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
 
-let applications=
-JSON.parse(localStorage.getItem("partyApplications")) || [];
+.container{
+max-width:1000px;
+margin:auto;
+padding:60px 20px;
+}
 
-let container=document.getElementById("applications");
-container.innerHTML="";
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+}
 
-applications.reverse().forEach((app,index)=>{
+h1{
+text-align:center;
+margin-bottom:40px;
+}
+</style>
+</head>
+<body>
 
-container.innerHTML += `
-<div class="application">
-<h3>Заявка #${index+1}</h3>
-<p><b>ФИО:</b> ${app.fullname}</p>
-<p><b>Возраст IC:</b> ${app.ageic}</p>
-<p><b>Возраст OOC:</b> ${app.ageooc}</p>
-<p><b>Discord:</b> ${app.discord}</p>
-<p><b>Почему партия:</b> ${app.reason}</p>
-<p><b>Поддержка:</b> ${app.support}</p>
+<div class="container">
+
+<h1>Руководство партии</h1>
+
+<div class="card">
+<h2>Председатель Правительства</h2>
+<p>Алексей Кузнецов</p>
 </div>
-`;
 
-});
-
-}
-
-function publishNews(){
-
-let title=document.getElementById("newsTitle").value;
-let text=document.getElementById("newsText").value;
-let image=document.getElementById("newsImage").value;
-
-let news=
-JSON.parse(localStorage.getItem("partyNews")) || [];
-
-news.push({
- title:title,
- text:text,
- image:image,
- date:new Date().toLocaleString()
-});
-
-localStorage.setItem("partyNews",JSON.stringify(news));
-
-alert("Новость опубликована");
-
-loadNews();
-
-}
-
-function loadNews(){
-
-let news=
-JSON.parse(localStorage.getItem("partyNews")) || [];
-
-let container=document.getElementById("newsList");
-container.innerHTML="";
-
-news.reverse().forEach((item,index)=>{
-
-container.innerHTML += `
-<div class="news-preview">
-<h3>${item.title}</h3>
-<p>${item.text}</p>
-<img src="${item.image}">
-<p>${item.date}</p>
+<div class="card">
+<h2>Заместитель Председателя</h2>
+<p>Тимур Райтман</p>
 </div>
-`;
 
-});
+<div class="card">
+<h2>Руководитель Высшего Совета</h2>
+<p>Вакантно</p>
+</div>
 
-}
+<div class="card">
+<h2>Руководителя Президиума Высшего Совета</h2>
+<p>Вакантно</p>
+</div>
 
-</script>
+<div class="card">
+<h2>Секретарь Генерального совета</h2>
+<p>Вакантно</p>
+</div>
+
+<div class="card">
+<h2>Руководитель Центрального исполнительного комитета</h2>
+<p>Вакантно</p>
+</div>
+
+<div class="card">
+<h2>Председатель Гос.Думы</h2>
+<p>Вакантно</p>
+</div>
+
+</div>
 
 </body>
 </html>
