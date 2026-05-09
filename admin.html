@@ -2,10 +2,9 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Админ панель</title>
+<title>Админ Панель</title>
 
 <style>
 
@@ -24,15 +23,14 @@ display:flex;
 /* SIDEBAR */
 
 .sidebar{
-width:270px;
+width:260px;
 height:100vh;
 background:#00154d;
 padding:30px 20px;
 position:fixed;
 left:-190px;
 transition:0.4s;
-z-index:999;
-overflow:auto;
+z-index:1000;
 }
 
 .sidebar:hover{
@@ -47,18 +45,17 @@ font-size:28px;
 
 .sidebar a{
 display:block;
-padding:15px;
-background:#0039a6;
-margin-bottom:15px;
-border-radius:12px;
-text-decoration:none;
 color:white;
-font-weight:bold;
+text-decoration:none;
+padding:15px;
+margin-bottom:10px;
+border-radius:12px;
 transition:0.3s;
+font-size:18px;
 }
 
 .sidebar a:hover{
-background:#d52b1e;
+background:#0039a6;
 }
 
 /* MAIN */
@@ -70,141 +67,128 @@ width:100%;
 }
 
 .title{
-font-size:42px;
+font-size:45px;
+margin-bottom:35px;
 color:#0039a6;
-margin-bottom:30px;
-font-weight:bold;
 }
+
+/* CARDS */
 
 .card{
 background:white;
-padding:30px;
+padding:25px;
 border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-margin-bottom:35px;
-}
-
-.card h3{
 margin-bottom:25px;
-color:#0039a6;
-font-size:28px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+animation:fade 0.5s ease;
 }
 
-/* USERS */
-
-.user{
-padding:20px;
-background:#eef3ff;
-border-radius:15px;
+.card h2{
 margin-bottom:15px;
+color:#0039a6;
+}
+
+.card p{
+margin-bottom:10px;
+font-size:18px;
+}
+
+/* BUTTONS */
+
+.buttons{
+margin-top:20px;
 display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-flex-wrap:wrap;
+gap:15px;
 }
 
-.role{
-padding:8px 15px;
-border-radius:10px;
+.approve{
+background:#1fa34a;
 color:white;
-font-weight:bold;
-display:inline-block;
-margin-top:8px;
+border:none;
+padding:12px 25px;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
 }
 
-.owner{
-background:#ff9800;
+.approve:hover{
+background:#158037;
 }
 
-.admin{
-background:#0039a6;
+.delete{
+background:#d52b1e;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
 }
 
-.user-role{
-background:#777;
-}
-
-/* APPLICATIONS */
-
-.application{
-background:#eef3ff;
-padding:20px;
-border-radius:15px;
-margin-bottom:20px;
+.delete:hover{
+background:#a61f15;
 }
 
 /* NEWS */
 
-input,
-textarea{
+.news-panel{
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+margin-top:50px;
+}
+
+.news-panel h2{
+margin-bottom:25px;
+color:#0039a6;
+}
+
+.news-panel input,
+.news-panel textarea{
 width:100%;
 padding:15px;
-margin-bottom:18px;
+margin-bottom:20px;
 border:none;
 background:#eef3ff;
-border-radius:12px;
-font-size:16px;
+border-radius:15px;
+font-size:17px;
 }
 
-textarea{
-min-height:140px;
-resize:vertical;
+.news-panel textarea{
+height:150px;
+resize:none;
 }
 
-button{
-padding:12px 20px;
-border:none;
+.news-panel button{
+width:100%;
+padding:15px;
 background:#0039a6;
+border:none;
 color:white;
-border-radius:10px;
+font-size:18px;
+border-radius:15px;
 cursor:pointer;
-font-weight:bold;
 transition:0.3s;
 }
 
-button:hover{
+.news-panel button:hover{
 background:#d52b1e;
 }
 
-.news-preview{
-background:#eef3ff;
-padding:20px;
-border-radius:15px;
-margin-top:20px;
+/* ANIMATION */
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
 }
-
-.news-preview img{
-width:100%;
-border-radius:15px;
-margin-top:15px;
-max-height:350px;
-object-fit:cover;
+to{
+opacity:1;
+transform:translateY(0);
 }
-
-.delete-btn{
-background:#d52b1e;
-margin-top:15px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.sidebar{
-left:-230px;
-}
-
-.main{
-margin-left:20px;
-padding:20px;
-}
-
-.user{
-flex-direction:column;
-align-items:flex-start;
-}
-
 }
 
 </style>
@@ -212,62 +196,52 @@ align-items:flex-start;
 
 <body>
 
+<!-- SIDEBAR -->
+
 <div class="sidebar">
 
-<h2>Панель</h2>
+<h2>Админка</h2>
 
-<a href="index.html">Главная</a>
-
-<a href="#usersBlock">
-Пользователи
+<a href="#applications">
+Проверка заявок
 </a>
 
-<a href="#applicationsBlock">
-Заявки
-</a>
-
-<a href="#newsBlock">
-Новости
+<a href="#news">
+Публикация новостей
 </a>
 
 </div>
+
+<!-- MAIN -->
 
 <div class="main">
 
-<div class="title">
-Админ панель партии
-</div>
-
-<!-- USERS -->
-
-<div class="card" id="usersBlock">
-
-<h3>Пользователи</h3>
-
-<div id="users"></div>
-
-</div>
+<h1 class="title">
+Административная панель
+</h1>
 
 <!-- APPLICATIONS -->
 
-<div class="card" id="applicationsBlock">
+<div id="applications">
 
-<h3>Проверка заявок</h3>
+<h1 class="title">
+Проверка заявок
+</h1>
 
-<div id="applications"></div>
+<div id="applicationsContainer"></div>
 
 </div>
 
 <!-- NEWS -->
 
-<div class="card" id="newsBlock">
+<div class="news-panel" id="news">
 
-<h3>Публикация новостей</h3>
+<h2>Публикация новостей</h2>
 
 <input
 type="text"
 id="newsTitle"
-placeholder="Заголовок">
+placeholder="Название новости">
 
 <textarea
 id="newsText"
@@ -276,13 +250,11 @@ placeholder="Текст новости"></textarea>
 <input
 type="text"
 id="newsImage"
-placeholder="Ссылка на изображение">
+placeholder="Ссылка на фото">
 
 <button onclick="publishNews()">
-Опубликовать
+Опубликовать новость
 </button>
-
-<div id="newsList"></div>
 
 </div>
 
@@ -290,138 +262,7 @@ placeholder="Ссылка на изображение">
 
 <script>
 
-/* ПРОВЕРКА ДОСТУПА */
-
-let currentUser =
-JSON.parse(
-localStorage.getItem(
-"currentUser"
-)
-);
-
-if(
-!currentUser ||
-(
-currentUser.role !== "admin" &&
-currentUser.role !== "owner"
-)
-){
-
-alert("Доступ запрещён");
-
-window.location.href =
-"login.html";
-
-}
-
-/* USERS */
-
-let users =
-JSON.parse(
-localStorage.getItem(
-"users"
-)
-) || [];
-
-let usersDiv =
-document.getElementById(
-"users"
-);
-
-function renderUsers(){
-
-usersDiv.innerHTML = "";
-
-users.forEach((user,index)=>{
-
-let roleClass = "";
-
-if(user.role==="owner"){
-roleClass="owner";
-}
-
-else if(user.role==="admin"){
-roleClass="admin";
-}
-
-else{
-roleClass="user-role";
-}
-
-usersDiv.innerHTML += `
-
-<div class="user">
-
-<div>
-
-<b>${user.name}</b><br>
-
-Логин: ${user.login}<br>
-
-<div class="role ${roleClass}">
-
-${
-user.role==="owner"
-? "Владелец"
-
-: user.role==="admin"
-? "Администратор"
-
-: "Пользователь"
-}
-
-</div>
-
-</div>
-
-<div>
-
-<button onclick="makeAdmin(${index})">
-
-Сделать админом
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-function makeAdmin(index){
-
-if(users[index].role==="owner"){
-
-alert(
-"Нельзя изменить владельца"
-);
-
-return;
-
-}
-
-users[index].role="admin";
-
-localStorage.setItem(
-"users",
-JSON.stringify(users)
-);
-
-renderUsers();
-
-alert(
-"Пользователь назначен админом"
-);
-
-}
-
 /* APPLICATIONS */
-
-function loadApplications(){
 
 let applications =
 JSON.parse(
@@ -432,63 +273,119 @@ localStorage.getItem(
 
 let container =
 document.getElementById(
-"applications"
+"applicationsContainer"
 );
+
+function loadApplications(){
 
 container.innerHTML = "";
 
 if(applications.length===0){
 
-container.innerHTML =
-"<p>Заявок пока нет.</p>";
+container.innerHTML = `
+<div class="card">
+<h2>Заявок нет</h2>
+<p>
+На данный момент заявлений нет.
+</p>
+</div>
+`;
 
 return;
 
 }
 
-applications.reverse().forEach((app,index)=>{
+applications.forEach((app,index)=>{
 
 container.innerHTML += `
 
-<div class="application">
+<div class="card">
 
-<h3>Заявка #${index+1}</h3>
+<h2>${app.fullname}</h2>
 
-<p>
-<b>ФИО:</b>
-${app.fullname}
-</p>
+<p><b>Возраст IC:</b> ${app.ageic}</p>
 
-<p>
-<b>Возраст IC:</b>
-${app.ageic}
-</p>
+<p><b>Возраст OOC:</b> ${app.ageooc}</p>
 
-<p>
-<b>Возраст OOC:</b>
-${app.ageooc}
-</p>
+<p><b>Discord:</b> ${app.discord}</p>
 
-<p>
-<b>Discord:</b>
-${app.discord}
-</p>
+<p><b>Почему партия:</b><br>
+${app.reason}</p>
 
-<p>
-<b>Почему партия:</b>
-${app.reason}
-</p>
+<p><b>Поддержка партии:</b><br>
+${app.support}</p>
 
-<p>
-<b>Поддержка:</b>
-${app.support}
-</p>
+<div class="buttons">
+
+<button class="approve"
+onclick="approveApplication(${index})">
+Одобрить
+</button>
+
+<button class="delete"
+onclick="deleteApplication(${index})">
+Удалить
+</button>
+
+</div>
 
 </div>
 
 `;
 
 });
+
+}
+
+/* APPROVE */
+
+function approveApplication(index){
+
+let approved =
+JSON.parse(
+localStorage.getItem(
+"approvedApplications"
+)
+) || [];
+
+approved.push(applications[index]);
+
+localStorage.setItem(
+"approvedApplications",
+JSON.stringify(approved)
+);
+
+applications.splice(index,1);
+
+localStorage.setItem(
+"partyApplications",
+JSON.stringify(applications)
+);
+
+loadApplications();
+
+alert(
+"Заявка одобрена!"
+);
+
+}
+
+/* DELETE */
+
+function deleteApplication(index){
+
+if(confirm("Удалить заявку?")){
+
+applications.splice(index,1);
+
+localStorage.setItem(
+"partyApplications",
+JSON.stringify(applications)
+);
+
+loadApplications();
+
+}
 
 }
 
@@ -511,10 +408,12 @@ document.getElementById(
 "newsImage"
 ).value;
 
-if(title===""||text===""){
+if(
+title==="" ||
+text==="" ||
+image===""){
 
-alert("Заполните поля");
-
+alert("Заполните все поля");
 return;
 
 }
@@ -540,88 +439,27 @@ localStorage.setItem(
 JSON.stringify(news)
 );
 
-alert("Новость опубликована");
+alert(
+"Новость опубликована!"
+);
 
-loadNews();
-
-}
-
-/* LOAD NEWS */
-
-function loadNews(){
-
-let news =
-JSON.parse(
-localStorage.getItem(
-"partyNews"
-)
-) || [];
-
-let container =
 document.getElementById(
-"newsList"
-);
+"newsTitle"
+).value="";
 
-container.innerHTML = "";
+document.getElementById(
+"newsText"
+).value="";
 
-news.reverse().forEach((item,index)=>{
-
-container.innerHTML += `
-
-<div class="news-preview">
-
-<h3>${item.title}</h3>
-
-<p>${item.text}</p>
-
-<img src="${item.image}">
-
-<p>
-<b>Дата:</b>
-${item.date}
-</p>
-
-<button
-class="delete-btn"
-onclick="deleteNews(${news.length-1-index})">
-
-Удалить
-
-</button>
-
-</div>
-
-`;
-
-});
+document.getElementById(
+"newsImage"
+).value="";
 
 }
 
-function deleteNews(index){
+/* LOAD */
 
-let news =
-JSON.parse(
-localStorage.getItem(
-"partyNews"
-)
-) || [];
-
-news.splice(index,1);
-
-localStorage.setItem(
-"partyNews",
-JSON.stringify(news)
-);
-
-loadNews();
-
-}
-
-/* START */
-
-renderUsers();
 loadApplications();
-loadNews();
 
 </script>
 
