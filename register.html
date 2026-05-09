@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Регистрация</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#002d8f,#00154d);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.box{
+width:420px;
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,0.35);
+animation:show 1s;
+}
+
+@keyframes show{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+color:#0039a6;
+}
+
+input{
+width:100%;
+padding:16px;
+margin-bottom:18px;
+border:none;
+background:#eef3ff;
+border-radius:12px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:16px;
+border:none;
+background:#0039a6;
+color:white;
+font-size:18px;
+font-weight:bold;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#d52b1e;
+}
+
+.login-link{
+text-align:center;
+margin-top:18px;
+}
+
+.login-link a{
+color:#0039a6;
+text-decoration:none;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Регистрация</h1>
+
+<input type="text" id="name" placeholder="Имя">
+
+<input type="text" id="login" placeholder="Логин">
+
+<input type="password" id="password" placeholder="Пароль">
+
+<button onclick="register()">
+Создать аккаунт
+</button>
+
+<div class="login-link">
+<a href="login.html">Уже есть аккаунт?</a>
+</div>
+
+</div>
+
+<script>
+
+function register(){
+
+let name=document.getElementById("name").value;
+let login=document.getElementById("login").value;
+let password=document.getElementById("password").value;
+
+if(name==""||login==""||password==""){
+alert("Заполните все поля");
+return;
+}
+
+let users=JSON.parse(localStorage.getItem("users"))||[];
+
+users.push({
+name:name,
+login:login,
+password:password,
+role:"user"
+});
+
+localStorage.setItem("users",JSON.stringify(users));
+
+alert("Аккаунт создан!");
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+</html>
