@@ -2,72 +2,242 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Либеральная Партия Россия для всех вместе</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Либеральная Партия России</title>
 
 <style>
 
-body{
+*{
     margin:0;
-    font-family:Arial;
-    background:#f4f6fb;
+    padding:0;
+    box-sizing:border-box;
 }
+
+body{
+    font-family:Arial,sans-serif;
+    background:#eef2ff;
+    overflow-x:hidden;
+}
+
+/* Анимированная линия флага */
+
+.flag-line{
+    width:100%;
+    height:8px;
+    background:linear-gradient(
+        90deg,
+        white,
+        #0039a6,
+        #d52b1e,
+        white
+    );
+    background-size:300%;
+    animation:flagMove 5s linear infinite;
+}
+
+@keyframes flagMove{
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+}
+
+/* Header */
 
 header{
-    background:white;
+    background:linear-gradient(
+        135deg,
+        #0039a6,
+        #00246b
+    );
+
+    color:white;
     text-align:center;
-    padding:40px;
-    border-bottom:5px solid #0039a6;
+    padding:60px 20px;
+    position:relative;
+    overflow:hidden;
 }
+
+/* Анимация появления */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(50px);
+    animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+header h1{
+    font-size:56px;
+    margin-bottom:15px;
+}
+
+header p{
+    font-size:24px;
+}
+
+/* Логотип */
 
 .logo{
-    width:160px;
+    width:180px;
+    margin-bottom:25px;
+    animation:floatLogo 4s ease-in-out infinite;
 }
 
-.title{
-    font-size:55px;
-    color:#0039a6;
-    font-weight:bold;
+@keyframes floatLogo{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
 }
 
-.subtitle{
-    color:#d52b1e;
-    font-size:22px;
-}
+/* Навигация */
 
 nav{
-    background:#0039a6;
+    background:#00246b;
     padding:18px;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
+    text-align:center;
 }
 
 nav a{
     color:white;
     text-decoration:none;
+    margin:0 18px;
+    font-size:18px;
     font-weight:bold;
+    transition:0.3s;
 }
 
-.container{
-    max-width:1000px;
+nav a:hover{
+    color:#ffcccc;
+}
+
+/* Главный блок */
+
+.main{
+    max-width:1200px;
     margin:auto;
-    padding:50px 20px;
+    padding:60px 20px;
+}
+
+/* Карточки */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
 }
 
 .card{
     background:white;
-    padding:40px;
     border-radius:20px;
-    text-align:center;
+    padding:35px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+    opacity:0;
+    transform:translateY(50px);
+    animation:cardShow 1s ease forwards;
 }
 
+.card:nth-child(2){
+    animation-delay:0.3s;
+}
+
+.card:nth-child(3){
+    animation-delay:0.6s;
+}
+
+@keyframes cardShow{
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.card h2{
+    color:#0039a6;
+    margin-bottom:15px;
+}
+
+/* Кнопки */
+
+.glow-button{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 30px;
+    background:#0039a6;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-size:18px;
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(0,57,166,0.5);
+}
+
+.glow-button:hover{
+    background:#d52b1e;
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(213,43,30,0.9);
+}
+
+/* Footer */
+
 footer{
-    margin-top:40px;
     background:#0039a6;
     color:white;
     text-align:center;
-    padding:20px;
+    padding:25px;
+    margin-top:60px;
+}
+
+/* Частицы */
+
+.particle{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:rgba(255,255,255,0.4);
+    border-radius:50%;
+    animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-800px);
+        opacity:0;
+    }
+
 }
 
 </style>
@@ -75,43 +245,119 @@ footer{
 
 <body>
 
+<div class="flag-line"></div>
+
 <header>
+
+<div class="fade-up">
 
 <img src="logo.png" class="logo">
 
-<div class="title">РОССИЯ</div>
+<h1>Либеральная Партия России</h1>
 
-<div class="subtitle">
-Либеральная Партия — Для Всех Вместе
+<p>Для Всех Вместе</p>
+
+<a href="apply.html" class="glow-button">
+Подать заявление
+</a>
+
 </div>
 
 </header>
 
 <nav>
+
 <a href="index.html">Главная</a>
 <a href="leaders.html">Руководство</a>
 <a href="profile.html">Личный кабинет</a>
 <a href="apply.html">Заявление</a>
-<a href="admin.html">Проверка заявок</a>
+<a href="admin.html">Админ панель</a>
+
 </nav>
 
-<div class="container">
+<div class="main">
+
+<div class="cards">
 
 <div class="card">
 
-<h1>Добро пожаловать!</h1>
+<h2>Наша цель</h2>
 
 <p>
-Официальный портал партии.
+Объединение граждан России ради свободы,
+развития и справедливости.
 </p>
+
+<a href="leaders.html" class="glow-button">
+Руководство
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Вступление в партию</h2>
+
+<p>
+Каждый гражданин может стать частью
+политического движения.
+</p>
+
+<a href="apply.html" class="glow-button">
+Подать заявление
+</a>
+
+</div>
+
+<div class="card">
+
+<h2>Личный кабинет</h2>
+
+<p>
+Следите за новостями партии
+и статусом заявок.
+</p>
+
+<a href="profile.html" class="glow-button">
+Перейти
+</a>
+
+</div>
 
 </div>
 
 </div>
 
 <footer>
-© 2026 Либеральная Партия Россия Для Всех Вместе
+
+© 2025 Либеральная Партия России — Для Всех Вместе
+
 </footer>
+
+<script>
+
+/* Создание частиц */
+
+for(let i = 0; i < 40; i++){
+
+    let particle = document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left = Math.random() * 100 + "%";
+
+    particle.style.top = Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (5 + Math.random() * 10) + "s";
+
+    particle.style.opacity = Math.random();
+
+    document.querySelector("header").appendChild(particle);
+
+}
+
+</script>
 
 </body>
 </html>
