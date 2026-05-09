@@ -1,5 +1,3 @@
-<!-- ADMIN.HTML FULL -->
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -82,7 +80,7 @@ cursor:pointer;
 
 }
 
-/* SIDEBAR LINKS */
+/* LINKS */
 
 .sidebar a{
 
@@ -168,7 +166,7 @@ color:#4da3ff;
 
 }
 
-/* CARDS */
+/* CARD */
 
 .card{
 
@@ -362,19 +360,15 @@ transform:translateY(0);
 </a>
 
 <a href="#users">
-Список пользователей
+Пользователи
 </a>
 
-<a href="#news">
+<a href="#publishNewsSection">
 Публикация новостей
 </a>
 
 <a href="index.html">
 На сайт
-</a>
-
-<a href="#publishNewsSection">
-Публикация новостей
 </a>
 
 </div>
@@ -435,12 +429,34 @@ id="users"
 
 <div
 class="block"
-id="news"
+id="publishNewsSection"
 >
 
 <h1 class="title">
 Публикация новостей
 </h1>
+
+<div id="newsLogin">
+
+<input
+type="password"
+id="newsPassword"
+placeholder="Введите пароль"
+>
+
+<button
+class="publish-btn"
+onclick="checkNewsPassword()"
+>
+Войти
+</button>
+
+</div>
+
+<div
+id="newsPanel"
+style="display:none;"
+>
 
 <input
 type="text"
@@ -467,6 +483,8 @@ onclick="publishNews()"
 Опубликовать новость
 
 </button>
+
+</div>
 
 </div>
 
@@ -532,33 +550,33 @@ appsContainer.innerHTML += `
 <div class="card">
 
 <h2>
-${app.fullname}
+${app.fullname || "Без имени"}
 </h2>
 
 <p>
 <b>Discord:</b>
-${app.discord}
+${app.discord || ""}
 </p>
 
 <p>
 <b>IC возраст:</b>
-${app.icage}
+${app.icage || ""}
 </p>
 
 <p>
 <b>OOC возраст:</b>
-${app.oocage}
+${app.oocage || ""}
 </p>
 
 <p>
 <b>Почему хочет вступить:</b>
 <br><br>
-${app.why}
+${app.why || ""}
 </p>
 
 <p>
 <b>Статус:</b>
-${app.status}
+${app.status || "pending"}
 </p>
 
 <div class="buttons">
@@ -654,12 +672,12 @@ usersContainer.innerHTML += `
 <div class="card">
 
 <h2>
-${user.email}
+${user.email || "Без email"}
 </h2>
 
 <p>
 <b>Роль:</b>
-${user.role}
+${user.role || "user"}
 </p>
 
 <div class="buttons">
@@ -695,6 +713,41 @@ loadUsers();
 
 }
 
+/* PASSWORD */
+
+window.checkNewsPassword =
+function(){
+
+const password =
+document.getElementById(
+"newsPassword"
+).value;
+
+if(
+password ===
+"1234567890mtrp9"
+){
+
+document.getElementById(
+"newsLogin"
+).style.display =
+"none";
+
+document.getElementById(
+"newsPanel"
+).style.display =
+"block";
+
+}else{
+
+alert(
+"Неверный пароль"
+);
+
+}
+
+}
+
 /* NEWS */
 
 window.publishNews =
@@ -715,7 +768,10 @@ document.getElementById(
 "newsText"
 ).value;
 
-if(title=="" || text==""){
+if(
+title=="" ||
+text==""
+){
 
 alert(
 "Заполните поля"
