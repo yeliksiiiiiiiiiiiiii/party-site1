@@ -13,83 +13,80 @@ content="width=device-width, initial-scale=1.0">
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-font-family:Arial,sans-serif;
 background:#f4f7ff;
 }
 
+/* HEADER */
+
 header{
-background:linear-gradient(135deg,#0039a6,#001b5e);
+background:#00154d;
+padding:20px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
 color:white;
-padding:60px 20px;
-text-align:center;
-}
-
-header h1{
-font-size:54px;
-}
-
-nav{
-background:white;
-padding:18px;
-text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.08);
+font-size:30px;
+font-weight:bold;
 }
 
 nav a{
+color:white;
 text-decoration:none;
-color:#0039a6;
-margin:0 18px;
-font-weight:bold;
+margin-left:25px;
 font-size:18px;
 }
 
+/* MAIN */
+
 .container{
 max-width:900px;
-margin:auto;
-padding:60px 20px;
-}
-
-.form-box{
+margin:60px auto;
 background:white;
 padding:40px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
-.form-box h2{
+.title{
 text-align:center;
-margin-bottom:30px;
+font-size:45px;
+margin-bottom:35px;
 color:#0039a6;
 }
 
 input,
 textarea{
 width:100%;
-padding:16px;
+padding:18px;
 margin-bottom:20px;
-border-radius:12px;
-border:2px solid #dbe4ff;
-font-size:16px;
+border:none;
+background:#eef3ff;
+border-radius:15px;
+font-size:18px;
 }
 
 textarea{
-min-height:140px;
-resize:vertical;
+height:150px;
+resize:none;
 }
 
 button{
 width:100%;
-padding:16px;
+padding:18px;
+border:none;
 background:#0039a6;
 color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
+font-size:20px;
+border-radius:15px;
 cursor:pointer;
-font-weight:bold;
+transition:0.3s;
 }
 
 button:hover{
@@ -97,11 +94,17 @@ background:#d52b1e;
 }
 
 footer{
-background:#0039a6;
-color:white;
+background:#00154d;
+padding:25px;
 text-align:center;
-padding:30px;
+color:white;
 margin-top:60px;
+}
+
+footer a{
+color:white;
+text-decoration:none;
+font-size:18px;
 }
 
 </style>
@@ -111,46 +114,45 @@ margin-top:60px;
 
 <header>
 
-<h1>Заявление в партию</h1>
+<div class="logo">
+Россия Для Всех Вместе
+</div>
+
+<nav>
+<a href="index.html">Главная</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="news.html">Новости</a>
+</nav>
 
 </header>
 
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="admin.html">Админ панель</a>
-
-</nav>
-
 <div class="container">
 
-<div class="form-box">
+<h1 class="title">
+Заявление в партию
+</h1>
 
-<h2>Форма вступления</h2>
-
-<form id="partyForm">
+<form id="applicationForm">
 
 <input type="text"
 id="fullname"
 placeholder="Ваше ФИО"
 required>
 
-<input type="number"
+<input type="text"
 id="ageic"
 placeholder="Сколько вам лет? (IC)"
 required>
 
-<input type="number"
+<input type="text"
 id="ageooc"
 placeholder="Сколько вам лет? (OOC)"
 required>
 
 <input type="text"
 id="discord"
-placeholder="Ваш Discord"
+placeholder="Ваш Discord?"
 required>
 
 <textarea
@@ -171,23 +173,30 @@ required></textarea>
 
 </div>
 
-</div>
-
 <footer>
-
-© 2025 Либеральная Партия России
-
+<a href="https://discord.gg/KHjFC6sDz2">
+Наш Discord сервер
+</a>
 </footer>
 
 <script>
 
 document.getElementById(
-"partyForm"
-).addEventListener("submit",function(e){
+"applicationForm"
+).addEventListener(
+"submit",
+function(e){
 
 e.preventDefault();
 
-let application = {
+let applications =
+JSON.parse(
+localStorage.getItem(
+"partyApplications"
+)
+) || [];
+
+applications.push({
 
 fullname:
 document.getElementById(
@@ -219,16 +228,7 @@ document.getElementById(
 "support"
 ).value
 
-};
-
-let applications =
-JSON.parse(
-localStorage.getItem(
-"partyApplications"
-)
-) || [];
-
-applications.push(application);
+});
 
 localStorage.setItem(
 "partyApplications",
@@ -236,11 +236,11 @@ JSON.stringify(applications)
 );
 
 alert(
-"Ваше заявление успешно отправлено!"
+"Заявление отправлено!"
 );
 
 document.getElementById(
-"partyForm"
+"applicationForm"
 ).reset();
 
 });
