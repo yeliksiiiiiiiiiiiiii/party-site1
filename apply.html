@@ -1,16 +1,14 @@
-<!-- НОВЫЙ INDEX.HTML -->
+<!-- APPLY.HTML -->
 
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>
-Либеральная Партия России
+Заявление в партию
 </title>
 
 <style>
@@ -23,30 +21,25 @@ font-family:Arial;
 }
 
 body{
-background:#f4f7fb;
+background:#071739;
 overflow-x:hidden;
 }
 
 /* HEADER */
 
 header{
-
 position:fixed;
 top:0;
 left:0;
-
 width:100%;
-
-background:#0b2d82;
-
+height:105px;
+background:rgba(2,15,60,0.92);
 display:flex;
-justify-content:space-between;
 align-items:center;
-
-padding:20px 50px;
-
+justify-content:space-between;
+padding:0 55px;
 z-index:1000;
-
+backdrop-filter:blur(10px);
 }
 
 /* LOGO */
@@ -54,237 +47,191 @@ z-index:1000;
 .logo{
 display:flex;
 align-items:center;
-gap:15px;
+gap:18px;
 }
 
 .logo img{
-width:65px;
+width:58px;
+height:58px;
 background:white;
 padding:5px;
-border-radius:12px;
+border-radius:4px;
 }
 
-.logo-text h1{
+.logo-text{
 color:white;
-font-size:36px;
-line-height:1;
-}
-
-.logo-text p{
-color:#dbe4ff;
-margin-top:5px;
-font-size:18px;
+font-size:25px;
+font-weight:bold;
+line-height:1.1;
 }
 
 /* NAV */
 
 nav{
 display:flex;
-gap:15px;
-flex-wrap:wrap;
+gap:38px;
 }
 
 nav a{
-
 color:white;
 text-decoration:none;
-
-padding:12px 18px;
-
-border-radius:12px;
-
+font-size:22px;
 font-weight:bold;
-
 transition:0.3s;
-
+position:relative;
 }
 
 nav a:hover{
+color:#ff3c2f;
+}
 
-background:rgba(255,255,255,0.15);
+nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-8px;
+width:0%;
+height:3px;
+background:#ff3c2f;
+transition:0.3s;
+}
 
+nav a:hover::after{
+width:100%;
 }
 
 /* HERO */
 
 .hero{
-
-height:100vh;
+width:100%;
+min-height:100vh;
 
 background:
 linear-gradient(
-rgba(11,45,130,0.72),
-rgba(11,45,130,0.72)
+rgba(3,24,94,0.85),
+rgba(3,24,94,0.85)
 ),
 
-url("banner.jpg");
+url('https://images.unsplash.com/photo-1513326738677-b964603b136d?q=80&w=2070&auto=format&fit=crop');
 
 background-size:cover;
 background-position:center;
 
 display:flex;
+justify-content:center;
 align-items:center;
 
-padding:140px 80px;
+padding:180px 20px 80px;
+}
 
-color:white;
+/* FORM */
+
+.form-box{
+
+width:100%;
+max-width:900px;
+
+background:white;
+
+padding:60px;
+
+border-radius:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.35);
 
 }
 
-.hero-content{
-max-width:800px;
-}
+.form-box h1{
 
-.hero h2{
-
-font-size:110px;
-line-height:0.95;
-
-margin-bottom:30px;
-
-font-weight:900;
+font-size:55px;
+color:#0b2d82;
+margin-bottom:15px;
+text-align:center;
 
 }
 
-.hero p{
+.form-box p{
 
-font-size:38px;
+text-align:center;
+font-size:22px;
+color:#666;
+margin-bottom:40px;
 
-margin-bottom:50px;
+}
 
+.form-group{
+margin-bottom:25px;
+}
+
+.form-group label{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:20px;
+font-weight:bold;
+color:#0b2d82;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+background:#eef3ff;
+
+border-radius:18px;
+
+font-size:18px;
+
+outline:none;
+
+}
+
+.form-group textarea{
+height:160px;
+resize:none;
 }
 
 /* BUTTON */
 
-.btn{
+button{
 
-display:inline-block;
+width:100%;
 
-padding:22px 42px;
+padding:22px;
 
-background:#ff3b30;
+border:none;
+
+background:#ff3c2f;
 
 color:white;
 
-text-decoration:none;
+font-size:26px;
 
-border-radius:18px;
-
-font-size:24px;
 font-weight:bold;
+
+border-radius:20px;
+
+cursor:pointer;
 
 transition:0.3s;
 
+box-shadow:0 10px 25px rgba(255,60,47,0.4);
+
 }
 
-.btn:hover{
+button:hover{
 
 transform:translateY(-5px);
 
-background:#ff564d;
-
-}
-
-/* SECTION */
-
-.section{
-
-padding:120px 80px;
-
-}
-
-.section-title{
-
-font-size:70px;
-
-color:#0b2d82;
-
-margin-bottom:25px;
-
-font-weight:900;
-
-}
-
-.section-text{
-
-font-size:24px;
-
-line-height:1.8;
-
-color:#333;
-
-max-width:1200px;
-
-}
-
-/* CARDS */
-
-.cards{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(320px,1fr));
-
-gap:30px;
-
-margin-top:60px;
-
-}
-
-.card{
-
-background:white;
-
-padding:40px;
-
-border-radius:30px;
-
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-
-transition:0.3s;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-}
-
-.card h3{
-
-font-size:34px;
-
-margin-bottom:20px;
-
-color:#0b2d82;
-
-}
-
-.card p{
-
-font-size:20px;
-
-line-height:1.7;
-
-color:#444;
-
-}
-
-/* FOOTER */
-
-footer{
-
-background:#0b2d82;
-
-padding:50px;
-
-text-align:center;
-
-color:white;
-
-font-size:20px;
+background:#ff564b;
 
 }
 
@@ -292,97 +239,44 @@ font-size:20px;
 
 @media(max-width:1200px){
 
-.hero h2{
-font-size:75px;
-}
-
-.hero p{
-font-size:28px;
-}
-
-}
-
-@media(max-width:950px){
-
 header{
 flex-direction:column;
+height:auto;
+padding:20px;
 gap:20px;
-padding:25px;
 }
 
 nav{
+flex-wrap:wrap;
 justify-content:center;
 }
 
-.hero{
-padding:180px 40px 100px;
 }
 
-.hero h2{
-font-size:58px;
-}
+@media(max-width:700px){
 
-.hero p{
-font-size:24px;
-}
-
-.section{
-padding:80px 30px;
-}
-
-.section-title{
-font-size:50px;
-}
-
-}
-
-@media(max-width:600px){
-
-.hero h2{
-font-size:42px;
-}
-
-.hero p{
-font-size:20px;
-}
-
-.logo{
-flex-direction:column;
-text-align:center;
-}
-
-.logo-text h1{
-font-size:28px;
-}
-
-nav{
-gap:10px;
+.logo-text{
+font-size:18px;
 }
 
 nav a{
-font-size:14px;
-padding:10px 14px;
+font-size:16px;
 }
 
-.btn{
-font-size:18px;
-padding:18px 28px;
+.form-box{
+padding:35px;
 }
 
-.section-title{
+.form-box h1{
 font-size:36px;
 }
 
-.section-text{
+.form-box p{
 font-size:18px;
 }
 
-.card h3{
-font-size:26px;
-}
-
-.card p{
-font-size:17px;
+button{
+font-size:20px;
 }
 
 }
@@ -393,8 +287,6 @@ font-size:17px;
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 
 <div class="logo">
@@ -402,16 +294,8 @@ font-size:17px;
 <img src="logo.png">
 
 <div class="logo-text">
-
-<h1>
-Либеральная
+Либеральная<br>
 Партия России
-</h1>
-
-<p>
-Россия Для Всех Вместе
-</p>
-
 </div>
 
 </div>
@@ -458,176 +342,187 @@ font-size:17px;
 
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
 
-<div class="hero-content">
+<div class="form-box">
 
-<h2>
-
-ЛИБЕРАЛЬНАЯ
-ПАРТИЯ РОССИИ
-
-</h2>
+<h1>
+Заявление в партию
+</h1>
 
 <p>
-
-Для Всех Вместе
-
+Заполните официальную форму
+для вступления в Либеральную Партию России
 </p>
 
-<a
-href="apply.html"
-class="btn"
+<form id="applicationForm">
+
+<div class="form-group">
+
+<label>
+Ваше имя
+</label>
+
+<input
+type="text"
+id="fullname"
+required
 >
 
-Вступить в партию
-
-</a>
-
 </div>
 
-</section>
+<div class="form-group">
 
-<!-- ABOUT -->
+<label>
+IC возраст
+</label>
 
-<section class="section">
-
-<h2 class="section-title">
-
-О партии
-
-</h2>
-
-<p class="section-text">
-
-Либеральная Партия России —
-современное политическое объединение,
-созданное для развития государства,
-поддержки граждан,
-защиты свободы слова
-и построения сильного общества.
-
-<br><br>
-
-Партия объединяет людей,
-которые хотят видеть страну
-сильной,
-справедливой
-и современной.
-
-</p>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>
-Новости
-</h3>
-
-<p>
-
-Следите за обновлениями,
-мероприятиями,
-официальными обращениями
-и важными решениями партии.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-Руководство
-</h3>
-
-<p>
-
-Ознакомьтесь
-с руководящим составом партии,
-структурой управления
-и политическими лидерами.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-Программа
-</h3>
-
-<p>
-
-Изучите предвыборочную программу,
-инициативы,
-законы
-и планы развития государства.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- JOIN -->
-
-<section class="section">
-
-<h2 class="section-title">
-
-Вступление в партию
-
-</h2>
-
-<p class="section-text">
-
-Каждый гражданин
-может подать заявление
-на вступление в партию.
-
-<br><br>
-
-После рассмотрения заявления
-руководство партии
-свяжется с кандидатом
-для дальнейшего собеседования.
-
-</p>
-
-<div style="margin-top:50px;">
-
-<a
-href="apply.html"
-class="btn"
+<input
+type="number"
+id="icage"
+required
 >
 
-Подать заявление
+</div>
 
-</a>
+<div class="form-group">
+
+<label>
+OOC возраст
+</label>
+
+<input
+type="number"
+id="oocage"
+required
+>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Discord
+</label>
+
+<input
+type="text"
+id="discord"
+required
+>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Почему хотите вступить?
+</label>
+
+<textarea
+id="why"
+required
+></textarea>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Чем будете полезны партии?
+</label>
+
+<textarea
+id="help"
+required
+></textarea>
+
+</div>
+
+<button type="submit">
+Отправить заявление
+</button>
+
+</form>
 
 </div>
 
 </section>
 
-<!-- FOOTER -->
+<script type="module">
 
-<footer>
+import {
+db,
+collection,
+addDoc
+}
+from "./firebase.js";
 
-© 2025
-Либеральная Партия России
+const form =
+document.getElementById(
+"applicationForm"
+);
 
-<br><br>
+form.addEventListener(
+"submit",
+async(e)=>{
 
-Россия Для Всех Вместе
+e.preventDefault();
 
-</footer>
+await addDoc(
+collection(
+db,
+"applications"
+),
+{
+
+fullname:
+document.getElementById(
+"fullname"
+).value,
+
+icage:
+document.getElementById(
+"icage"
+).value,
+
+oocage:
+document.getElementById(
+"oocage"
+).value,
+
+discord:
+document.getElementById(
+"discord"
+).value,
+
+why:
+document.getElementById(
+"why"
+).value,
+
+help:
+document.getElementById(
+"help"
+).value,
+
+status:"pending",
+
+created:
+new Date()
+
+}
+);
+
+alert(
+"Заявление отправлено"
+);
+
+form.reset();
+
+});
+
+</script>
 
 </body>
 </html>
