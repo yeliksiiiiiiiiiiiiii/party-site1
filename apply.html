@@ -1,6 +1,52 @@
-<!-- ЗАМЕНИ ТОЛЬКО CSS ДЛЯ NAV -->
+<!-- APPLY.HTML FULL LIGHT VERSION -->
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Заявление в партию
+</title>
 
 <style>
+
+body{
+margin:0;
+padding:0;
+font-family:Arial;
+background:#f4f7fb;
+color:#1a1a1a;
+}
+
+/* HEADER */
+
+header{
+background:white;
+padding:25px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 15px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+/* LOGO */
+
+.logo{
+font-size:34px;
+font-weight:bold;
+color:#0051ff;
+}
 
 /* NAVIGATION */
 
@@ -8,24 +54,18 @@ nav{
 display:flex;
 justify-content:flex-end;
 align-items:center;
-gap:20px;
-padding:20px 40px;
-background:#ffffff;
-border-bottom:1px solid #dbe4f0;
+gap:18px;
 flex-wrap:wrap;
-position:sticky;
-top:0;
-z-index:1000;
 }
 
 nav a{
 color:#0051ff;
 text-decoration:none;
-padding:12px 20px;
+padding:12px 18px;
 border-radius:12px;
 background:#edf3ff;
 transition:0.3s;
-font-size:17px;
+font-size:16px;
 font-weight:bold;
 }
 
@@ -35,21 +75,362 @@ color:white;
 transform:translateY(-3px);
 }
 
+/* CONTAINER */
+
+.container{
+width:90%;
+max-width:850px;
+margin:60px auto;
+}
+
+/* FORM */
+
+.form-box{
+background:white;
+padding:45px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+
+.form-box h1{
+text-align:center;
+margin-bottom:15px;
+font-size:42px;
+color:#0051ff;
+}
+
+.subtitle{
+text-align:center;
+margin-bottom:35px;
+font-size:18px;
+color:#666;
+line-height:1.6;
+}
+
+/* INPUTS */
+
+input,
+textarea{
+width:100%;
+padding:16px;
+margin-bottom:22px;
+border:none;
+border-radius:16px;
+font-size:17px;
+background:#f0f4fa;
+color:#1a1a1a;
+outline:none;
+transition:0.3s;
+box-sizing:border-box;
+}
+
+input:focus,
+textarea:focus{
+background:white;
+box-shadow:0 0 0 3px #cfe0ff;
+}
+
+textarea{
+height:160px;
+resize:none;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:18px;
+border:none;
+border-radius:18px;
+background:#0051ff;
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#2f6dff;
+transform:scale(1.02);
+}
+
+/* INFO */
+
+.info-box{
+margin-top:35px;
+padding:25px;
+background:#edf3ff;
+border-radius:20px;
+line-height:1.8;
+color:#234;
+}
+
 /* MOBILE */
 
-@media(max-width:700px){
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+gap:20px;
+padding:25px;
+}
 
 nav{
 justify-content:center;
-padding:15px;
+}
+
+}
+
+@media(max-width:700px){
+
+.form-box{
+padding:25px;
+}
+
+.form-box h1{
+font-size:30px;
+}
+
+nav{
 gap:10px;
 }
 
 nav a{
-font-size:15px;
+font-size:14px;
 padding:10px 14px;
+}
+
+.logo{
+font-size:28px;
 }
 
 }
 
 </style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+RMRP Партия
+</div>
+
+<nav>
+
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="program.html">
+Программа
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="chat.html">
+Чат
+</a>
+
+<a href="admin.html">
+Админ панель
+</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="form-box">
+
+<h1>
+Заявление в партию
+</h1>
+
+<div class="subtitle">
+
+После отправки заявления руководство партии рассмотрит вашу кандидатуру.
+Ответ поступит после проверки администрации партии.
+
+</div>
+
+<form id="applicationForm">
+
+<input
+type="text"
+id="fullname"
+placeholder="Ваше имя"
+required
+>
+
+<input
+type="number"
+id="icage"
+placeholder="IC возраст"
+required
+>
+
+<input
+type="number"
+id="oocage"
+placeholder="OOC возраст"
+required
+>
+
+<input
+type="text"
+id="discord"
+placeholder="Discord"
+required
+>
+
+<textarea
+id="why"
+placeholder="Почему хотите вступить?"
+></textarea>
+
+<textarea
+id="help"
+placeholder="Чем будете полезны партии?"
+></textarea>
+
+<button type="submit">
+Отправить заявление
+</button>
+
+</form>
+
+<div class="info-box">
+
+<b>
+Информация:
+</b>
+
+<br><br>
+
+• Все заявления проходят проверку администрации партии.
+
+<br><br>
+
+• Запрещено отправлять фейковые заявки.
+
+<br><br>
+
+• При одобрении заявления вас могут пригласить на собеседование.
+
+<br><br>
+
+• После вступления вы получите доступ к мероприятиям, системе партии и общему развитию организации.
+
+</div>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import {
+db,
+collection,
+addDoc
+}
+from './firebase.js';
+
+const form =
+document.getElementById(
+"applicationForm"
+);
+
+form.addEventListener(
+"submit",
+async(e)=>{
+
+e.preventDefault();
+
+try{
+
+await addDoc(
+collection(db,"applications"),
+{
+
+fullname:
+document.getElementById(
+"fullname"
+).value,
+
+icage:
+document.getElementById(
+"icage"
+).value,
+
+oocage:
+document.getElementById(
+"oocage"
+).value,
+
+discord:
+document.getElementById(
+"discord"
+).value,
+
+why:
+document.getElementById(
+"why"
+).value,
+
+help:
+document.getElementById(
+"help"
+).value,
+
+status:"pending",
+
+created:
+new Date()
+
+}
+);
+
+alert(
+"Заявление успешно отправлено"
+);
+
+form.reset();
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
