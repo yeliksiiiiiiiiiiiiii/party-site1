@@ -1,3 +1,5 @@
+<!-- НОВЫЙ ДИЗАЙН ADMIN.HTML -->
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -11,7 +13,7 @@ content="width=device-width, initial-scale=1.0"
 >
 
 <title>
-Админ панель
+Админ Панель
 </title>
 
 <style>
@@ -24,323 +26,260 @@ font-family:Arial;
 }
 
 body{
-background:#071739;
-color:white;
-overflow-x:hidden;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-
-position:fixed;
-left:-240px;
-top:0;
-
-width:300px;
-height:100%;
-
-background:#00154d;
-
-padding-top:30px;
-
-transition:0.4s;
-
-z-index:999;
-
-box-shadow:0 0 20px black;
-
-}
-
-.sidebar:hover{
-
-left:0;
-
-}
-
-.sidebar::before{
-
-content:"☰ Админ панель";
-
-position:absolute;
-
-right:-170px;
-top:20px;
-
-background:#00154d;
-
-padding:15px 25px;
-
-border-radius:0 15px 15px 0;
-
-font-size:22px;
-font-weight:bold;
-
-cursor:pointer;
-
-}
-
-/* LINKS */
-
-.sidebar a{
-
-display:block;
-
-color:white;
-text-decoration:none;
-
-padding:18px 25px;
-
-margin:10px;
-
-border-radius:12px;
-
-background:#0b1d57;
-
-transition:0.3s;
-
-font-size:18px;
-
-}
-
-.sidebar a:hover{
-
-background:#0051ff;
-transform:translateX(5px);
-
+background:#f4f7fb;
+color:#111;
 }
 
 /* HEADER */
 
 header{
 
-background:#00154d;
+position:fixed;
+top:0;
+left:0;
 
-padding:30px;
+width:100%;
 
-text-align:center;
+background:#0b2d82;
 
-font-size:40px;
-font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-box-shadow:0 0 20px black;
+padding:20px 50px;
+
+z-index:999;
+
+box-shadow:0 2px 20px rgba(0,0,0,0.2);
 
 }
 
-/* CONTAINER */
+/* LOGO */
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:60px;
+}
+
+.logo h1{
+color:white;
+font-size:34px;
+line-height:1.1;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+padding:12px 18px;
+border-radius:12px;
+transition:0.3s;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.15);
+}
+
+/* MAIN */
 
 .container{
-
-width:90%;
-max-width:1200px;
-
-margin:40px auto;
-
+width:92%;
+max-width:1500px;
+margin:160px auto 50px;
 }
 
-/* BLOCK */
+/* GRID */
 
-.block{
-
-background:#0b1d57;
-
-padding:30px;
-
-border-radius:25px;
-
-margin-bottom:40px;
-
-box-shadow:0 0 20px rgba(0,0,0,0.4);
-
-}
-
-/* TITLES */
-
-.title{
-
-font-size:35px;
-
-margin-bottom:30px;
-
-color:#4da3ff;
-
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
 }
 
 /* CARD */
 
 .card{
 
-background:#132b75;
+background:white;
 
-padding:25px;
+border-radius:30px;
 
-border-radius:20px;
+padding:35px;
 
-margin-bottom:20px;
-
-animation:fade 0.3s;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
 
 }
 
+/* TITLES */
+
 .card h2{
+font-size:35px;
+margin-bottom:25px;
+color:#0b2d82;
+}
+
+/* USERS */
+
+.user{
+
+background:#edf3ff;
+
+padding:20px;
+
+border-radius:18px;
 
 margin-bottom:15px;
 
 }
 
-.card p{
-
+.user h3{
 margin-bottom:10px;
+}
 
-line-height:1.6;
+/* APPLICATION */
 
+.app{
+
+background:#edf3ff;
+
+padding:20px;
+
+border-radius:18px;
+
+margin-bottom:20px;
+
+}
+
+.app h3{
+margin-bottom:10px;
 }
 
 /* BUTTONS */
 
 .buttons{
-
 display:flex;
-
-gap:15px;
-
-margin-top:20px;
-
+gap:10px;
+margin-top:15px;
 flex-wrap:wrap;
-
 }
 
-.buttons button{
-
-padding:14px 20px;
+button{
 
 border:none;
 
+padding:14px 18px;
+
 border-radius:12px;
 
-cursor:pointer;
-
-font-size:16px;
-
 font-weight:bold;
+
+cursor:pointer;
 
 transition:0.3s;
 
 }
 
 .approve{
-
-background:green;
+background:#0b9d49;
 color:white;
-
 }
 
 .delete{
-
-background:red;
+background:#ff2d2d;
 color:white;
-
 }
 
 .admin{
+background:#0b2d82;
+color:white;
+}
 
+.publish{
 background:#0051ff;
 color:white;
-
+width:100%;
+font-size:18px;
 }
 
-.buttons button:hover{
-
-transform:scale(1.05);
-
+button:hover{
+transform:scale(1.03);
 }
 
-/* INPUTS */
+/* INPUT */
 
 input,
 textarea{
 
 width:100%;
 
-padding:15px;
-
-margin-bottom:20px;
+padding:16px;
 
 border:none;
 
-border-radius:12px;
+background:#edf3ff;
 
-background:#132b75;
+border-radius:16px;
 
-color:white;
+margin-bottom:20px;
 
-font-size:17px;
+font-size:16px;
 
 }
 
 textarea{
-
-height:200px;
+height:180px;
 resize:none;
-
-}
-
-/* PUBLISH */
-
-.publish-btn{
-
-width:100%;
-
-padding:18px;
-
-border:none;
-
-border-radius:15px;
-
-background:#0051ff;
-
-color:white;
-
-font-size:20px;
-
-cursor:pointer;
-
-transition:0.3s;
-
-}
-
-.publish-btn:hover{
-
-background:#2f6dff;
-
 }
 
 /* EMPTY */
 
 .empty{
-
+padding:30px;
 text-align:center;
-
-padding:40px;
-
-font-size:25px;
-
+font-size:22px;
 opacity:0.7;
-
 }
 
-/* ANIMATION */
+/* PASSWORD */
 
-@keyframes fade{
-
-from{
-opacity:0;
-transform:translateY(10px);
+#newsPanel{
+display:none;
 }
 
-to{
-opacity:1;
-transform:translateY(0);
+/* MOBILE */
+
+@media(max-width:900px){
+
+header{
+flex-direction:column;
+gap:20px;
+padding:25px;
+}
+
+.logo{
+flex-direction:column;
+text-align:center;
+}
+
+nav{
+justify-content:center;
+}
+
+.container{
+margin-top:220px;
 }
 
 }
@@ -351,69 +290,67 @@ transform:translateY(0);
 
 <body>
 
-<!-- SIDEBAR -->
-
-<div class="sidebar">
-
-<a href="#applications">
-Проверка заявок
-</a>
-
-<a href="#users">
-Пользователи
-</a>
-
-<a href="#publishNewsSection">
-Публикация новостей
-</a>
-
-<a href="index.html">
-На сайт
-</a>
-
-</div>
-
 <!-- HEADER -->
 
 <header>
-Админ панель партии
+
+<div class="logo">
+
+<img src="logo.png">
+
+<h1>
+
+Либеральная
+<br>
+Партия России
+
+</h1>
+
+</div>
+
+<nav>
+
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="program.html">
+Программа
+</a>
+
+</nav>
+
 </header>
 
 <!-- MAIN -->
 
 <div class="container">
 
-<!-- APPLICATIONS -->
-
-<div
-class="block"
-id="applications"
->
-
-<h1 class="title">
-Проверка заявок
-</h1>
-
-<div id="applicationsList">
-
-<div class="empty">
-Загрузка...
-</div>
-
-</div>
-
-</div>
+<div class="grid">
 
 <!-- USERS -->
 
-<div
-class="block"
-id="users"
->
+<div class="card">
 
-<h1 class="title">
-Список пользователей
-</h1>
+<h2>
+Пользователи
+</h2>
 
 <div id="usersList">
 
@@ -425,38 +362,52 @@ id="users"
 
 </div>
 
+<!-- APPLICATIONS -->
+
+<div class="card">
+
+<h2>
+Заявления
+</h2>
+
+<div id="applicationsList">
+
+<div class="empty">
+Загрузка...
+</div>
+
+</div>
+
+</div>
+
 <!-- NEWS -->
 
-<div
-class="block"
-id="publishNewsSection"
->
+<div class="card">
 
-<h1 class="title">
+<h2>
 Публикация новостей
-</h1>
+</h2>
 
-<div id="newsLogin">
+<div id="loginBox">
 
 <input
 type="password"
-id="newsPassword"
+id="password"
 placeholder="Введите пароль"
 >
 
 <button
-class="publish-btn"
-onclick="checkNewsPassword()"
+class="publish"
+onclick="checkPassword()"
 >
+
 Войти
+
 </button>
 
 </div>
 
-<div
-id="newsPanel"
-style="display:none;"
->
+<div id="newsPanel">
 
 <input
 type="text"
@@ -476,13 +427,15 @@ placeholder="Текст новости"
 ></textarea>
 
 <button
-class="publish-btn"
+class="publish"
 onclick="publishNews()"
 >
 
 Опубликовать новость
 
 </button>
+
+</div>
 
 </div>
 
@@ -499,7 +452,6 @@ db,
 collection,
 getDocs,
 addDoc,
-
 deleteDoc,
 doc,
 updateDoc
@@ -507,6 +459,87 @@ updateDoc
 }
 
 from './firebase.js';
+
+/* USERS */
+
+const usersContainer =
+document.getElementById(
+"usersList"
+);
+
+async function loadUsers(){
+
+usersContainer.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+collection(db,"users")
+);
+
+if(querySnapshot.empty){
+
+usersContainer.innerHTML = `
+<div class="empty">
+Пользователей нет
+</div>
+`;
+
+return;
+
+}
+
+querySnapshot.forEach((documentData)=>{
+
+const user =
+documentData.data();
+
+usersContainer.innerHTML += `
+
+<div class="user">
+
+<h3>
+${user.email || "Без email"}
+</h3>
+
+<p>
+Роль:
+${user.role || "user"}
+</p>
+
+<div class="buttons">
+
+<button
+class="admin"
+onclick="makeAdmin('${documentData.id}')"
+>
+
+Выдать Admin
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+window.makeAdmin =
+async function(id){
+
+await updateDoc(
+doc(db,"users",id),
+{
+role:"admin"
+}
+);
+
+loadUsers();
+
+}
 
 /* APPLICATIONS */
 
@@ -527,13 +560,9 @@ collection(db,"applications")
 if(querySnapshot.empty){
 
 appsContainer.innerHTML = `
-
 <div class="empty">
-
-Заявок нет
-
+Заявлений нет
 </div>
-
 `;
 
 return;
@@ -547,36 +576,29 @@ documentData.data();
 
 appsContainer.innerHTML += `
 
-<div class="card">
+<div class="app">
 
-<h2>
+<h3>
 ${app.fullname || "Без имени"}
-</h2>
+</h3>
 
 <p>
-<b>Discord:</b>
+Discord:
 ${app.discord || ""}
 </p>
 
 <p>
-<b>IC возраст:</b>
+IC:
 ${app.icage || ""}
 </p>
 
 <p>
-<b>OOC возраст:</b>
+OOC:
 ${app.oocage || ""}
 </p>
 
 <p>
-<b>Почему хочет вступить:</b>
-<br><br>
 ${app.why || ""}
-</p>
-
-<p>
-<b>Статус:</b>
-${app.status || "pending"}
 </p>
 
 <div class="buttons">
@@ -585,14 +607,18 @@ ${app.status || "pending"}
 class="approve"
 onclick="approveApp('${documentData.id}')"
 >
+
 Одобрить
+
 </button>
 
 <button
 class="delete"
 onclick="deleteApp('${documentData.id}')"
 >
+
 Удалить
+
 </button>
 
 </div>
@@ -630,97 +656,14 @@ loadApps();
 
 }
 
-/* USERS */
-
-const usersContainer =
-document.getElementById(
-"usersList"
-);
-
-async function loadUsers(){
-
-usersContainer.innerHTML = "";
-
-const querySnapshot =
-await getDocs(
-collection(db,"users")
-);
-
-if(querySnapshot.empty){
-
-usersContainer.innerHTML = `
-
-<div class="empty">
-
-Пользователей нет
-
-</div>
-
-`;
-
-return;
-
-}
-
-querySnapshot.forEach((documentData)=>{
-
-const user =
-documentData.data();
-
-usersContainer.innerHTML += `
-
-<div class="card">
-
-<h2>
-${user.email || "Без email"}
-</h2>
-
-<p>
-<b>Роль:</b>
-${user.role || "user"}
-</p>
-
-<div class="buttons">
-
-<button
-class="admin"
-onclick="makeAdmin('${documentData.id}')"
->
-Выдать Admin
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-window.makeAdmin =
-async function(id){
-
-await updateDoc(
-doc(db,"users",id),
-{
-role:"admin"
-}
-);
-
-loadUsers();
-
-}
-
 /* PASSWORD */
 
-window.checkNewsPassword =
+window.checkPassword =
 function(){
 
 const password =
 document.getElementById(
-"newsPassword"
+"password"
 ).value;
 
 if(
@@ -729,7 +672,7 @@ password ===
 ){
 
 document.getElementById(
-"newsLogin"
+"loginBox"
 ).style.display =
 "none";
 
@@ -815,8 +758,8 @@ document.getElementById(
 
 /* START */
 
-loadApps();
 loadUsers();
+loadApps();
 
 </script>
 
