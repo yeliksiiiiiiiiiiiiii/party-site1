@@ -1,4 +1,4 @@
-<!-- ADMIN.HTML С ПОЛЬЗОВАТЕЛЯМИ -->
+<!-- ADMIN.HTML FULL -->
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -28,127 +28,307 @@ font-family:Arial;
 body{
 background:#071739;
 color:white;
+overflow-x:hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+position:fixed;
+left:-240px;
+top:0;
+
+width:300px;
+height:100%;
+
+background:#00154d;
+
+padding-top:30px;
+
+transition:0.4s;
+
+z-index:999;
+
+box-shadow:0 0 20px black;
+
+}
+
+.sidebar:hover{
+
+left:0;
+
+}
+
+.sidebar::before{
+
+content:"☰ Админ панель";
+
+position:absolute;
+
+right:-170px;
+top:20px;
+
+background:#00154d;
+
+padding:15px 25px;
+
+border-radius:0 15px 15px 0;
+
+font-size:22px;
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* SIDEBAR LINKS */
+
+.sidebar a{
+
+display:block;
+
+color:white;
+text-decoration:none;
+
+padding:18px 25px;
+
+margin:10px;
+
+border-radius:12px;
+
+background:#0b1d57;
+
+transition:0.3s;
+
+font-size:18px;
+
+}
+
+.sidebar a:hover{
+
+background:#0051ff;
+transform:translateX(5px);
+
 }
 
 /* HEADER */
 
 header{
+
 background:#00154d;
-padding:25px;
+
+padding:30px;
+
 text-align:center;
-font-size:35px;
+
+font-size:40px;
 font-weight:bold;
+
 box-shadow:0 0 20px black;
-}
 
-/* NAVIGATION */
-
-nav{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:20px;
-background:#0b1d57;
-flex-wrap:wrap;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-padding:12px 20px;
-border-radius:12px;
-background:#132b75;
-transition:0.3s;
-font-size:17px;
-}
-
-nav a:hover{
-background:#0051ff;
-transform:translateY(-3px);
 }
 
 /* CONTAINER */
 
 .container{
+
 width:90%;
 max-width:1200px;
+
 margin:40px auto;
+
+}
+
+/* BLOCK */
+
+.block{
+
+background:#0b1d57;
+
+padding:30px;
+
+border-radius:25px;
+
+margin-bottom:40px;
+
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+
 }
 
 /* TITLES */
 
 .title{
-font-size:32px;
+
+font-size:35px;
+
 margin-bottom:30px;
-margin-top:50px;
+
+color:#4da3ff;
+
 }
 
-/* CARD */
+/* CARDS */
 
 .card{
-background:#0b1d57;
+
+background:#132b75;
+
 padding:25px;
+
 border-radius:20px;
-margin-bottom:25px;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
+
+margin-bottom:20px;
+
 animation:fade 0.3s;
+
 }
 
 .card h2{
+
 margin-bottom:15px;
-color:#4da3ff;
+
 }
 
 .card p{
-margin-bottom:12px;
+
+margin-bottom:10px;
+
 line-height:1.6;
+
 }
 
 /* BUTTONS */
 
 .buttons{
+
 display:flex;
+
 gap:15px;
+
 margin-top:20px;
+
 flex-wrap:wrap;
+
 }
 
 .buttons button{
+
 padding:14px 20px;
+
 border:none;
+
 border-radius:12px;
+
 cursor:pointer;
+
 font-size:16px;
-transition:0.3s;
+
 font-weight:bold;
+
+transition:0.3s;
+
 }
 
 .approve{
+
 background:green;
 color:white;
+
 }
 
 .delete{
+
 background:red;
 color:white;
+
 }
 
 .admin{
+
 background:#0051ff;
 color:white;
+
 }
 
 .buttons button:hover{
+
 transform:scale(1.05);
+
+}
+
+/* INPUTS */
+
+input,
+textarea{
+
+width:100%;
+
+padding:15px;
+
+margin-bottom:20px;
+
+border:none;
+
+border-radius:12px;
+
+background:#132b75;
+
+color:white;
+
+font-size:17px;
+
+}
+
+textarea{
+
+height:200px;
+resize:none;
+
+}
+
+/* PUBLISH */
+
+.publish-btn{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+border-radius:15px;
+
+background:#0051ff;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.publish-btn:hover{
+
+background:#2f6dff;
+
 }
 
 /* EMPTY */
 
 .empty{
+
 text-align:center;
-padding:60px;
+
+padding:40px;
+
 font-size:25px;
+
 opacity:0.7;
+
 }
 
 /* ANIMATION */
@@ -173,77 +353,116 @@ transform:translateY(0);
 
 <body>
 
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<a href="#applications">
+Проверка заявок
+</a>
+
+<a href="#users">
+Список пользователей
+</a>
+
+<a href="#news">
+Публикация новостей
+</a>
+
+<a href="index.html">
+На сайт
+</a>
+
+</div>
+
+<!-- HEADER -->
+
 <header>
 Админ панель партии
 </header>
 
-<nav>
-
-<a href="index.html">
-Главная
-</a>
-
-<a href="news.html">
-Новости
-</a>
-
-<a href="leaders.html">
-Руководство
-</a>
-
-<a href="apply.html">
-Заявление
-</a>
-
-<a href="chat.html">
-Чат
-</a>
-
-<a href="program.html">
-Программа
-</a>
-
-<a href="ustav.html">
-Устав
-</a>
-
-<a href="gimn.html">
-Гимн
-</a>
-
-<a href="admin.html">
-Админ панель
-</a>
-
-</nav>
+<!-- MAIN -->
 
 <div class="container">
 
 <!-- APPLICATIONS -->
 
+<div
+class="block"
+id="applications"
+>
+
 <h1 class="title">
-Проверка заявлений
+Проверка заявок
 </h1>
 
 <div id="applicationsList">
 
 <div class="empty">
-Загрузка заявок...
+Загрузка...
+</div>
+
 </div>
 
 </div>
 
 <!-- USERS -->
 
+<div
+class="block"
+id="users"
+>
+
 <h1 class="title">
-Пользователи
+Список пользователей
 </h1>
 
 <div id="usersList">
 
 <div class="empty">
-Загрузка пользователей...
+Загрузка...
 </div>
+
+</div>
+
+</div>
+
+<!-- NEWS -->
+
+<div
+class="block"
+id="news"
+>
+
+<h1 class="title">
+Публикация новостей
+</h1>
+
+<input
+type="text"
+id="newsTitle"
+placeholder="Название новости"
+>
+
+<input
+type="text"
+id="newsImage"
+placeholder="Ссылка на фото"
+>
+
+<textarea
+id="newsText"
+placeholder="Текст новости"
+></textarea>
+
+<button
+class="publish-btn"
+onclick="publishNews()"
+>
+
+Опубликовать новость
+
+</button>
 
 </div>
 
@@ -252,13 +471,19 @@ transform:translateY(0);
 <script type="module">
 
 import {
+
 db,
+
 collection,
 getDocs,
+addDoc,
+
 deleteDoc,
 doc,
 updateDoc
+
 }
+
 from './firebase.js';
 
 /* APPLICATIONS */
@@ -269,8 +494,6 @@ document.getElementById(
 );
 
 async function loadApps(){
-
-try{
 
 appsContainer.innerHTML = "";
 
@@ -285,7 +508,7 @@ appsContainer.innerHTML = `
 
 <div class="empty">
 
-Заявок пока нет
+Заявок нет
 
 </div>
 
@@ -300,86 +523,68 @@ querySnapshot.forEach((documentData)=>{
 const app =
 documentData.data();
 
-const card =
-document.createElement("div");
+appsContainer.innerHTML += `
 
-card.className =
-"card";
-
-card.innerHTML = `
+<div class="card">
 
 <h2>
-${app.fullname || "Без имени"}
+${app.fullname}
 </h2>
 
 <p>
 <b>Discord:</b>
-${app.discord || "Не указан"}
+${app.discord}
 </p>
 
 <p>
 <b>IC возраст:</b>
-${app.icage || "Не указан"}
+${app.icage}
 </p>
 
 <p>
 <b>OOC возраст:</b>
-${app.oocage || "Не указан"}
+${app.oocage}
 </p>
 
 <p>
 <b>Почему хочет вступить:</b>
 <br><br>
-${app.why || "Нет текста"}
-</p>
-
-<p>
-<b>Чем поможет партии:</b>
-<br><br>
-${app.help || "Нет текста"}
+${app.why}
 </p>
 
 <p>
 <b>Статус:</b>
-${app.status || "pending"}
+${app.status}
 </p>
 
 <div class="buttons">
 
 <button
 class="approve"
-data-id="${documentData.id}"
+onclick="approveApp('${documentData.id}')"
 >
 Одобрить
 </button>
 
 <button
 class="delete"
-data-id="${documentData.id}"
+onclick="deleteApp('${documentData.id}')"
 >
 Удалить
 </button>
 
 </div>
 
-`;
+</div>
 
-appsContainer.appendChild(card);
+`;
 
 });
 
-/* APPROVE */
+}
 
-document
-.querySelectorAll(".approve")
-.forEach((button)=>{
-
-button.addEventListener(
-"click",
-async()=>{
-
-const id =
-button.dataset.id;
+window.approveApp =
+async function(id){
 
 await updateDoc(
 doc(db,"applications",id),
@@ -391,47 +596,15 @@ status:"approved"
 loadApps();
 
 }
-);
 
-});
-
-/* DELETE */
-
-document
-.querySelectorAll(".delete")
-.forEach((button)=>{
-
-button.addEventListener(
-"click",
-async()=>{
-
-const id =
-button.dataset.id;
+window.deleteApp =
+async function(id){
 
 await deleteDoc(
 doc(db,"applications",id)
 );
 
 loadApps();
-
-}
-);
-
-});
-
-}catch(error){
-
-appsContainer.innerHTML = `
-
-<div class="empty">
-
-Ошибка загрузки заявок
-
-</div>
-
-`;
-
-}
 
 }
 
@@ -443,8 +616,6 @@ document.getElementById(
 );
 
 async function loadUsers(){
-
-try{
 
 usersContainer.innerHTML = "";
 
@@ -459,7 +630,7 @@ usersContainer.innerHTML = `
 
 <div class="empty">
 
-Пользователей пока нет
+Пользователей нет
 
 </div>
 
@@ -474,64 +645,40 @@ querySnapshot.forEach((documentData)=>{
 const user =
 documentData.data();
 
-const card =
-document.createElement("div");
+usersContainer.innerHTML += `
 
-card.className =
-"card";
-
-card.innerHTML = `
+<div class="card">
 
 <h2>
-${user.email || "Без email"}
+${user.email}
 </h2>
 
 <p>
 <b>Роль:</b>
-${user.role || "user"}
-</p>
-
-<p>
-<b>Дата регистрации:</b>
-${user.created || ""}
+${user.role}
 </p>
 
 <div class="buttons">
 
 <button
 class="admin"
-data-id="${documentData.id}"
+onclick="makeAdmin('${documentData.id}')"
 >
 Выдать Admin
 </button>
 
-<button
-class="delete"
-data-id="${documentData.id}"
->
-Удалить
-</button>
+</div>
 
 </div>
 
 `;
 
-usersContainer.appendChild(card);
-
 });
 
-/* ADMIN ROLE */
+}
 
-document
-.querySelectorAll(".admin")
-.forEach((button)=>{
-
-button.addEventListener(
-"click",
-async()=>{
-
-const id =
-button.dataset.id;
+window.makeAdmin =
+async function(id){
 
 await updateDoc(
 doc(db,"users",id),
@@ -543,30 +690,72 @@ role:"admin"
 loadUsers();
 
 }
+
+/* NEWS */
+
+window.publishNews =
+async function(){
+
+const title =
+document.getElementById(
+"newsTitle"
+).value;
+
+const image =
+document.getElementById(
+"newsImage"
+).value;
+
+const text =
+document.getElementById(
+"newsText"
+).value;
+
+if(title=="" || text==""){
+
+alert(
+"Заполните поля"
 );
 
-});
-
-}catch(error){
-
-usersContainer.innerHTML = `
-
-<div class="empty">
-
-Ошибка загрузки пользователей
-
-</div>
-
-`;
+return;
 
 }
+
+await addDoc(
+collection(db,"news"),
+{
+
+title:title,
+image:image,
+text:text,
+
+date:
+new Date().toLocaleString()
+
+}
+);
+
+alert(
+"Новость опубликована"
+);
+
+document.getElementById(
+"newsTitle"
+).value = "";
+
+document.getElementById(
+"newsImage"
+).value = "";
+
+document.getElementById(
+"newsText"
+).value = "";
 
 }
 
 /* START */
 
 loadApps();
-
 loadUsers();
 
 </script>
