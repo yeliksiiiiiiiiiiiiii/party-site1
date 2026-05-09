@@ -1,10 +1,16 @@
+<!-- program.html -->
+
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Предвыборочная программа</title>
+<title>
+Предвыборочная программа
+</title>
 
 <style>
 
@@ -12,111 +18,223 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial;
 }
 
 body{
-background:#f4f7ff;
+background:#06153a;
+color:white;
+overflow-x:hidden;
 }
 
 /* HEADER */
 
 header{
-background:#00154d;
-padding:20px 40px;
+width:100%;
+height:90px;
+background:#041244;
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
+padding:0 40px;
+position:fixed;
+top:0;
+left:0;
+z-index:999;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
 .logo{
-color:white;
-font-size:30px;
-font-weight:bold;
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:55px;
+height:55px;
+background:white;
+padding:5px;
+border-radius:8px;
+}
+
+.logo h1{
+font-size:24px;
+line-height:1.1;
 }
 
 nav{
 display:flex;
-gap:15px;
-flex-wrap:wrap;
+gap:35px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-padding:10px 18px;
-border-radius:12px;
+font-size:18px;
+font-weight:bold;
 transition:0.3s;
 }
 
 nav a:hover{
-background:#d52b1e;
+color:#4da3ff;
 }
 
 /* HERO */
 
 .hero{
-height:350px;
-background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-url("https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1974&auto=format&fit=crop");
+width:100%;
+min-height:600px;
+background:
+linear-gradient(
+rgba(5,20,80,0.75),
+rgba(5,20,80,0.85)
+),
+url("https://images.unsplash.com/photo-1513326738677-b964603b136d?q=80&w=1920");
 background-size:cover;
 background-position:center;
 display:flex;
-justify-content:center;
 align-items:center;
-color:white;
-text-align:center;
+padding:140px 70px 80px;
 }
 
-.hero h1{
-font-size:65px;
+.hero-content{
+max-width:800px;
+}
+
+.hero h2{
+font-size:90px;
+font-weight:900;
+line-height:1;
+margin-bottom:30px;
+}
+
+.hero p{
+font-size:36px;
+margin-bottom:40px;
+color:#dbe8ff;
+}
+
+.hero button{
+padding:22px 45px;
+border:none;
+border-radius:18px;
+background:#ff3a2f;
+color:white;
+font-size:28px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 20px rgba(255,60,60,0.5);
+}
+
+.hero button:hover{
+transform:translateY(-5px);
+background:#ff584f;
 }
 
 /* PROGRAM */
 
-.container{
-max-width:1300px;
-margin:50px auto;
+.program{
+padding:80px 70px;
+}
+
+.section-title{
+font-size:60px;
+margin-bottom:50px;
+font-weight:900;
+}
+
+.cards{
 display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(350px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px;
-padding:20px;
 }
 
 .card{
-background:white;
+background:#0c2261;
 padding:35px;
-border-radius:30px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+border-radius:25px;
 transition:0.3s;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-8px);
+background:#12307f;
 }
 
-.card h2{
-color:#0039a6;
-margin-bottom:20px;
+.card h3{
+font-size:32px;
+margin-bottom:25px;
+color:#4da3ff;
 }
 
-.card p{
-line-height:1.8;
-font-size:18px;
+.card ul{
+padding-left:20px;
+}
+
+.card li{
+margin-bottom:18px;
+font-size:20px;
+line-height:1.5;
+color:#e4eeff;
 }
 
 /* FOOTER */
 
 footer{
-background:#00154d;
+margin-top:60px;
+background:#041244;
 padding:40px;
 text-align:center;
-color:white;
-margin-top:60px;
+font-size:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+.hero h2{
+font-size:60px;
+}
+
+.hero p{
+font-size:28px;
+}
+
+nav{
+display:none;
+}
+
+}
+
+@media(max-width:700px){
+
+.hero{
+padding:140px 30px 60px;
+}
+
+.program{
+padding:60px 30px;
+}
+
+.hero h2{
+font-size:44px;
+}
+
+.section-title{
+font-size:40px;
+}
+
+.card h3{
+font-size:25px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -124,19 +242,53 @@ margin-top:60px;
 <header>
 
 <div class="logo">
-Россия Для Всех Вместе
+
+<img src="logo.png">
+
+<h1>
+Либеральная<br>
+Партия России
+</h1>
+
 </div>
 
 <nav>
 
-<a href="index.html">Главная</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="citizens.html">Обращения</a>
-<a href="news.html">Новости</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
-<a href="program.html">Программа</a>
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="profile.html">
+Профиль
+</a>
+
+<a href="admin.html">
+Админ
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="program.html">
+Программа
+</a>
 
 </nav>
 
@@ -144,102 +296,208 @@ margin-top:60px;
 
 <section class="hero">
 
-<h1>
-Предвыборочная программа
-</h1>
+<div class="hero-content">
+
+<h2>
+ПРЕДВЫБОРНАЯ<br>
+ПРОГРАММА
+</h2>
+
+<p>
+Будущее России начинается сегодня
+</p>
+
+<button onclick="window.scrollTo(0,700)">
+Читать программу
+</button>
+
+</div>
 
 </section>
 
-<div class="container">
+<section class="program">
+
+<h1 class="section-title">
+Основные направления
+</h1>
+
+<div class="cards">
 
 <div class="card">
 
-<h2>
-Законодательные инициативы
-</h2>
+<h3>
+Законы
+</h3>
 
-<p>
-• Народное вето
-<br>
-• Отзыв депутата
-<br>
-• Борьба с коррупцией
-<br>
-• Публичность власти
-</p>
+<ul>
+
+<li>
+Народное вето на законы
+</li>
+
+<li>
+Отзыв депутатов народом
+</li>
+
+<li>
+Публичность лоббизма
+</li>
+
+<li>
+Жесткая борьба с коррупцией
+</li>
+
+</ul>
 
 </div>
 
 <div class="card">
 
-<h2>
+<h3>
 Экономика
-</h2>
+</h3>
 
-<p>
-• Поддержка отечественных товаров
-<br>
-• Развитие регионов
-<br>
-• Новые рабочие места
-</p>
+<ul>
+
+<li>
+20% кэшбек на российские товары
+</li>
+
+<li>
+Развитие регионов
+</li>
+
+<li>
+Поддержка бизнеса и фермеров
+</li>
+
+<li>
+Новые транспортные хабы
+</li>
+
+</ul>
 
 </div>
 
 <div class="card">
 
-<h2>
+<h3>
 Безопасность
-</h2>
+</h3>
 
-<p>
-• Цифровой паспорт безопасности
-<br>
-• Защита граждан
-<br>
-• Безопасный интернет
-</p>
+<ul>
 
-</div>
+<li>
+Цифровой паспорт безопасности
+</li>
 
-<div class="card">
+<li>
+Независимый контроль полиции
+</li>
 
-<h2>
-Гражданское общество
-</h2>
+<li>
+Безопасный интернет
+</li>
 
-<p>
-• Электронные референдумы
-<br>
-• Народный контроль бюджета
-<br>
-• Развитие демократии
-</p>
+<li>
+Поддержка экстренных служб
+</li>
+
+</ul>
 
 </div>
 
 <div class="card">
 
-<h2>
+<h3>
+Общество
+</h3>
+
+<ul>
+
+<li>
+Электронные референдумы
+</li>
+
+<li>
+Народный контроль бюджета
+</li>
+
+<li>
+Поддержка молодежи
+</li>
+
+<li>
+Развитие школ и образования
+</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>
 Коммуникация
-</h2>
+</h3>
 
-<p>
-• Прямые эфиры министров
-<br>
-• Прозрачная власть
-<br>
-• Быстрые ответы гражданам
-</p>
+<ul>
+
+<li>
+Прямые эфиры министров
+</li>
+
+<li>
+Прозрачность власти
+</li>
+
+<li>
+Автоматические жалобы
+</li>
+
+<li>
+Госуслуги через Telegram
+</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>
+Наша цель
+</h3>
+
+<ul>
+
+<li>
+Сильная экономика
+</li>
+
+<li>
+Свобода и справедливость
+</li>
+
+<li>
+Единая Россия для всех
+</li>
+
+<li>
+Современное государство
+</li>
+
+</ul>
 
 </div>
 
 </div>
+
+</section>
 
 <footer>
 
-«Не обещаем — делаем.
-Не отчитываемся — показываем.»
+© 2025 Либеральная Партия России — Россия Для Всех Вместе
 
 </footer>
 
