@@ -21,8 +21,10 @@ background:#f4f7ff;
 display:flex;
 }
 
+/* SIDEBAR */
+
 .sidebar{
-width:260px;
+width:270px;
 height:100vh;
 background:#00154d;
 padding:30px 20px;
@@ -30,6 +32,7 @@ position:fixed;
 left:-190px;
 transition:0.4s;
 z-index:999;
+overflow:auto;
 }
 
 .sidebar:hover{
@@ -39,6 +42,7 @@ left:0;
 .sidebar h2{
 color:white;
 margin-bottom:30px;
+font-size:28px;
 }
 
 .sidebar a{
@@ -57,6 +61,8 @@ transition:0.3s;
 background:#d52b1e;
 }
 
+/* MAIN */
+
 .main{
 margin-left:80px;
 padding:40px;
@@ -64,46 +70,141 @@ width:100%;
 }
 
 .title{
-font-size:40px;
+font-size:42px;
 color:#0039a6;
 margin-bottom:30px;
+font-weight:bold;
 }
 
 .card{
 background:white;
 padding:30px;
-border-radius:20px;
+border-radius:25px;
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
 .card h3{
-margin-bottom:20px;
+margin-bottom:25px;
 color:#0039a6;
+font-size:28px;
 }
 
+/* USERS */
+
 .user{
-padding:15px;
+padding:20px;
 background:#eef3ff;
-border-radius:12px;
-margin-bottom:12px;
+border-radius:15px;
+margin-bottom:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.role{
+padding:8px 15px;
+border-radius:10px;
+color:white;
+font-weight:bold;
+display:inline-block;
+margin-top:8px;
+}
+
+.owner{
+background:#ff9800;
+}
+
+.admin{
+background:#0039a6;
+}
+
+.user-role{
+background:#777;
+}
+
+/* APPLICATIONS */
+
+.application{
+background:#eef3ff;
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+/* NEWS */
+
+input,
+textarea{
+width:100%;
+padding:15px;
+margin-bottom:18px;
+border:none;
+background:#eef3ff;
+border-radius:12px;
+font-size:16px;
+}
+
+textarea{
+min-height:140px;
+resize:vertical;
 }
 
 button{
-padding:10px 18px;
+padding:12px 20px;
 border:none;
 background:#0039a6;
 color:white;
 border-radius:10px;
 cursor:pointer;
 font-weight:bold;
+transition:0.3s;
 }
 
 button:hover{
 background:#d52b1e;
+}
+
+.news-preview{
+background:#eef3ff;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
+}
+
+.news-preview img{
+width:100%;
+border-radius:15px;
+margin-top:15px;
+max-height:350px;
+object-fit:cover;
+}
+
+.delete-btn{
+background:#d52b1e;
+margin-top:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.sidebar{
+left:-230px;
+}
+
+.main{
+margin-left:20px;
+padding:20px;
+}
+
+.user{
+flex-direction:column;
+align-items:flex-start;
+}
+
 }
 
 </style>
@@ -113,25 +214,33 @@ background:#d52b1e;
 
 <div class="sidebar">
 
-<h2>Админка</h2>
+<h2>Панель</h2>
 
 <a href="index.html">Главная</a>
 
-<a href="#">Пользователи</a>
+<a href="#usersBlock">
+Пользователи
+</a>
 
-<a href="#">Новости</a>
+<a href="#applicationsBlock">
+Заявки
+</a>
 
-<a href="#">Заявки</a>
+<a href="#newsBlock">
+Новости
+</a>
 
 </div>
 
 <div class="main">
 
 <div class="title">
-Панель администратора
+Админ панель партии
 </div>
 
-<div class="card">
+<!-- USERS -->
+
+<div class="card" id="usersBlock">
 
 <h3>Пользователи</h3>
 
@@ -139,45 +248,141 @@ background:#d52b1e;
 
 </div>
 
+<!-- APPLICATIONS -->
+
+<div class="card" id="applicationsBlock">
+
+<h3>Проверка заявок</h3>
+
+<div id="applications"></div>
+
+</div>
+
+<!-- NEWS -->
+
+<div class="card" id="newsBlock">
+
+<h3>Публикация новостей</h3>
+
+<input
+type="text"
+id="newsTitle"
+placeholder="Заголовок">
+
+<textarea
+id="newsText"
+placeholder="Текст новости"></textarea>
+
+<input
+type="text"
+id="newsImage"
+placeholder="Ссылка на изображение">
+
+<button onclick="publishNews()">
+Опубликовать
+</button>
+
+<div id="newsList"></div>
+
+</div>
+
 </div>
 
 <script>
 
-let currentUser=JSON.parse(localStorage.getItem("currentUser"));
+/* ПРОВЕРКА ДОСТУПА */
+
+let currentUser =
+JSON.parse(
+localStorage.getItem(
+"currentUser"
+)
+);
 
 if(
 !currentUser ||
 (
 currentUser.role !== "admin" &&
 currentUser.role !== "owner"
+)
 ){
+
+alert("Доступ запрещён");
+
+window.location.href =
+"login.html";
+
 }
 
-let users=JSON.parse(localStorage.getItem("users"))||[];
+/* USERS */
 
-let usersDiv=document.getElementById("users");
+let users =
+JSON.parse(
+localStorage.getItem(
+"users"
+)
+) || [];
+
+let usersDiv =
+document.getElementById(
+"users"
+);
 
 function renderUsers(){
 
-usersDiv.innerHTML="";
+usersDiv.innerHTML = "";
 
 users.forEach((user,index)=>{
 
-usersDiv.innerHTML+=`
+let roleClass = "";
+
+if(user.role==="owner"){
+roleClass="owner";
+}
+
+else if(user.role==="admin"){
+roleClass="admin";
+}
+
+else{
+roleClass="user-role";
+}
+
+usersDiv.innerHTML += `
 
 <div class="user">
 
-Роль: ${
-user.role === "owner"
+<div>
+
+<b>${user.name}</b><br>
+
+Логин: ${user.login}<br>
+
+<div class="role ${roleClass}">
+
+${
+user.role==="owner"
 ? "Владелец"
-: user.role === "admin"
+
+: user.role==="admin"
 ? "Администратор"
+
 : "Пользователь"
 }
 
+</div>
+
+</div>
+
+<div>
+
 <button onclick="makeAdmin(${index})">
+
 Сделать админом
+
 </button>
+
+</div>
 
 </div>
 
@@ -189,17 +394,234 @@ user.role === "owner"
 
 function makeAdmin(index){
 
-users[index].role="admin";
+if(users[index].role==="owner"){
 
-localStorage.setItem("users",JSON.stringify(users));
+alert(
+"Нельзя изменить владельца"
+);
 
-renderUsers();
-
-alert("Пользователь теперь администратор");
+return;
 
 }
 
+users[index].role="admin";
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
 renderUsers();
+
+alert(
+"Пользователь назначен админом"
+);
+
+}
+
+/* APPLICATIONS */
+
+function loadApplications(){
+
+let applications =
+JSON.parse(
+localStorage.getItem(
+"partyApplications"
+)
+) || [];
+
+let container =
+document.getElementById(
+"applications"
+);
+
+container.innerHTML = "";
+
+if(applications.length===0){
+
+container.innerHTML =
+"<p>Заявок пока нет.</p>";
+
+return;
+
+}
+
+applications.reverse().forEach((app,index)=>{
+
+container.innerHTML += `
+
+<div class="application">
+
+<h3>Заявка #${index+1}</h3>
+
+<p>
+<b>ФИО:</b>
+${app.fullname}
+</p>
+
+<p>
+<b>Возраст IC:</b>
+${app.ageic}
+</p>
+
+<p>
+<b>Возраст OOC:</b>
+${app.ageooc}
+</p>
+
+<p>
+<b>Discord:</b>
+${app.discord}
+</p>
+
+<p>
+<b>Почему партия:</b>
+${app.reason}
+</p>
+
+<p>
+<b>Поддержка:</b>
+${app.support}
+</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* NEWS */
+
+function publishNews(){
+
+let title =
+document.getElementById(
+"newsTitle"
+).value;
+
+let text =
+document.getElementById(
+"newsText"
+).value;
+
+let image =
+document.getElementById(
+"newsImage"
+).value;
+
+if(title===""||text===""){
+
+alert("Заполните поля");
+
+return;
+
+}
+
+let news =
+JSON.parse(
+localStorage.getItem(
+"partyNews"
+)
+) || [];
+
+news.push({
+
+title:title,
+text:text,
+image:image,
+date:new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+"partyNews",
+JSON.stringify(news)
+);
+
+alert("Новость опубликована");
+
+loadNews();
+
+}
+
+/* LOAD NEWS */
+
+function loadNews(){
+
+let news =
+JSON.parse(
+localStorage.getItem(
+"partyNews"
+)
+) || [];
+
+let container =
+document.getElementById(
+"newsList"
+);
+
+container.innerHTML = "";
+
+news.reverse().forEach((item,index)=>{
+
+container.innerHTML += `
+
+<div class="news-preview">
+
+<h3>${item.title}</h3>
+
+<p>${item.text}</p>
+
+<img src="${item.image}">
+
+<p>
+<b>Дата:</b>
+${item.date}
+</p>
+
+<button
+class="delete-btn"
+onclick="deleteNews(${news.length-1-index})">
+
+Удалить
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function deleteNews(index){
+
+let news =
+JSON.parse(
+localStorage.getItem(
+"partyNews"
+)
+) || [];
+
+news.splice(index,1);
+
+localStorage.setItem(
+"partyNews",
+JSON.stringify(news)
+);
+
+loadNews();
+
+}
+
+/* START */
+
+renderUsers();
+loadApplications();
+loadNews();
 
 </script>
 
