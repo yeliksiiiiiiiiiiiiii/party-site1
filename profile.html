@@ -1,1 +1,459 @@
+<!-- profile.html -->
 
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Профиль | Либеральная Партия России</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#06153a;
+color:white;
+}
+
+/* HEADER */
+
+header{
+width:100%;
+height:90px;
+background:#0a1f57;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 60px;
+position:fixed;
+top:0;
+left:0;
+z-index:999;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:60px;
+height:60px;
+object-fit:contain;
+background:white;
+padding:5px;
+border-radius:10px;
+}
+
+.logo h1{
+font-size:34px;
+line-height:1.1;
+}
+
+nav{
+display:flex;
+gap:25px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:19px;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#4da3ff;
+}
+
+/* PROFILE */
+
+.profile-container{
+max-width:1200px;
+margin:150px auto 50px;
+display:grid;
+grid-template-columns:350px 1fr;
+gap:40px;
+padding:20px;
+}
+
+.left-box{
+background:#0d235f;
+padding:35px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.avatar{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #2f6dff;
+margin-bottom:25px;
+}
+
+.upload-btn{
+display:block;
+margin-top:15px;
+background:#2f6dff;
+padding:14px;
+border-radius:14px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.upload-btn:hover{
+background:#4b82ff;
+}
+
+.left-box h2{
+font-size:32px;
+margin-top:25px;
+}
+
+.role{
+margin-top:10px;
+font-size:20px;
+color:#9ecbff;
+}
+
+.right-box{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.card{
+background:#0d235f;
+padding:30px;
+border-radius:25px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:20px;
+color:#4da3ff;
+}
+
+.info{
+display:flex;
+justify-content:space-between;
+padding:15px 0;
+border-bottom:1px solid rgba(255,255,255,0.1);
+font-size:19px;
+}
+
+.info:last-child{
+border:none;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.stat{
+background:#10296b;
+padding:30px;
+border-radius:20px;
+text-align:center;
+}
+
+.stat h1{
+font-size:42px;
+margin-bottom:10px;
+color:#4da3ff;
+}
+
+.stat p{
+font-size:18px;
+}
+
+button{
+padding:16px;
+border:none;
+border-radius:15px;
+background:#2f6dff;
+color:white;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+background:#4b82ff;
+transform:translateY(-3px);
+}
+
+input{
+display:none;
+}
+
+@media(max-width:950px){
+
+.profile-container{
+grid-template-columns:1fr;
+}
+
+nav{
+display:none;
+}
+
+.logo h1{
+font-size:22px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<img src="logo.png">
+<h1>Либеральная<br>Партия России</h1>
+</div>
+
+<nav>
+<a href="index.html">Главная</a>
+<a href="news.html">Новости</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="program.html">Программа</a>
+<a href="ustav.html">Устав</a>
+<a href="gimn.html">Гимн</a>
+<a href="admin.html">Админ</a>
+</nav>
+
+</header>
+
+<div class="profile-container">
+
+<div class="left-box">
+
+<img
+src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+class="avatar"
+id="avatar"
+>
+
+<label class="upload-btn">
+Изменить аватар
+<input type="file" id="avatarInput">
+</label>
+
+<h2 id="username">
+Загрузка...
+</h2>
+
+<div class="role">
+Участник партии
+</div>
+
+</div>
+
+<div class="right-box">
+
+<div class="card">
+
+<h3>
+Информация профиля
+</h3>
+
+<div class="info">
+<span>Email:</span>
+<span id="email">...</span>
+</div>
+
+<div class="info">
+<span>Дата регистрации:</span>
+<span id="created">...</span>
+</div>
+
+<div class="info">
+<span>ID аккаунта:</span>
+<span id="uid">...</span>
+</div>
+
+<div class="info">
+<span>Статус:</span>
+<span>Активный</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>
+Статистика
+</h3>
+
+<div class="stats">
+
+<div class="stat">
+<h1 id="appsCount">0</h1>
+<p>Заявлений</p>
+</div>
+
+<div class="stat">
+<h1 id="newsCount">0</h1>
+<p>Новостей</p>
+</div>
+
+<div class="stat">
+<h1>100%</h1>
+<p>Активность</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>
+Действия
+</h3>
+
+<button id="logoutBtn">
+Выйти из аккаунта
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import {
+auth,
+db,
+collection,
+getDocs
+}
+from './firebase.js';
+
+import {
+onAuthStateChanged,
+signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+onAuthStateChanged(auth, async(user)=>{
+
+if(!user){
+
+window.location.href="login.html";
+return;
+
+}
+
+document.getElementById("username").innerText =
+user.email.split("@")[0];
+
+document.getElementById("email").innerText =
+user.email;
+
+document.getElementById("uid").innerText =
+user.uid;
+
+const date =
+new Date(user.metadata.creationTime);
+
+document.getElementById("created").innerText =
+date.toLocaleDateString("ru-RU");
+
+/* APPLICATIONS */
+
+const apps =
+await getDocs(collection(db,"applications"));
+
+document.getElementById("appsCount").innerText =
+apps.size;
+
+/* NEWS */
+
+const news =
+await getDocs(collection(db,"news"));
+
+document.getElementById("newsCount").innerText =
+news.size;
+
+/* AVATAR */
+
+const savedAvatar =
+localStorage.getItem("avatar");
+
+if(savedAvatar){
+
+document.getElementById("avatar").src =
+savedAvatar;
+
+}
+
+});
+
+/* CHANGE AVATAR */
+
+document.getElementById("avatarInput")
+.addEventListener("change",(e)=>{
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(event){
+
+document.getElementById("avatar").src =
+event.target.result;
+
+localStorage.setItem(
+"avatar",
+event.target.result
+);
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+/* LOGOUT */
+
+document.getElementById("logoutBtn")
+.addEventListener("click",async()=>{
+
+await signOut(auth);
+
+window.location.href="login.html";
+
+});
+
+</script>
+
+</body>
+</html>
