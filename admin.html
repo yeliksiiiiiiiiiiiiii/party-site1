@@ -1,496 +1,70 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
 
-<title>Админ панель</title>
+let applications=
+JSON.parse(localStorage.getItem("partyApplications")) || [];
 
-<style>
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#eef2ff;
-}
-
-/* HEADER */
-
-header{
-background:#0039a6;
-color:white;
-text-align:center;
-padding:35px;
-}
-
-header h1{
-margin:0;
-font-size:42px;
-}
-
-/* CONTAINER */
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
-}
-
-/* LOGIN */
-
-.login-box,
-.admin-panel{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.admin-panel{
-display:none;
-margin-top:20px;
-}
-
-/* INPUTS */
-
-input,
-textarea{
-width:100%;
-padding:15px;
-margin-bottom:15px;
-border-radius:12px;
-border:2px solid #ccd8ff;
-box-sizing:border-box;
-font-size:16px;
-}
-
-textarea{
-min-height:150px;
-resize:vertical;
-}
-
-/* BUTTONS */
-
-button{
-width:100%;
-padding:15px;
-background:#0039a6;
-color:white;
-border:none;
-border-radius:12px;
-font-size:18px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#d52b1e;
-}
-
-/* BLOCKS */
-
-.section{
-margin-top:50px;
-}
-
-.section-title{
-font-size:32px;
-color:#0039a6;
-margin-bottom:25px;
-}
-
-/* APPLICATIONS */
-
-.application{
-background:#eef3ff;
-padding:20px;
-border-radius:15px;
-margin-bottom:20px;
-box-shadow:0 5px 10px rgba(0,0,0,0.05);
-}
-
-.application h3{
-color:#0039a6;
-margin-top:0;
-}
-
-/* NEWS */
-
-.news-preview{
-background:#eef3ff;
-padding:20px;
-border-radius:15px;
-margin-bottom:20px;
-}
-
-.news-preview img{
-width:100%;
-border-radius:15px;
-margin-top:15px;
-max-height:400px;
-object-fit:cover;
-}
-
-.delete-btn{
-background:#d52b1e;
-margin-top:15px;
-}
-
-.delete-btn:hover{
-background:#a50000;
-}
-
-/* NAV */
-
-nav{
-background:#00246b;
-padding:15px;
-text-align:center;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-weight:bold;
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-
-<h1>Админ панель партии</h1>
-
-</header>
-
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-
-</nav>
-
-<div class="container">
-
-<!-- LOGIN -->
-
-<div class="login-box" id="loginBox">
-
-<h2>Вход администратора</h2>
-
-<input type="text"
-id="login"
-placeholder="Логин">
-
-<input type="password"
-id="password"
-placeholder="Пароль">
-
-<button onclick="loginAdmin()">
-Войти
-</button>
-
-</div>
-
-<!-- ADMIN PANEL -->
-
-<div class="admin-panel" id="adminPanel">
-
-<!-- APPLICATIONS -->
-
-<div class="section">
-
-<h2 class="section-title">
-Проверка заявок
-</h2>
-
-<div id="applications"></div>
-
-</div>
-
-<!-- NEWS -->
-
-<div class="section">
-
-<h2 class="section-title">
-Опубликовать новость
-</h2>
-
-<input type="text"
-id="newsTitle"
-placeholder="Заголовок новости">
-
-<textarea
-id="newsText"
-placeholder="Текст новости"></textarea>
-
-<input type="text"
-id="newsImage"
-placeholder="Ссылка на фото">
-
-<button onclick="publishNews()">
-Опубликовать новость
-</button>
-
-</div>
-
-<!-- NEWS LIST -->
-
-<div class="section">
-
-<h2 class="section-title">
-Опубликованные новости
-</h2>
-
-<div id="newsList"></div>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-/* LOGIN */
-
-function loginAdmin(){
-
-let login =
-document.getElementById("login").value;
-
-let password =
-document.getElementById("password").value;
-
-if(
-login === "Admin" &&
-password === "1234567890mtrp9"
-){
-
-document.getElementById(
-"loginBox"
-).style.display = "none";
-
-document.getElementById(
-"adminPanel"
-).style.display = "block";
-
-loadApplications();
-loadNews();
-
-}else{
-
-alert("Неверный логин или пароль");
-
-}
-
-}
-
-/* LOAD APPLICATIONS */
-
-function loadApplications(){
-
-let applications =
-JSON.parse(
-localStorage.getItem(
-"partyApplications"
-)
-) || [];
-
-let container =
-document.getElementById(
-"applications"
-);
-
-container.innerHTML = "";
-
-if(applications.length === 0){
-
-container.innerHTML =
-"<p>Заявок пока нет.</p>";
-
-return;
-
-}
+let container=document.getElementById("applications");
+container.innerHTML="";
 
 applications.reverse().forEach((app,index)=>{
 
 container.innerHTML += `
-
 <div class="application">
-
-<h3>Заявка #${index + 1}</h3>
-
-<p>
-<strong>ФИО:</strong>
-${app.fullname}
-</p>
-
-<p>
-<strong>Возраст IC:</strong>
-${app.ageic}
-</p>
-
-<p>
-<strong>Возраст OOC:</strong>
-${app.ageooc}
-</p>
-
-<p>
-<strong>Discord:</strong>
-${app.discord}
-</p>
-
-<p>
-<strong>Почему партия:</strong>
-${app.reason}
-</p>
-
-<p>
-<strong>Поддержка партии:</strong>
-${app.support}
-</p>
-
+<h3>Заявка #${index+1}</h3>
+<p><b>ФИО:</b> ${app.fullname}</p>
+<p><b>Возраст IC:</b> ${app.ageic}</p>
+<p><b>Возраст OOC:</b> ${app.ageooc}</p>
+<p><b>Discord:</b> ${app.discord}</p>
+<p><b>Почему партия:</b> ${app.reason}</p>
+<p><b>Поддержка:</b> ${app.support}</p>
 </div>
-
 `;
 
 });
 
 }
 
-/* PUBLISH NEWS */
-
 function publishNews(){
 
-let title =
-document.getElementById("newsTitle").value;
+let title=document.getElementById("newsTitle").value;
+let text=document.getElementById("newsText").value;
+let image=document.getElementById("newsImage").value;
 
-let text =
-document.getElementById("newsText").value;
-
-let image =
-document.getElementById("newsImage").value;
-
-if(title === "" || text === ""){
-
-alert("Заполните поля");
-
-return;
-
-}
-
-let news =
-JSON.parse(
-localStorage.getItem(
-"partyNews"
-)
-) || [];
+let news=
+JSON.parse(localStorage.getItem("partyNews")) || [];
 
 news.push({
-
-title:title,
-text:text,
-image:image,
-date:new Date().toLocaleString()
-
+ title:title,
+ text:text,
+ image:image,
+ date:new Date().toLocaleString()
 });
 
-localStorage.setItem(
-"partyNews",
-JSON.stringify(news)
-);
+localStorage.setItem("partyNews",JSON.stringify(news));
 
 alert("Новость опубликована");
 
-document.getElementById("newsTitle").value = "";
-document.getElementById("newsText").value = "";
-document.getElementById("newsImage").value = "";
-
 loadNews();
 
 }
-
-/* DELETE NEWS */
-
-function deleteNews(index){
-
-let news =
-JSON.parse(
-localStorage.getItem(
-"partyNews"
-)
-) || [];
-
-news.splice(index,1);
-
-localStorage.setItem(
-"partyNews",
-JSON.stringify(news)
-);
-
-loadNews();
-
-}
-
-/* LOAD NEWS */
 
 function loadNews(){
 
-let news =
-JSON.parse(
-localStorage.getItem(
-"partyNews"
-)
-) || [];
+let news=
+JSON.parse(localStorage.getItem("partyNews")) || [];
 
-let container =
-document.getElementById(
-"newsList"
-);
-
-container.innerHTML = "";
-
-if(news.length === 0){
-
-container.innerHTML =
-"<p>Новостей пока нет.</p>";
-
-return;
-
-}
+let container=document.getElementById("newsList");
+container.innerHTML="";
 
 news.reverse().forEach((item,index)=>{
 
 container.innerHTML += `
-
 <div class="news-preview">
-
 <h3>${item.title}</h3>
-
 <p>${item.text}</p>
-
 <img src="${item.image}">
-
-<p>
-<strong>Дата:</strong>
-${item.date}
-</p>
-
-<button
-class="delete-btn"
-onclick="deleteNews(${news.length - 1 - index})">
-Удалить новость
-</button>
-
+<p>${item.date}</p>
 </div>
-
 `;
 
 });
