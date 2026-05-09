@@ -1,10 +1,20 @@
+<!-- НОВЫЙ USTAV.HTML -->
+
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Устав партии</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Устав партии
+</title>
 
 <style>
 
@@ -12,31 +22,64 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial;
 }
 
 body{
-background:#f4f7ff;
+background:#f4f7fb;
+overflow-x:hidden;
 }
 
 /* HEADER */
 
 header{
-background:#00154d;
-padding:20px 40px;
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+
+background:#0b2d82;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-position:sticky;
-top:0;
+
+padding:20px 50px;
+
 z-index:1000;
+
 }
 
+/* LOGO */
+
 .logo{
-color:white;
-font-size:30px;
-font-weight:bold;
+display:flex;
+align-items:center;
+gap:15px;
 }
+
+.logo img{
+width:65px;
+background:white;
+padding:5px;
+border-radius:12px;
+}
+
+.logo-text h1{
+color:white;
+font-size:36px;
+line-height:1;
+}
+
+.logo-text p{
+color:#dbe4ff;
+margin-top:5px;
+font-size:18px;
+}
+
+/* NAV */
 
 nav{
 display:flex;
@@ -45,206 +88,524 @@ flex-wrap:wrap;
 }
 
 nav a{
+
 color:white;
 text-decoration:none;
-padding:10px 18px;
+
+padding:12px 18px;
+
 border-radius:12px;
+
+font-weight:bold;
+
 transition:0.3s;
+
 }
 
 nav a:hover{
-background:#d52b1e;
+
+background:rgba(255,255,255,0.15);
+
 }
 
 /* HERO */
 
 .hero{
-height:350px;
-background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-url("https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=1974&auto=format&fit=crop");
+
+height:55vh;
+
+background:
+linear-gradient(
+rgba(11,45,130,0.75),
+rgba(11,45,130,0.75)
+),
+
+url("banner.jpg");
+
 background-size:cover;
 background-position:center;
+
 display:flex;
-justify-content:center;
 align-items:center;
+
+padding:140px 80px;
+
 color:white;
-text-align:center;
+
 }
 
-.hero h1{
+.hero h2{
+
+font-size:90px;
+font-weight:900;
+
+}
+
+/* PAGE */
+
+.page{
+
+width:92%;
+max-width:1500px;
+
+margin:80px auto;
+
+}
+
+/* TITLE */
+
+.page-title{
+
 font-size:70px;
+
+color:#0b2d82;
+
+margin-bottom:30px;
+
+font-weight:900;
+
 }
 
-/* CONTENT */
+.page-text{
 
-.container{
-max-width:1200px;
-margin:50px auto;
-padding:40px;
+font-size:24px;
+
+line-height:1.8;
+
+color:#444;
+
+margin-bottom:70px;
+
+}
+
+/* SECTIONS */
+
+.ustav-grid{
+
+display:flex;
+flex-direction:column;
+gap:35px;
+
+}
+
+/* CARD */
+
+.ustav-card{
+
 background:white;
-border-radius:30px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+padding:45px;
+
+border-radius:35px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+transition:0.3s;
+
 }
 
-.section{
-margin-bottom:50px;
+.ustav-card:hover{
+
+transform:translateY(-8px);
+
 }
 
-.section h2{
-color:#0039a6;
-margin-bottom:20px;
-font-size:35px;
+.ustav-card h3{
+
+font-size:42px;
+
+margin-bottom:25px;
+
+color:#0b2d82;
+
 }
 
-.section p{
-font-size:18px;
-line-height:1.9;
-color:#333;
+.ustav-card p{
+
+font-size:21px;
+
+line-height:2;
+
+color:#444;
+
 }
 
 /* FOOTER */
 
 footer{
-background:#00154d;
-padding:40px;
+
+background:#0b2d82;
+
+padding:50px;
+
 text-align:center;
+
 color:white;
-margin-top:70px;
+
+font-size:20px;
+
+margin-top:100px;
+
 }
 
-footer a{
-color:white;
-text-decoration:none;
+/* MOBILE */
+
+@media(max-width:1100px){
+
+header{
+flex-direction:column;
+gap:20px;
+padding:25px;
+}
+
+nav{
+justify-content:center;
+}
+
+.hero{
+padding:190px 40px 100px;
+}
+
+.hero h2{
+font-size:60px;
+}
+
+}
+
+@media(max-width:700px){
+
+.logo{
+flex-direction:column;
+text-align:center;
+}
+
+.logo-text h1{
+font-size:28px;
+}
+
+nav a{
+font-size:14px;
+padding:10px 14px;
+}
+
+.hero h2{
+font-size:42px;
+}
+
+.page-title{
+font-size:42px;
+}
+
+.page-text{
+font-size:18px;
+}
+
+.ustav-card{
+padding:30px;
+}
+
+.ustav-card h3{
+font-size:28px;
+}
+
+.ustav-card p{
+font-size:17px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
 <div class="logo">
+
+<img src="logo.png">
+
+<div class="logo-text">
+
+<h1>
+
+Либеральная
+Партия России
+
+</h1>
+
+<p>
+
 Россия Для Всех Вместе
+
+</p>
+
+</div>
+
 </div>
 
 <nav>
 
-<a href="index.html">Главная</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="citizens.html">Обращения</a>
-<a href="news.html">Новости</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
-<a href="program.html">Программа</a>
-<a href="profile.html">Профиль</a>
-<a href="chat.html">Общий чат</a>
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="profile.html">
+Профиль
+</a>
+
+<a href="admin.html">
+Админ
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="program.html">
+Программа
+</a>
 
 </nav>
 
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
 
-<h1>
+<h2>
+
 Устав партии
-</h1>
+
+</h2>
 
 </section>
 
-<div class="container">
+<!-- PAGE -->
 
-<div class="section">
+<div class="page">
 
-<h2>
+<h1 class="page-title">
+
+Официальный устав
+
+</h1>
+
+<p class="page-text">
+
+Устав Либеральной Партии России
+определяет структуру,
+правила,
+цели,
+обязанности членов
+и порядок управления организацией.
+
+</p>
+
+<!-- USTAV -->
+
+<div class="ustav-grid">
+
+<!-- CARD -->
+
+<div class="ustav-card">
+
+<h3>
+
 1. Основные положения
-</h2>
+
+</h3>
 
 <p>
-Политическая партия является добровольным объединением граждан,
-созданным для участия в политической жизни общества,
-формирования органов власти и защиты интересов народа.
+
+Партия является
+добровольным политическим объединением граждан.
+
+<br><br>
+
+Деятельность партии
+основывается
+на принципах демократии,
+законности,
+равенства
+и свободы слова.
+
 </p>
 
 </div>
 
-<div class="section">
+<!-- CARD -->
 
-<h2>
+<div class="ustav-card">
+
+<h3>
+
 2. Цели и задачи
-</h2>
+
+</h3>
 
 <p>
-Главной целью партии является развитие государства,
-защита прав граждан,
-укрепление демократии,
-создание справедливого общества
-и развитие политической культуры.
+
+• Развитие государства
+
+<br><br>
+
+• Защита прав граждан
+
+<br><br>
+
+• Развитие политической культуры
+
+<br><br>
+
+• Участие в выборах
+
+<br><br>
+
+• Работа с обществом
+
 </p>
 
 </div>
 
-<div class="section">
+<!-- CARD -->
 
-<h2>
+<div class="ustav-card">
+
+<h3>
+
 3. Членство в партии
-</h2>
+
+</h3>
 
 <p>
-Членом партии может стать любой гражданин,
-разделяющий идеи и ценности партии,
-достигший совершеннолетия
-и подавший официальное заявление.
+
+Членом партии
+может стать гражданин,
+разделяющий цели партии
+и соблюдающий устав организации.
+
+<br><br>
+
+Прием осуществляется
+на основании заявления.
+
 </p>
 
 </div>
 
-<div class="section">
+<!-- CARD -->
 
-<h2>
+<div class="ustav-card">
+
+<h3>
+
 4. Органы управления
-</h2>
+
+</h3>
 
 <p>
-Высшим органом партии является Съезд Партии.
-Также в структуру входят:
-Руководство,
-Центральный совет,
-Молодёжная палата,
-СМИ и региональные отделения.
+
+Высшим органом партии
+является руководство партии.
+
+<br><br>
+
+Также существуют:
+
+<br><br>
+
+• Центральный совет
+
+<br><br>
+
+• Молодежная палата
+
+<br><br>
+
+• СМИ партии
+
 </p>
 
 </div>
 
-<div class="section">
+<!-- CARD -->
 
-<h2>
+<div class="ustav-card">
+
+<h3>
+
 5. Финансовая деятельность
-</h2>
+
+</h3>
 
 <p>
-Финансирование партии осуществляется
-на основе прозрачности,
+
+Финансирование партии
+осуществляется
+на принципах прозрачности,
 законности
-и открытой отчётности перед членами партии.
+и открытой отчетности.
+
+</p>
+
+</div>
+
+<!-- CARD -->
+
+<div class="ustav-card">
+
+<h3>
+
+6. Заключительные положения
+
+</h3>
+
+<p>
+
+Устав партии
+может изменяться
+только по решению руководства
+и официального собрания партии.
+
 </p>
 
 </div>
 
 </div>
+
+</div>
+
+<!-- FOOTER -->
 
 <footer>
 
-<h2>
+© 2025
+Либеральная Партия России
+
+<br><br>
+
 Россия Для Всех Вместе
-</h2>
-
-<br>
-
-<a href="https://discord.gg/KHjFC6sDz2">
-Discord партии
-</a>
 
 </footer>
 
