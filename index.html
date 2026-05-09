@@ -1,171 +1,69 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Либеральная Партия России</title>
-
-<style>
-
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#eef2ff;
+opacity:0;
+transform:translateY(40px);
 }
 
-header{
-    background:linear-gradient(135deg,#0039a6,#00246b);
-    color:white;
-    text-align:center;
-    padding:70px 20px;
+to{
+opacity:1;
+transform:translateY(0);
 }
-
-header h1{
-    font-size:56px;
-}
-
-header p{
-    font-size:24px;
-}
-
-nav{
-    background:#00246b;
-    padding:18px;
-    text-align:center;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:50px 20px;
-}
-
-.card{
-    background:white;
-    border-radius:20px;
-    padding:35px;
-    margin-bottom:30px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-.discord{
-    background:#5865F2;
-    color:white;
-    text-align:center;
-    padding:35px;
-    margin-top:50px;
-}
-
-.discord a{
-    color:white;
-    text-decoration:none;
-    font-size:22px;
-}
-
-footer{
-    background:#0039a6;
-    color:white;
-    text-align:center;
-    padding:20px;
 }
 
 </style>
 </head>
-
 <body>
 
-<header>
-
-<h1>Либеральная Партия России</h1>
-
-<p>Для Всех Вместе</p>
-
-</header>
-
-<nav>
-
+<div class="sidebar">
+<div class="open-text">MENU</div>
+<h2>Партия</h2>
 <a href="index.html">Главная</a>
 <a href="news.html">Новости</a>
 <a href="leaders.html">Руководство</a>
 <a href="apply.html">Заявление</a>
 <a href="admin.html">Админ панель</a>
+</div>
 
-</nav>
+<header>
+<div class="hero">
+<h1>Либеральная Партия России</h1>
+<p>Для Всех Вместе</p>
+<a href="apply.html">Вступить в партию</a>
+</div>
+</header>
 
-<div class="container">
+<section class="cards">
 
 <div class="card">
-
-<h2>Добро пожаловать</h2>
-
+<h2>Наша цель</h2>
 <p>
-Официальный сайт Либеральной Партии России.
+Объединение граждан России ради развития,
+свободы и сильного будущего.
 </p>
-
 </div>
 
 <div class="card">
-
-<h2>Последние новости</h2>
-
-<div id="latestNews"></div>
-
+<h2>Новости партии</h2>
+<p>
+Следите за последними событиями
+и решениями партии.
+</p>
 </div>
 
+<div class="card">
+<h2>Личный кабинет</h2>
+<p>
+Следите за статусом ваших заявлений
+и новостями партии.
+</p>
 </div>
 
-<div class="discord">
-
-<h2>Наш Discord сервер</h2>
-
-<a href="https://discord.gg/KHjFC6sDz2"
-target="_blank">
-discord.gg/KHjFC6sDz2
-</a>
-
-</div>
+</section>
 
 <footer>
-
-© 2025 Либеральная Партия России
-
+<h3>Discord партии</h3>
+<p>discord.gg/KHjFC6sDz2</p>
+<p>© 2025 Либеральная Партия России</p>
 </footer>
-
-<script>
-
-let news =
-JSON.parse(localStorage.getItem("partyNews")) || [];
-
-let latest =
-document.getElementById("latestNews");
-
-if(news.length === 0){
-
-latest.innerHTML =
-"<p>Новостей пока нет.</p>";
-
-}else{
-
-let item = news[news.length - 1];
-
-latest.innerHTML = `
-
-<h3>${item.title}</h3>
-
-<p>${item.text}</p>
-
-`;
-
-}
-
-</script>
 
 </body>
 </html>
