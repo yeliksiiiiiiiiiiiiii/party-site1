@@ -4,10 +4,13 @@
 <html lang="ru">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ADMIN PANEL</title>
+<title>
+Ultra Admin Panel
+</title>
 
 <style>
 
@@ -19,13 +22,9 @@ font-family:Arial;
 }
 
 body{
-background:
-linear-gradient(rgba(0,20,70,0.85),rgba(0,20,70,0.85)),
-url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-min-height:100vh;
+background:#06153a;
 color:white;
+overflow-x:hidden;
 }
 
 /* LOGIN */
@@ -36,37 +35,40 @@ height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-padding:20px;
+background:
+linear-gradient(rgba(0,20,70,0.92),rgba(0,20,70,0.95)),
+url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070");
+background-size:cover;
+background-position:center;
 }
 
 .login-box{
 width:600px;
-background:#0b1f63;
+background:#0d235f;
 padding:50px;
 border-radius:35px;
-box-shadow:0 0 50px rgba(0,0,0,0.5);
 text-align:center;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
 }
 
 .login-logo{
-width:130px;
-height:130px;
+width:120px;
+height:120px;
 background:white;
-padding:15px;
+padding:10px;
 border-radius:25px;
+margin-bottom:25px;
 object-fit:contain;
-margin-bottom:30px;
 }
 
 .login-box h1{
-font-size:70px;
-font-weight:900;
-margin-bottom:15px;
+font-size:65px;
+margin-bottom:10px;
 }
 
 .login-box p{
-font-size:24px;
-color:#8ebcff;
+font-size:22px;
+color:#9ecbff;
 margin-bottom:35px;
 }
 
@@ -76,8 +78,8 @@ padding:22px;
 border:none;
 border-radius:18px;
 background:#17348d;
-font-size:22px;
 color:white;
+font-size:22px;
 margin-bottom:25px;
 outline:none;
 }
@@ -96,8 +98,8 @@ transition:0.3s;
 }
 
 .login-box button:hover{
-transform:translateY(-4px);
 background:#6a92ff;
+transform:translateY(-3px);
 }
 
 /* PANEL */
@@ -108,25 +110,24 @@ padding:40px;
 }
 
 .topbar{
-background:#0b1f63;
-padding:30px;
-border-radius:25px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:40px;
-box-shadow:0 0 30px rgba(0,0,0,0.3);
+background:#0d235f;
+padding:30px;
+border-radius:25px;
+margin-bottom:35px;
 }
 
 .topbar h1{
-font-size:42px;
+font-size:45px;
 }
 
-.logout{
-background:red;
+.logout-btn{
 padding:15px 30px;
 border:none;
-border-radius:14px;
+border-radius:15px;
+background:#dc2626;
 color:white;
 font-size:18px;
 font-weight:bold;
@@ -139,11 +140,13 @@ grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
 gap:30px;
 }
 
+/* CARD */
+
 .card{
-background:#0b1f63;
+background:#0d235f;
 padding:30px;
-border-radius:25px;
-box-shadow:0 0 30px rgba(0,0,0,0.3);
+border-radius:30px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
 }
 
 .card h2{
@@ -152,51 +155,138 @@ margin-bottom:25px;
 color:#77a7ff;
 }
 
+/* USERS */
+
+.user{
+background:#17348d;
+padding:18px;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+.user h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.user p{
+margin-top:5px;
+font-size:17px;
+color:#dbeafe;
+}
+
+.role-select{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+margin-top:15px;
+background:#0d235f;
+color:white;
+font-size:16px;
+}
+
+.role-btn{
+margin-top:15px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+background:#2563eb;
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* APPLICATIONS */
+
+.application{
+background:#17348d;
+padding:20px;
+border-radius:18px;
+margin-bottom:15px;
+}
+
+.application h3{
+font-size:24px;
+margin-bottom:12px;
+}
+
+.application p{
+margin-top:8px;
+font-size:16px;
+}
+
+.app-buttons{
+display:flex;
+gap:12px;
+margin-top:20px;
+}
+
+.accept-btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:14px;
+background:#16a34a;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.reject-btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:14px;
+background:#dc2626;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* NEWS */
+
 .card input,
 .card textarea{
 width:100%;
 padding:18px;
 border:none;
-border-radius:14px;
-margin-bottom:18px;
-font-size:18px;
+border-radius:15px;
 background:#17348d;
 color:white;
+font-size:18px;
+margin-bottom:18px;
 outline:none;
 }
 
 .card textarea{
-height:200px;
+height:180px;
 resize:none;
 }
 
-.card button{
+.publish-btn{
 width:100%;
 padding:18px;
 border:none;
-border-radius:14px;
-background:#4c7cff;
+border-radius:15px;
+background:#2563eb;
+color:white;
 font-size:20px;
 font-weight:bold;
-color:white;
 cursor:pointer;
 }
 
-.card button:hover{
-background:#6a92ff;
-}
-
-.news-list{
-margin-top:20px;
-display:flex;
-flex-direction:column;
-gap:15px;
+.publish-btn:hover{
+background:#3b82f6;
 }
 
 .news-item{
 background:#17348d;
 padding:18px;
-border-radius:16px;
+border-radius:18px;
+margin-top:20px;
 }
 
 .news-item img{
@@ -205,33 +295,25 @@ border-radius:16px;
 margin-top:12px;
 }
 
-.users{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.user{
-background:#17348d;
-padding:18px;
-border-radius:16px;
-font-size:18px;
-}
-
-@media(max-width:800px){
-
-.login-box h1{
-font-size:45px;
-}
+@media(max-width:900px){
 
 .topbar{
 flex-direction:column;
 gap:20px;
 }
 
+.login-box{
+width:95%;
+}
+
+.login-box h1{
+font-size:42px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -258,7 +340,7 @@ ADMIN PANEL
 <input
 type="password"
 id="password"
-placeholder="Введите пароль"
+placeholder="Пароль"
 >
 
 <button id="loginBtn">
@@ -276,10 +358,13 @@ placeholder="Введите пароль"
 <div class="topbar">
 
 <h1>
-Панель управления
+Ultra Admin Panel
 </h1>
 
-<button class="logout" id="logoutBtn">
+<button
+class="logout-btn"
+id="logoutBtn"
+>
 Выйти
 </button>
 
@@ -295,13 +380,19 @@ placeholder="Введите пароль"
 Пользователи
 </h2>
 
-<div class="users" id="usersList">
-
-<div class="user">
-Загрузка...
-</div>
+<div id="usersList"></div>
 
 </div>
+
+<!-- APPLICATIONS -->
+
+<div class="card">
+
+<h2>
+Проверка заявок
+</h2>
+
+<div id="applicationsList"></div>
 
 </div>
 
@@ -316,7 +407,7 @@ placeholder="Введите пароль"
 <input
 type="text"
 id="newsTitle"
-placeholder="Заголовок"
+placeholder="Название новости"
 >
 
 <input
@@ -330,23 +421,14 @@ id="newsText"
 placeholder="Текст новости"
 ></textarea>
 
-<button id="publishBtn">
+<button
+class="publish-btn"
+id="publishBtn"
+>
 Опубликовать
 </button>
 
-</div>
-
-<!-- NEWS LIST -->
-
-<div class="card">
-
-<h2>
-Последние новости
-</h2>
-
-<div class="news-list" id="newsList">
-
-</div>
+<div id="newsList"></div>
 
 </div>
 
@@ -360,7 +442,10 @@ import {
 db,
 collection,
 addDoc,
-getDocs
+getDocs,
+deleteDoc,
+doc,
+updateDoc
 }
 from './firebase.js';
 
@@ -385,6 +470,7 @@ document.querySelector(".admin-panel").style.display =
 "block";
 
 loadUsers();
+loadApplications();
 loadNews();
 
 }else{
@@ -405,7 +491,7 @@ location.reload();
 
 });
 
-/* LOAD USERS */
+/* USERS */
 
 async function loadUsers(){
 
@@ -417,19 +503,65 @@ usersList.innerHTML = "";
 const snap =
 await getDocs(collection(db,"users"));
 
-snap.forEach(doc=>{
+snap.forEach(docSnap=>{
 
-const data = doc.data();
+const data = docSnap.data();
 
 usersList.innerHTML += `
 
 <div class="user">
 
-<b>Email:</b> ${data.email}<br><br>
+<h3>
+${data.email}
+</h3>
 
-<b>Роль:</b> ${data.role}<br><br>
+<p>
+Роль:
+${data.role || "Участник"}
+</p>
 
-<b>Дата:</b> ${data.created}
+<p>
+Дата:
+${data.created || "Неизвестно"}
+</p>
+
+<select
+class="role-select"
+id="role-${docSnap.id}"
+>
+
+<option>
+Участник
+</option>
+
+<option>
+Ветеран Партии
+</option>
+
+<option>
+Председатель Партии
+</option>
+
+<option>
+Заместитель
+</option>
+
+<option>
+Модератор
+</option>
+
+<option>
+Пресс-служба
+</option>
+
+</select>
+
+<button
+class="role-btn"
+onclick="setRole('${docSnap.id}')"
+>
+Выдать роль
+</button>
 
 </div>
 
@@ -438,6 +570,131 @@ usersList.innerHTML += `
 });
 
 }
+
+/* ROLE */
+
+window.setRole =
+async(id)=>{
+
+const role =
+document.getElementById(
+`role-${id}`
+).value;
+
+await updateDoc(
+doc(db,"users",id),
+{
+role:role
+}
+);
+
+alert("Роль выдана");
+
+loadUsers();
+
+};
+
+/* APPLICATIONS */
+
+async function loadApplications(){
+
+const applicationsList =
+document.getElementById("applicationsList");
+
+applicationsList.innerHTML = "";
+
+const snap =
+await getDocs(collection(db,"applications"));
+
+snap.forEach(docSnap=>{
+
+const app = docSnap.data();
+
+applicationsList.innerHTML += `
+
+<div class="application">
+
+<h3>
+${app.fullname}
+</h3>
+
+<p>
+Discord:
+${app.discord}
+</p>
+
+<p>
+IC возраст:
+${app.icage}
+</p>
+
+<p>
+OOC возраст:
+${app.oocage}
+</p>
+
+<p>
+${app.why}
+</p>
+
+<div class="app-buttons">
+
+<button
+class="accept-btn"
+onclick="acceptApplication('${docSnap.id}')"
+>
+Одобрить
+</button>
+
+<button
+class="reject-btn"
+onclick="rejectApplication('${docSnap.id}')"
+>
+Отклонить
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* ACCEPT */
+
+window.acceptApplication =
+async(id)=>{
+
+await updateDoc(
+doc(db,"applications",id),
+{
+status:"accepted"
+}
+);
+
+alert("Заявка одобрена");
+
+loadApplications();
+
+};
+
+/* REJECT */
+
+window.rejectApplication =
+async(id)=>{
+
+await deleteDoc(
+doc(db,"applications",id)
+);
+
+alert("Заявка отклонена");
+
+loadApplications();
+
+};
 
 /* PUBLISH NEWS */
 
@@ -448,11 +705,11 @@ document
 const title =
 document.getElementById("newsTitle").value;
 
-const text =
-document.getElementById("newsText").value;
-
 const image =
 document.getElementById("newsImage").value;
+
+const text =
+document.getElementById("newsText").value;
 
 if(!title || !text){
 
@@ -461,21 +718,25 @@ return;
 
 }
 
-await addDoc(collection(db,"news"),{
+await addDoc(
+collection(db,"news"),
+{
 
 title,
-text,
 image,
+text,
 
-date:new Date().toLocaleString("ru-RU")
+date:
+new Date().toLocaleString("ru-RU")
 
-});
+}
+);
 
 alert("Новость опубликована");
 
 document.getElementById("newsTitle").value="";
-document.getElementById("newsText").value="";
 document.getElementById("newsImage").value="";
+document.getElementById("newsText").value="";
 
 loadNews();
 
@@ -493,15 +754,17 @@ newsList.innerHTML = "";
 const snap =
 await getDocs(collection(db,"news"));
 
-snap.forEach(doc=>{
+snap.forEach(docSnap=>{
 
-const data = doc.data();
+const data = docSnap.data();
 
 newsList.innerHTML += `
 
 <div class="news-item">
 
-<h3>${data.title}</h3>
+<h3>
+${data.title}
+</h3>
 
 <p style="margin-top:10px;">
 ${data.text}
@@ -515,7 +778,10 @@ data.image
 ""
 }
 
-<p style="margin-top:10px;color:#8ebcff;">
+<p style="
+margin-top:10px;
+color:#9ecbff;
+">
 ${data.date}
 </p>
 
