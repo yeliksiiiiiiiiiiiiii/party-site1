@@ -6,15 +6,9 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
-
-<title>
-Админ Панель
-</title>
+<title>Админ Панель</title>
 
 <style>
 
@@ -44,7 +38,6 @@ position:fixed;
 top:0;
 left:0;
 z-index:999;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
 .logo{
@@ -56,14 +49,13 @@ gap:15px;
 .logo img{
 width:60px;
 height:60px;
-object-fit:cover;
 background:white;
 padding:5px;
 border-radius:12px;
 }
 
 .logo h1{
-font-size:30px;
+font-size:28px;
 line-height:1.1;
 }
 
@@ -77,56 +69,51 @@ color:white;
 text-decoration:none;
 font-size:18px;
 font-weight:bold;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#4da3ff;
 }
 
 /* LOGIN */
 
+.login-page{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
 .login-box{
 width:500px;
 background:white;
-color:black;
 padding:50px;
 border-radius:30px;
-margin:180px auto;
-box-shadow:0 0 40px rgba(0,0,0,0.5);
+color:black;
 }
 
 .login-box h1{
 font-size:45px;
 margin-bottom:30px;
-text-align:center;
 }
 
 .login-box input{
 width:100%;
 padding:18px;
-font-size:20px;
-border-radius:15px;
 border:none;
-background:#dfe7f5;
+border-radius:15px;
+background:#dbeafe;
+font-size:18px;
 margin-bottom:20px;
 }
 
 .login-box button{
 width:100%;
 padding:18px;
-font-size:22px;
-background:#1b4ed8;
-color:white;
 border:none;
 border-radius:15px;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
-}
-
-.login-box button:hover{
 background:#2563eb;
+color:white;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* ADMIN */
@@ -137,6 +124,7 @@ padding-top:130px;
 width:95%;
 max-width:1600px;
 margin:auto;
+padding-bottom:50px;
 }
 
 .grid{
@@ -148,20 +136,19 @@ gap:30px;
 .card{
 background:#0d235f;
 padding:30px;
-border-radius:30px;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
+border-radius:25px;
 }
 
 .card h2{
-font-size:34px;
-margin-bottom:25px;
-color:#4da3ff;
+font-size:32px;
+margin-bottom:20px;
+color:#60a5fa;
 }
 
 .item{
 background:#10296b;
 padding:20px;
-border-radius:18px;
+border-radius:15px;
 margin-bottom:15px;
 }
 
@@ -171,19 +158,29 @@ margin-bottom:10px;
 }
 
 .item p{
-font-size:17px;
 margin-top:5px;
-color:#dbeafe;
+font-size:16px;
+}
+
+.delete-btn{
+margin-top:15px;
+padding:12px 18px;
+background:#dc2626;
+border:none;
+border-radius:12px;
+color:white;
+font-weight:bold;
+cursor:pointer;
 }
 
 textarea,
-input{
+.news-input{
 width:100%;
 padding:15px;
-margin-bottom:15px;
 border:none;
 border-radius:15px;
 font-size:17px;
+margin-bottom:15px;
 }
 
 textarea{
@@ -194,38 +191,17 @@ resize:none;
 .publish-btn{
 width:100%;
 padding:18px;
-background:#2563eb;
 border:none;
 border-radius:15px;
-font-size:20px;
+background:#2563eb;
 color:white;
+font-size:20px;
 font-weight:bold;
 cursor:pointer;
 }
 
 .publish-btn:hover{
 background:#3b82f6;
-}
-
-.news-image{
-width:100%;
-border-radius:15px;
-margin-top:15px;
-}
-
-.delete-btn{
-margin-top:15px;
-padding:12px 18px;
-background:#dc2626;
-border:none;
-border-radius:12px;
-color:white;
-cursor:pointer;
-font-weight:bold;
-}
-
-.delete-btn:hover{
-background:#ef4444;
 }
 
 @media(max-width:1200px){
@@ -236,14 +212,6 @@ grid-template-columns:1fr;
 
 nav{
 display:none;
-}
-
-.logo h1{
-font-size:22px;
-}
-
-.login-box{
-width:90%;
 }
 
 }
@@ -274,9 +242,6 @@ width:90%;
 <a href="leaders.html">Руководство</a>
 <a href="apply.html">Заявление</a>
 <a href="profile.html">Профиль</a>
-<a href="program.html">Программа</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
 
 </nav>
 
@@ -284,15 +249,17 @@ width:90%;
 
 <!-- LOGIN -->
 
-<div class="login-box" id="loginBox">
+<div class="login-page" id="loginPage">
+
+<div class="login-box">
 
 <h1>
-Вход в Админ Панель
+Вход в Админку
 </h1>
 
 <input
 type="password"
-id="adminPassword"
+id="password"
 placeholder="Введите пароль"
 >
 
@@ -302,7 +269,9 @@ placeholder="Введите пароль"
 
 </div>
 
-<!-- ADMIN -->
+</div>
+
+<!-- ADMIN PANEL -->
 
 <div class="admin-panel" id="adminPanel">
 
@@ -343,12 +312,14 @@ placeholder="Введите пароль"
 <input
 type="text"
 id="newsTitle"
+class="news-input"
 placeholder="Название новости"
 >
 
 <input
 type="text"
 id="newsImage"
+class="news-input"
 placeholder="Ссылка на фото"
 >
 
@@ -375,8 +346,8 @@ id="publishBtn"
 import {
 db,
 collection,
-addDoc,
 getDocs,
+addDoc,
 deleteDoc,
 doc
 }
@@ -384,19 +355,19 @@ from './firebase.js';
 
 /* PASSWORD */
 
-const password =
+const ADMIN_PASSWORD =
 "1234567890mtrp9";
 
 document
 .getElementById("loginBtn")
 .addEventListener("click",()=>{
 
-const input =
-document.getElementById("adminPassword").value;
+const pass =
+document.getElementById("password").value;
 
-if(input === password){
+if(pass === ADMIN_PASSWORD){
 
-document.getElementById("loginBox").style.display =
+document.getElementById("loginPage").style.display =
 "none";
 
 document.getElementById("adminPanel").style.display =
@@ -417,10 +388,10 @@ alert("Неверный пароль");
 
 async function loadUsers(){
 
-const container =
+const usersList =
 document.getElementById("usersList");
 
-container.innerHTML = "";
+usersList.innerHTML = "";
 
 const snapshot =
 await getDocs(collection(db,"users"));
@@ -430,7 +401,7 @@ snapshot.forEach((docSnap)=>{
 const user =
 docSnap.data();
 
-container.innerHTML += `
+usersList.innerHTML += `
 
 <div class="item">
 
@@ -441,8 +412,7 @@ container.innerHTML += `
 </p>
 
 <p>
-Дата регистрации:
-${user.created}
+Дата: ${user.created}
 </p>
 
 </div>
@@ -457,10 +427,10 @@ ${user.created}
 
 async function loadApplications(){
 
-const container =
+const applicationsList =
 document.getElementById("applicationsList");
 
-container.innerHTML = "";
+applicationsList.innerHTML = "";
 
 const snapshot =
 await getDocs(collection(db,"applications"));
@@ -470,33 +440,19 @@ snapshot.forEach((docSnap)=>{
 const app =
 docSnap.data();
 
-container.innerHTML += `
+applicationsList.innerHTML += `
 
 <div class="item">
 
-<h3>
-${app.fullname}
-</h3>
+<h3>${app.fullname}</h3>
 
-<p>
-Discord:
-${app.discord}
-</p>
+<p>Discord: ${app.discord}</p>
 
-<p>
-IC возраст:
-${app.icage}
-</p>
+<p>IC возраст: ${app.icage}</p>
 
-<p>
-OOC возраст:
-${app.oocage}
-</p>
+<p>OOC возраст: ${app.oocage}</p>
 
-<p>
-Почему:
-${app.why}
-</p>
+<p>${app.why}</p>
 
 <button
 class="delete-btn"
@@ -551,12 +507,10 @@ return;
 await addDoc(
 collection(db,"news"),
 {
-
 title:title,
 image:image,
 text:text,
 date:new Date().toLocaleString("ru-RU")
-
 }
 );
 
@@ -566,7 +520,7 @@ document.getElementById("newsTitle").value = "";
 document.getElementById("newsImage").value = "";
 document.getElementById("newsText").value = "";
 
-};
+});
 
 </script>
 
