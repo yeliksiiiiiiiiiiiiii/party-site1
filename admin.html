@@ -1,4 +1,4 @@
-<!-- НОВЫЙ ДИЗАЙН ADMIN.HTML -->
+<!-- admin.html -->
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -6,14 +6,10 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>
-Админ Панель
+Ultra Admin Panel
 </title>
 
 <style>
@@ -26,260 +22,319 @@ font-family:Arial;
 }
 
 body{
-background:#f4f7fb;
-color:#111;
-}
-
-/* HEADER */
-
-header{
-
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-
-background:#0b2d82;
-
+background:#06153a;
+color:white;
+overflow-x:hidden;
 display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px 50px;
-
-z-index:999;
-
-box-shadow:0 2px 20px rgba(0,0,0,0.2);
-
 }
 
-/* LOGO */
+/* SIDEBAR */
+
+.sidebar{
+width:320px;
+height:100vh;
+background:#04113b;
+position:fixed;
+left:0;
+top:0;
+padding:35px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+z-index:999;
+}
 
 .logo{
 display:flex;
 align-items:center;
 gap:15px;
+margin-bottom:50px;
 }
 
 .logo img{
-width:60px;
+width:70px;
+height:70px;
+background:white;
+padding:6px;
+border-radius:18px;
 }
 
 .logo h1{
-color:white;
-font-size:34px;
-line-height:1.1;
+font-size:28px;
+font-weight:900;
+line-height:1;
 }
 
-/* NAV */
-
-nav{
+.menu{
 display:flex;
-gap:15px;
-flex-wrap:wrap;
+flex-direction:column;
+gap:18px;
 }
 
-nav a{
+.menu button{
+width:100%;
+padding:18px;
+border:none;
+border-radius:18px;
+background:#0d235f;
 color:white;
-text-decoration:none;
+font-size:18px;
 font-weight:bold;
-padding:12px 18px;
-border-radius:12px;
+cursor:pointer;
 transition:0.3s;
+text-align:left;
 }
 
-nav a:hover{
-background:rgba(255,255,255,0.15);
+.menu button:hover{
+background:#2f6dff;
+transform:translateX(5px);
+}
+
+.logout{
+background:#ff3434 !important;
+}
+
+.logout:hover{
+background:#ff5555 !important;
 }
 
 /* MAIN */
 
-.container{
-width:92%;
-max-width:1500px;
-margin:160px auto 50px;
+.main{
+margin-left:320px;
+width:calc(100% - 320px);
+padding:40px;
 }
 
-/* GRID */
+/* TOPBAR */
 
-.grid{
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+}
+
+.topbar h1{
+font-size:55px;
+font-weight:900;
+}
+
+.admin-info{
+background:#0d235f;
+padding:18px 25px;
+border-radius:20px;
+font-size:18px;
+}
+
+/* STATS */
+
+.stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+margin-bottom:40px;
+}
+
+.stat{
+background:#0d235f;
+padding:35px;
+border-radius:30px;
+box-shadow:0 0 25px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+.stat:hover{
+transform:translateY(-6px);
+background:#12307f;
+}
+
+.stat h1{
+font-size:60px;
+margin-bottom:10px;
+color:#4da3ff;
+}
+
+.stat p{
+font-size:22px;
+}
+
+/* CONTENT */
+
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
 gap:30px;
 }
 
-/* CARD */
+/* BOX */
 
-.card{
-
-background:white;
-
+.box{
+background:#0d235f;
+padding:30px;
 border-radius:30px;
-
-padding:35px;
-
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-
+box-shadow:0 0 25px rgba(0,0,0,0.3);
 }
 
-/* TITLES */
-
-.card h2{
+.box h2{
 font-size:35px;
-margin-bottom:25px;
-color:#0b2d82;
+margin-bottom:30px;
 }
 
 /* USERS */
 
 .user{
-
-background:#edf3ff;
-
+background:#10296b;
 padding:20px;
-
-border-radius:18px;
-
-margin-bottom:15px;
-
+border-radius:20px;
+margin-bottom:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.user h3{
-margin-bottom:10px;
+.user-info h3{
+font-size:22px;
+margin-bottom:5px;
 }
 
-/* APPLICATION */
-
-.app{
-
-background:#edf3ff;
-
-padding:20px;
-
-border-radius:18px;
-
-margin-bottom:20px;
-
+.user-info p{
+font-size:16px;
+color:#9ecbff;
 }
 
-.app h3{
-margin-bottom:10px;
-}
-
-/* BUTTONS */
-
-.buttons{
+.user-buttons{
 display:flex;
 gap:10px;
-margin-top:15px;
-flex-wrap:wrap;
 }
 
-button{
-
+.user-buttons button{
+padding:12px 18px;
 border:none;
-
-padding:14px 18px;
-
-border-radius:12px;
-
-font-weight:bold;
-
+border-radius:14px;
 cursor:pointer;
-
-transition:0.3s;
-
+font-weight:bold;
+color:white;
 }
 
 .approve{
-background:#0b9d49;
-color:white;
+background:#00b85b;
 }
 
 .delete{
-background:#ff2d2d;
-color:white;
+background:#ff3434;
 }
 
-.admin{
-background:#0b2d82;
-color:white;
+/* NEWS */
+
+.news-form{
+display:flex;
+flex-direction:column;
+gap:18px;
 }
 
-.publish{
-background:#0051ff;
-color:white;
+.news-form input,
+.news-form textarea{
 width:100%;
-font-size:18px;
-}
-
-button:hover{
-transform:scale(1.03);
-}
-
-/* INPUT */
-
-input,
-textarea{
-
-width:100%;
-
-padding:16px;
-
+padding:18px;
 border:none;
-
-background:#edf3ff;
-
-border-radius:16px;
-
-margin-bottom:20px;
-
-font-size:16px;
-
+border-radius:18px;
+background:#10296b;
+color:white;
+font-size:18px;
+outline:none;
 }
 
-textarea{
+.news-form textarea{
 height:180px;
 resize:none;
 }
 
-/* EMPTY */
-
-.empty{
-padding:30px;
-text-align:center;
-font-size:22px;
-opacity:0.7;
+.news-form button{
+padding:18px;
+border:none;
+border-radius:18px;
+background:#2f6dff;
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
 }
 
-/* PASSWORD */
+.news-form button:hover{
+background:#4f84ff;
+}
 
-#newsPanel{
-display:none;
+/* APPLICATIONS */
+
+.application{
+background:#10296b;
+padding:22px;
+border-radius:20px;
+margin-bottom:18px;
+}
+
+.application h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.application p{
+margin-bottom:10px;
+line-height:1.5;
+color:#d8e5ff;
+}
+
+.application-buttons{
+display:flex;
+gap:12px;
+margin-top:15px;
 }
 
 /* MOBILE */
 
+@media(max-width:1300px){
+
+.content{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
 @media(max-width:900px){
 
-header{
-flex-direction:column;
-gap:20px;
-padding:25px;
+.sidebar{
+width:100px;
+padding:20px;
 }
 
-.logo{
-flex-direction:column;
-text-align:center;
+.logo h1{
+display:none;
 }
 
-nav{
-justify-content:center;
+.menu button{
+font-size:0;
+height:65px;
 }
 
-.container{
-margin-top:220px;
+.main{
+margin-left:100px;
+width:calc(100% - 100px);
+padding:20px;
+}
+
+.topbar h1{
+font-size:35px;
+}
+
+.stats{
+grid-template-columns:1fr;
 }
 
 }
@@ -290,63 +345,112 @@ margin-top:220px;
 
 <body>
 
-<!-- HEADER -->
+<!-- SIDEBAR -->
 
-<header>
+<div class="sidebar">
+
+<div>
 
 <div class="logo">
 
 <img src="logo.png">
 
 <h1>
-
-Либеральная
-<br>
-Партия России
-
+Ultra<br>
+Admin
 </h1>
 
 </div>
 
-<nav>
+<div class="menu">
 
-<a href="index.html">
-Главная
-</a>
+<button onclick="location.href='index.html'">
+🏠 Главная
+</button>
 
-<a href="news.html">
-Новости
-</a>
+<button onclick="location.href='news.html'">
+📰 Новости
+</button>
 
-<a href="leaders.html">
-Руководство
-</a>
+<button onclick="location.href='profile.html'">
+👤 Профиль
+</button>
 
-<a href="ustav.html">
-Устав
-</a>
+<button onclick="location.href='apply.html'">
+📄 Заявления
+</button>
 
-<a href="gimn.html">
-Гимн
-</a>
+<button onclick="location.href='leaders.html'">
+👑 Руководство
+</button>
 
-<a href="program.html">
-Программа
-</a>
+</div>
 
-</nav>
+</div>
 
-</header>
+<button class="logout" id="logoutBtn">
+🚪 Выйти
+</button>
+
+</div>
 
 <!-- MAIN -->
 
-<div class="container">
+<div class="main">
 
-<div class="grid">
+<div class="topbar">
+
+<h1>
+ADMIN PANEL
+</h1>
+
+<div class="admin-info">
+🟢 Администратор онлайн
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<h1 id="usersCount">
+0
+</h1>
+<p>Пользователей</p>
+</div>
+
+<div class="stat">
+<h1 id="appsCount">
+0
+</h1>
+<p>Заявлений</p>
+</div>
+
+<div class="stat">
+<h1 id="newsCount">
+0
+</h1>
+<p>Новостей</p>
+</div>
+
+<div class="stat">
+<h1>
+100%
+</h1>
+<p>Система</p>
+</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content">
 
 <!-- USERS -->
 
-<div class="card">
+<div class="box">
 
 <h2>
 Пользователи
@@ -354,26 +458,13 @@ margin-top:220px;
 
 <div id="usersList">
 
-<div class="empty">
-Загрузка...
+<div class="user">
+
+<div class="user-info">
+<h3>Загрузка...</h3>
+<p>Получение данных</p>
 </div>
 
-</div>
-
-</div>
-
-<!-- APPLICATIONS -->
-
-<div class="card">
-
-<h2>
-Заявления
-</h2>
-
-<div id="applicationsList">
-
-<div class="empty">
-Загрузка...
 </div>
 
 </div>
@@ -382,58 +473,56 @@ margin-top:220px;
 
 <!-- NEWS -->
 
-<div class="card">
+<div class="box">
 
 <h2>
 Публикация новостей
 </h2>
 
-<div id="loginBox">
+<form class="news-form" id="newsForm">
 
 <input
 type="password"
-id="password"
-placeholder="Введите пароль"
+id="adminPassword"
+placeholder="Пароль администратора"
+required
 >
-
-<button
-class="publish"
-onclick="checkPassword()"
->
-
-Войти
-
-</button>
-
-</div>
-
-<div id="newsPanel">
 
 <input
 type="text"
 id="newsTitle"
-placeholder="Название новости"
->
-
-<input
-type="text"
-id="newsImage"
-placeholder="Ссылка на фото"
+placeholder="Заголовок новости"
+required
 >
 
 <textarea
 id="newsText"
 placeholder="Текст новости"
+required
 ></textarea>
 
-<button
-class="publish"
-onclick="publishNews()"
->
-
+<button type="submit">
 Опубликовать новость
-
 </button>
+
+</form>
+
+</div>
+
+<!-- APPLICATIONS -->
+
+<div class="box">
+
+<h2>
+Заявления
+</h2>
+
+<div id="applicationsList">
+
+<div class="application">
+<h3>Загрузка...</h3>
+<p>Получение заявлений</p>
+</div>
 
 </div>
 
@@ -446,179 +535,77 @@ onclick="publishNews()"
 <script type="module">
 
 import {
-
+auth,
 db,
-
 collection,
 getDocs,
 addDoc,
 deleteDoc,
-doc,
-updateDoc
-
+doc
 }
-
 from './firebase.js';
 
-/* USERS */
-
-const usersContainer =
-document.getElementById(
-"usersList"
-);
-
-async function loadUsers(){
-
-usersContainer.innerHTML = "";
-
-const querySnapshot =
-await getDocs(
-collection(db,"users")
-);
-
-if(querySnapshot.empty){
-
-usersContainer.innerHTML = `
-<div class="empty">
-Пользователей нет
-</div>
-`;
-
-return;
-
+import {
+signOut
 }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-querySnapshot.forEach((documentData)=>{
+/* PASSWORD */
 
-const user =
-documentData.data();
+const ADMIN_PASSWORD =
+"1234567890mtrp9";
 
-usersContainer.innerHTML += `
+/* COUNTS */
+
+const users =
+await getDocs(collection(db,"users"));
+
+document.getElementById("usersCount").innerText =
+users.size;
+
+const apps =
+await getDocs(collection(db,"applications"));
+
+document.getElementById("appsCount").innerText =
+apps.size;
+
+const news =
+await getDocs(collection(db,"news"));
+
+document.getElementById("newsCount").innerText =
+news.size;
+
+/* USERS LIST */
+
+const usersList =
+document.getElementById("usersList");
+
+usersList.innerHTML = "";
+
+users.forEach((user)=>{
+
+const data = user.data();
+
+usersList.innerHTML += `
 
 <div class="user">
 
-<h3>
-${user.email || "Без email"}
-</h3>
-
-<p>
-Роль:
-${user.role || "user"}
-</p>
-
-<div class="buttons">
-
-<button
-class="admin"
-onclick="makeAdmin('${documentData.id}')"
->
-
-Выдать Admin
-
-</button>
-
+<div class="user-info">
+<h3>${data.email || "Пользователь"}</h3>
+<p>ID: ${user.id}</p>
 </div>
 
-</div>
+<div class="user-buttons">
 
-`;
-
-});
-
-}
-
-window.makeAdmin =
-async function(id){
-
-await updateDoc(
-doc(db,"users",id),
-{
-role:"admin"
-}
-);
-
-loadUsers();
-
-}
-
-/* APPLICATIONS */
-
-const appsContainer =
-document.getElementById(
-"applicationsList"
-);
-
-async function loadApps(){
-
-appsContainer.innerHTML = "";
-
-const querySnapshot =
-await getDocs(
-collection(db,"applications")
-);
-
-if(querySnapshot.empty){
-
-appsContainer.innerHTML = `
-<div class="empty">
-Заявлений нет
-</div>
-`;
-
-return;
-
-}
-
-querySnapshot.forEach((documentData)=>{
-
-const app =
-documentData.data();
-
-appsContainer.innerHTML += `
-
-<div class="app">
-
-<h3>
-${app.fullname || "Без имени"}
-</h3>
-
-<p>
-Discord:
-${app.discord || ""}
-</p>
-
-<p>
-IC:
-${app.icage || ""}
-</p>
-
-<p>
-OOC:
-${app.oocage || ""}
-</p>
-
-<p>
-${app.why || ""}
-</p>
-
-<div class="buttons">
-
-<button
-class="approve"
-onclick="approveApp('${documentData.id}')"
->
-
-Одобрить
-
+<button class="approve">
+Онлайн
 </button>
 
 <button
 class="delete"
-onclick="deleteApp('${documentData.id}')"
+onclick="deleteUser('${user.id}')"
 >
-
 Удалить
-
 </button>
 
 </div>
@@ -629,97 +616,74 @@ onclick="deleteApp('${documentData.id}')"
 
 });
 
-}
+/* APPLICATIONS */
 
-window.approveApp =
-async function(id){
+const appsList =
+document.getElementById("applicationsList");
 
-await updateDoc(
-doc(db,"applications",id),
-{
-status:"approved"
-}
-);
+appsList.innerHTML = "";
 
-loadApps();
+apps.forEach((app)=>{
 
-}
+const data = app.data();
 
-window.deleteApp =
-async function(id){
+appsList.innerHTML += `
 
-await deleteDoc(
-doc(db,"applications",id)
-);
+<div class="application">
 
-loadApps();
+<h3>
+${data.fullname}
+</h3>
 
-}
+<p>
+Discord: ${data.discord}
+</p>
 
-/* PASSWORD */
+<p>
+IC возраст: ${data.icage}
+</p>
 
-window.checkPassword =
-function(){
+<p>
+${data.why}
+</p>
 
-const password =
-document.getElementById(
-"password"
-).value;
+<div class="application-buttons">
 
-if(
-password ===
-"1234567890mtrp9"
-){
+<button
+class="approve"
+onclick="approveApplication('${app.id}')"
+>
+Одобрить
+</button>
 
-document.getElementById(
-"loginBox"
-).style.display =
-"none";
+<button
+class="delete"
+onclick="deleteApplication('${app.id}')"
+>
+Удалить
+</button>
 
-document.getElementById(
-"newsPanel"
-).style.display =
-"block";
+</div>
 
-}else{
+</div>
 
-alert(
-"Неверный пароль"
-);
+`;
 
-}
-
-}
+});
 
 /* NEWS */
 
-window.publishNews =
-async function(){
+document.getElementById("newsForm")
+.addEventListener("submit",async(e)=>{
 
-const title =
-document.getElementById(
-"newsTitle"
-).value;
+e.preventDefault();
 
-const image =
-document.getElementById(
-"newsImage"
-).value;
+const password =
+document.getElementById("adminPassword").value;
 
-const text =
-document.getElementById(
-"newsText"
-).value;
+if(password !== ADMIN_PASSWORD){
 
-if(
-title=="" ||
-text==""
-){
-
-alert(
-"Заполните поля"
-);
-
+alert("Неверный пароль");
 return;
 
 }
@@ -728,38 +692,68 @@ await addDoc(
 collection(db,"news"),
 {
 
-title:title,
-image:image,
-text:text,
+title:
+document.getElementById("newsTitle").value,
 
-date:
-new Date().toLocaleString()
+text:
+document.getElementById("newsText").value,
+
+created:
+new Date()
 
 }
 );
 
-alert(
-"Новость опубликована"
-);
+alert("Новость опубликована");
 
-document.getElementById(
-"newsTitle"
-).value = "";
+location.reload();
 
-document.getElementById(
-"newsImage"
-).value = "";
+});
 
-document.getElementById(
-"newsText"
-).value = "";
+/* DELETE APPLICATION */
 
-}
+window.deleteApplication =
+async(id)=>{
 
-/* START */
+await deleteDoc(doc(db,"applications",id));
 
-loadUsers();
-loadApps();
+location.reload();
+
+};
+
+/* APPROVE */
+
+window.approveApplication =
+async(id)=>{
+
+alert("Заявление одобрено");
+
+await deleteDoc(doc(db,"applications",id));
+
+location.reload();
+
+};
+
+/* DELETE USER */
+
+window.deleteUser =
+async(id)=>{
+
+alert("Пользователь удалён");
+
+};
+
+/* LOGOUT */
+
+document.getElementById("logoutBtn")
+.addEventListener("click",async()=>{
+
+await signOut(auth);
+
+window.location.href =
+"login.html";
+
+});
 
 </script>
 
