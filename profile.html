@@ -4,10 +4,13 @@
 <html lang="ru">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Профиль | Либеральная Партия России</title>
+<title>
+Профиль | Либеральная Партия России
+</title>
 
 <style>
 
@@ -48,23 +51,23 @@ gap:15px;
 }
 
 .logo img{
-width:60px;
-height:60px;
-object-fit:cover;
-border-radius:14px;
+width:65px;
+height:65px;
 background:white;
 padding:5px;
+border-radius:15px;
 }
 
 .logo h1{
 font-size:30px;
-line-height:1;
 font-weight:900;
+line-height:1;
 }
 
 nav{
 display:flex;
-gap:30px;
+gap:28px;
+align-items:center;
 }
 
 nav a{
@@ -79,14 +82,55 @@ nav a:hover{
 color:#4da3ff;
 }
 
+/* AUTH */
+
+#authButtons{
+display:flex;
+gap:15px;
+}
+
+.auth-btn{
+padding:14px 24px;
+border-radius:16px;
+text-decoration:none;
+font-size:17px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.login-btn{
+background:#10296b;
+color:white;
+}
+
+.register-btn{
+background:#2f6dff;
+color:white;
+box-shadow:0 0 20px rgba(47,109,255,0.4);
+}
+
+.auth-btn:hover{
+transform:translateY(-3px);
+}
+
+.profile-btn{
+padding:14px 24px;
+border-radius:16px;
+background:#2f6dff;
+color:white;
+text-decoration:none;
+font-size:17px;
+font-weight:bold;
+}
+
 /* HERO */
 
 .hero{
 margin-top:95px;
-height:350px;
+height:330px;
 background:
 linear-gradient(rgba(4,17,59,0.7),rgba(4,17,59,0.8)),
-url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070");
+url("https://images.unsplash.com/photo-1521417531039-52f9c7ab1d08?q=80&w=2070");
 background-size:cover;
 background-position:center;
 display:flex;
@@ -95,19 +139,18 @@ padding-left:80px;
 }
 
 .hero h1{
-font-size:70px;
+font-size:75px;
 font-weight:900;
 }
 
 /* PROFILE */
 
-.container{
+.profile{
 width:90%;
 max-width:1500px;
-margin:auto;
-padding:50px 0;
+margin:50px auto;
 display:grid;
-grid-template-columns:400px 1fr;
+grid-template-columns:380px 1fr;
 gap:40px;
 }
 
@@ -115,57 +158,55 @@ gap:40px;
 
 .left{
 background:#0b1d57;
-border-radius:30px;
 padding:40px;
+border-radius:30px;
 text-align:center;
 box-shadow:0 0 25px rgba(0,0,0,0.4);
 }
 
 .avatar{
-width:220px;
-height:220px;
+width:230px;
+height:230px;
 border-radius:50%;
 object-fit:cover;
 border:6px solid #2f6dff;
 margin-bottom:25px;
 }
 
-.change-btn{
+.upload-btn{
 display:inline-block;
 background:#2f6dff;
-padding:14px 25px;
-border-radius:15px;
+padding:15px 25px;
+border-radius:16px;
 cursor:pointer;
 font-size:18px;
 font-weight:bold;
 transition:0.3s;
 }
 
-.change-btn:hover{
-background:#4f84ff;
-transform:translateY(-3px);
+.upload-btn:hover{
+background:#4d82ff;
+}
+
+.left h2{
+font-size:38px;
+margin-top:25px;
+}
+
+.role{
+margin-top:12px;
+font-size:21px;
+color:#8dc1ff;
+}
+
+.online{
+margin-top:20px;
+font-size:18px;
+color:#00ff73;
 }
 
 input{
 display:none;
-}
-
-.username{
-font-size:38px;
-font-weight:900;
-margin-top:30px;
-}
-
-.role{
-margin-top:10px;
-font-size:22px;
-color:#80b8ff;
-}
-
-.status{
-margin-top:20px;
-font-size:18px;
-color:#00ff73;
 }
 
 /* RIGHT */
@@ -183,8 +224,8 @@ border-radius:30px;
 box-shadow:0 0 25px rgba(0,0,0,0.4);
 }
 
-.card h2{
-font-size:34px;
+.card h3{
+font-size:35px;
 margin-bottom:30px;
 }
 
@@ -205,7 +246,7 @@ border:none;
 .stats{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:25px;
+gap:20px;
 }
 
 .stat{
@@ -246,23 +287,23 @@ transition:0.3s;
 }
 
 button:hover{
-background:#4f84ff;
+background:#4d82ff;
 transform:translateY(-3px);
 }
 
 .logout{
-background:#ff3131;
+background:#ff3434;
 }
 
 .logout:hover{
-background:#ff4c4c;
+background:#ff5555;
 }
 
 /* MOBILE */
 
-@media(max-width:1100px){
+@media(max-width:1200px){
 
-.container{
+.profile{
 grid-template-columns:1fr;
 }
 
@@ -270,17 +311,26 @@ grid-template-columns:1fr;
 grid-template-columns:1fr 1fr;
 }
 
-.hero h1{
-font-size:50px;
 }
+
+@media(max-width:950px){
 
 nav{
 display:none;
 }
 
+.hero h1{
+font-size:45px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -288,32 +338,87 @@ display:none;
 <header>
 
 <div class="logo">
+
 <img src="logo.png">
+
 <h1>
 Либеральная<br>
 Партия России
 </h1>
+
 </div>
 
 <nav>
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="profile.html">Профиль</a>
-<a href="admin.html">Админ</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
-<a href="program.html">Программа</a>
+
+<a href="index.html">
+Главная
+</a>
+
+<a href="news.html">
+Новости
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="program.html">
+Программа
+</a>
+
+<a href="ustav.html">
+Устав
+</a>
+
+<a href="gimn.html">
+Гимн
+</a>
+
+<a href="admin.html">
+Админ
+</a>
+
+<div id="authButtons">
+
+<a href="login.html"
+class="auth-btn login-btn">
+Логин
+</a>
+
+<a href="register.html"
+class="auth-btn register-btn">
+Регистрация
+</a>
+
+</div>
+
+<div id="profileButton"
+style="display:none;">
+
+<a href="profile.html"
+class="profile-btn">
+Профиль
+</a>
+
+</div>
+
 </nav>
 
 </header>
 
 <section class="hero">
-<h1>ПРОФИЛЬ</h1>
+
+<h1>
+ПРОФИЛЬ
+</h1>
+
 </section>
 
-<div class="container">
+<div class="profile">
 
 <!-- LEFT -->
 
@@ -325,20 +430,26 @@ class="avatar"
 id="avatar"
 >
 
-<label class="change-btn">
+<label class="upload-btn">
+
 Изменить аватар
-<input type="file" id="avatarInput">
+
+<input
+type="file"
+id="avatarInput"
+>
+
 </label>
 
-<div class="username" id="username">
-Загрузка...
-</div>
+<h2 id="username">
+Пользователь
+</h2>
 
 <div class="role">
 Участник партии
 </div>
 
-<div class="status">
+<div class="online">
 ● Онлайн
 </div>
 
@@ -350,25 +461,27 @@ id="avatar"
 
 <div class="card">
 
-<h2>Информация</h2>
+<h3>
+Информация аккаунта
+</h3>
 
 <div class="info">
-<span>Email:</span>
+<span>Email</span>
 <span id="email">...</span>
 </div>
 
 <div class="info">
-<span>ID:</span>
+<span>ID</span>
 <span id="uid">...</span>
 </div>
 
 <div class="info">
-<span>Дата регистрации:</span>
+<span>Дата регистрации</span>
 <span id="created">...</span>
 </div>
 
 <div class="info">
-<span>Статус аккаунта:</span>
+<span>Статус</span>
 <span>Активен</span>
 </div>
 
@@ -376,27 +489,37 @@ id="avatar"
 
 <div class="card">
 
-<h2>Статистика</h2>
+<h3>
+Статистика
+</h3>
 
 <div class="stats">
 
 <div class="stat">
-<h1 id="appsCount">0</h1>
+<h1 id="appsCount">
+0
+</h1>
 <p>Заявлений</p>
 </div>
 
 <div class="stat">
-<h1 id="newsCount">0</h1>
+<h1 id="newsCount">
+0
+</h1>
 <p>Новостей</p>
 </div>
 
 <div class="stat">
-<h1 id="usersCount">0</h1>
+<h1 id="usersCount">
+0
+</h1>
 <p>Пользователей</p>
 </div>
 
 <div class="stat">
-<h1>100%</h1>
+<h1>
+100%
+</h1>
 <p>Активность</p>
 </div>
 
@@ -406,19 +529,22 @@ id="avatar"
 
 <div class="card">
 
-<h2>Действия</h2>
+<h3>
+Действия
+</h3>
 
 <div class="actions">
 
-<button onclick="window.location.href='apply.html'">
+<button onclick="location.href='apply.html'">
 Подать заявление
 </button>
 
-<button onclick="window.location.href='news.html'">
+<button onclick="location.href='news.html'">
 Новости
 </button>
 
-<button class="logout" id="logoutBtn">
+<button class="logout"
+id="logoutBtn">
 Выйти
 </button>
 
@@ -431,8 +557,6 @@ id="avatar"
 </div>
 
 <script type="module">
-
-/* FIREBASE */
 
 import {
 auth,
@@ -452,63 +576,98 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 onAuthStateChanged(auth, async(user)=>{
 
-if(!user){
+if(user){
 
-window.location.href = "login.html";
-return;
+/* BUTTONS */
 
-}
+document.getElementById(
+"authButtons"
+).style.display = "none";
 
-/* USER DATA */
+document.getElementById(
+"profileButton"
+).style.display = "block";
 
-document.getElementById("username").innerText =
+/* USER */
+
+document.getElementById(
+"username"
+).innerText =
 user.email.split("@")[0];
 
-document.getElementById("email").innerText =
+document.getElementById(
+"email"
+).innerText =
 user.email;
 
-document.getElementById("uid").innerText =
+document.getElementById(
+"uid"
+).innerText =
 user.uid;
 
 const date =
-new Date(user.metadata.creationTime);
+new Date(
+user.metadata.creationTime
+);
 
-document.getElementById("created").innerText =
+document.getElementById(
+"created"
+).innerText =
 date.toLocaleDateString("ru-RU");
 
-/* APPLICATIONS */
+/* STATS */
 
 const apps =
-await getDocs(collection(db,"applications"));
+await getDocs(
+collection(db,"applications")
+);
 
-document.getElementById("appsCount").innerText =
+document.getElementById(
+"appsCount"
+).innerText =
 apps.size;
 
-/* NEWS */
-
 const news =
-await getDocs(collection(db,"news"));
+await getDocs(
+collection(db,"news")
+);
 
-document.getElementById("newsCount").innerText =
+document.getElementById(
+"newsCount"
+).innerText =
 news.size;
 
-/* USERS */
-
 const users =
-await getDocs(collection(db,"users"));
+await getDocs(
+collection(db,"users")
+);
 
-document.getElementById("usersCount").innerText =
+document.getElementById(
+"usersCount"
+).innerText =
 users.size;
 
 /* AVATAR */
 
 const savedAvatar =
-localStorage.getItem("avatar_" + user.uid);
+localStorage.getItem(
+"avatar_" + user.uid
+);
 
 if(savedAvatar){
 
-document.getElementById("avatar").src =
+document.getElementById(
+"avatar"
+).src =
 savedAvatar;
+
+}
+
+}else{
+
+document.getElementById(
+"profile"
+);
 
 }
 
@@ -516,18 +675,26 @@ savedAvatar;
 
 /* CHANGE AVATAR */
 
-document.getElementById("avatarInput")
-.addEventListener("change",(e)=>{
+document.getElementById(
+"avatarInput"
+).addEventListener(
+"change",
+(e)=>{
 
-const file = e.target.files[0];
+const file =
+e.target.files[0];
 
 if(!file) return;
 
-const reader = new FileReader();
+const reader =
+new FileReader();
 
-reader.onload = function(event){
+reader.onload =
+function(event){
 
-document.getElementById("avatar").src =
+document.getElementById(
+"avatar"
+).src =
 event.target.result;
 
 const uid =
@@ -546,8 +713,11 @@ reader.readAsDataURL(file);
 
 /* LOGOUT */
 
-document.getElementById("logoutBtn")
-.addEventListener("click",async()=>{
+document.getElementById(
+"logoutBtn"
+).addEventListener(
+"click",
+async()=>{
 
 await signOut(auth);
 
