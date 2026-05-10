@@ -1,27 +1,482 @@
+<!-- profile.html -->
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Профиль | Либеральная Партия России</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#06153a;
+color:white;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:95px;
+background:#04113b;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 50px;
+z-index:999;
+box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:60px;
+height:60px;
+object-fit:cover;
+border-radius:14px;
+background:white;
+padding:5px;
+}
+
+.logo h1{
+font-size:30px;
+line-height:1;
+font-weight:900;
+}
+
+nav{
+display:flex;
+gap:30px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:18px;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#4da3ff;
+}
+
+/* HERO */
+
+.hero{
+margin-top:95px;
+height:350px;
+background:
+linear-gradient(rgba(4,17,59,0.7),rgba(4,17,59,0.8)),
+url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+padding-left:80px;
+}
+
+.hero h1{
+font-size:70px;
+font-weight:900;
+}
+
+/* PROFILE */
+
+.container{
+width:90%;
+max-width:1500px;
+margin:auto;
+padding:50px 0;
+display:grid;
+grid-template-columns:400px 1fr;
+gap:40px;
+}
+
+/* LEFT */
+
+.left{
+background:#0b1d57;
+border-radius:30px;
+padding:40px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+.avatar{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid #2f6dff;
+margin-bottom:25px;
+}
+
+.change-btn{
+display:inline-block;
+background:#2f6dff;
+padding:14px 25px;
+border-radius:15px;
+cursor:pointer;
+font-size:18px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.change-btn:hover{
+background:#4f84ff;
+transform:translateY(-3px);
+}
+
+input{
+display:none;
+}
+
+.username{
+font-size:38px;
+font-weight:900;
+margin-top:30px;
+}
+
+.role{
+margin-top:10px;
+font-size:22px;
+color:#80b8ff;
+}
+
+.status{
+margin-top:20px;
+font-size:18px;
+color:#00ff73;
+}
+
+/* RIGHT */
+
+.right{
+display:flex;
+flex-direction:column;
+gap:30px;
+}
+
+.card{
+background:#0b1d57;
+padding:35px;
+border-radius:30px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+.card h2{
+font-size:34px;
+margin-bottom:30px;
+}
+
+.info{
+display:flex;
+justify-content:space-between;
+padding:18px 0;
+border-bottom:1px solid rgba(255,255,255,0.1);
+font-size:20px;
+}
+
+.info:last-child{
+border:none;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.stat{
+background:#10296b;
+padding:35px;
+border-radius:25px;
+text-align:center;
+}
+
+.stat h1{
+font-size:55px;
+color:#4da3ff;
+margin-bottom:10px;
+}
+
+.stat p{
+font-size:20px;
+}
+
+/* BUTTONS */
+
+.actions{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+button{
+padding:18px 30px;
+border:none;
+border-radius:18px;
+background:#2f6dff;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#4f84ff;
+transform:translateY(-3px);
+}
+
+.logout{
+background:#ff3131;
+}
+
+.logout:hover{
+background:#ff4c4c;
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:1fr 1fr;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+nav{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<img src="logo.png">
+<h1>
+Либеральная<br>
+Партия России
+</h1>
+</div>
+
+<nav>
+<a href="index.html">Главная</a>
+<a href="news.html">Новости</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="profile.html">Профиль</a>
+<a href="admin.html">Админ</a>
+<a href="ustav.html">Устав</a>
+<a href="gimn.html">Гимн</a>
+<a href="program.html">Программа</a>
+</nav>
+
+</header>
+
+<section class="hero">
+<h1>ПРОФИЛЬ</h1>
+</section>
+
+<div class="container">
+
+<!-- LEFT -->
+
+<div class="left">
+
+<img
+src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+class="avatar"
+id="avatar"
+>
+
+<label class="change-btn">
+Изменить аватар
+<input type="file" id="avatarInput">
+</label>
+
+<div class="username" id="username">
+Загрузка...
+</div>
+
+<div class="role">
+Участник партии
+</div>
+
+<div class="status">
+● Онлайн
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right">
+
+<div class="card">
+
+<h2>Информация</h2>
+
+<div class="info">
+<span>Email:</span>
+<span id="email">...</span>
+</div>
+
+<div class="info">
+<span>ID:</span>
+<span id="uid">...</span>
+</div>
+
+<div class="info">
+<span>Дата регистрации:</span>
+<span id="created">...</span>
+</div>
+
+<div class="info">
+<span>Статус аккаунта:</span>
+<span>Активен</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Статистика</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h1 id="appsCount">0</h1>
+<p>Заявлений</p>
+</div>
+
+<div class="stat">
+<h1 id="newsCount">0</h1>
+<p>Новостей</p>
+</div>
+
+<div class="stat">
+<h1 id="usersCount">0</h1>
+<p>Пользователей</p>
+</div>
+
+<div class="stat">
+<h1>100%</h1>
+<p>Активность</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Действия</h2>
+
+<div class="actions">
+
+<button onclick="window.location.href='apply.html'">
+Подать заявление
+</button>
+
+<button onclick="window.location.href='news.html'">
+Новости
+</button>
+
+<button class="logout" id="logoutBtn">
+Выйти
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 <script type="module">
 
+/* FIREBASE */
+
 import {
+auth,
 db,
 collection,
 getDocs
 }
 from './firebase.js';
 
-/* ДАННЫЕ ПРОФИЛЯ */
+import {
+onAuthStateChanged,
+signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+/* AUTH */
+
+onAuthStateChanged(auth, async(user)=>{
+
+if(!user){
+
+window.location.href = "login.html";
+return;
+
+}
+
+/* USER DATA */
 
 document.getElementById("username").innerText =
-"Участник партии";
+user.email.split("@")[0];
 
 document.getElementById("email").innerText =
-"party-user@russia.ru";
+user.email;
 
 document.getElementById("uid").innerText =
-"RMRP-" + Math.floor(Math.random()*999999);
+user.uid;
+
+const date =
+new Date(user.metadata.creationTime);
 
 document.getElementById("created").innerText =
-new Date().toLocaleDateString("ru-RU");
+date.toLocaleDateString("ru-RU");
 
-/* ЗАЯВЛЕНИЯ */
+/* APPLICATIONS */
 
 const apps =
 await getDocs(collection(db,"applications"));
@@ -29,7 +484,7 @@ await getDocs(collection(db,"applications"));
 document.getElementById("appsCount").innerText =
 apps.size;
 
-/* НОВОСТИ */
+/* NEWS */
 
 const news =
 await getDocs(collection(db,"news"));
@@ -37,10 +492,18 @@ await getDocs(collection(db,"news"));
 document.getElementById("newsCount").innerText =
 news.size;
 
-/* АВАТАР */
+/* USERS */
+
+const users =
+await getDocs(collection(db,"users"));
+
+document.getElementById("usersCount").innerText =
+users.size;
+
+/* AVATAR */
 
 const savedAvatar =
-localStorage.getItem("avatar");
+localStorage.getItem("avatar_" + user.uid);
 
 if(savedAvatar){
 
@@ -49,7 +512,9 @@ savedAvatar;
 
 }
 
-/* СМЕНА АВАТАРКИ */
+});
+
+/* CHANGE AVATAR */
 
 document.getElementById("avatarInput")
 .addEventListener("change",(e)=>{
@@ -65,8 +530,11 @@ reader.onload = function(event){
 document.getElementById("avatar").src =
 event.target.result;
 
+const uid =
+auth.currentUser.uid;
+
 localStorage.setItem(
-"avatar",
+"avatar_" + uid,
 event.target.result
 );
 
@@ -76,15 +544,19 @@ reader.readAsDataURL(file);
 
 });
 
-/* КНОПКА ВЫХОДА */
+/* LOGOUT */
 
 document.getElementById("logoutBtn")
-.addEventListener("click",()=>{
+.addEventListener("click",async()=>{
 
-alert("Вы вышли из профиля");
+await signOut(auth);
 
-window.location.href="index.html";
+window.location.href =
+"login.html";
 
 });
 
 </script>
+
+</body>
+</html>
