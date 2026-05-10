@@ -1,4 +1,4 @@
-<!-- ПОЛНЫЙ НОВЫЙ admin.html -->
+<!-- admin.html -->
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -6,10 +6,14 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>
-Ultra Admin Panel
+Админ Панель
 </title>
 
 <style>
@@ -24,326 +28,224 @@ font-family:Arial;
 body{
 background:#06153a;
 color:white;
-overflow-x:hidden;
 }
 
-/* LOGIN SCREEN */
+/* HEADER */
 
-#loginScreen{
-position:fixed;
-top:0;
-left:0;
+header{
 width:100%;
-height:100vh;
-background:
-linear-gradient(rgba(4,17,59,0.95),rgba(4,17,59,0.98)),
-url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070");
-background-size:cover;
-background-position:center;
+height:90px;
+background:#071c52;
 display:flex;
 align-items:center;
-justify-content:center;
-z-index:999999;
-}
-
-.login-box{
-width:500px;
-background:#0b1d57;
-padding:50px;
-border-radius:35px;
-text-align:center;
-box-shadow:0 0 40px rgba(0,0,0,0.5);
-}
-
-.login-box img{
-width:110px;
-height:110px;
-background:white;
-padding:8px;
-border-radius:20px;
-margin-bottom:25px;
-}
-
-.login-box h1{
-font-size:45px;
-font-weight:900;
-margin-bottom:15px;
-}
-
-.login-box p{
-font-size:20px;
-margin-bottom:35px;
-color:#9ecbff;
-}
-
-.login-box input{
-width:100%;
-padding:20px;
-border:none;
-border-radius:18px;
-background:#10296b;
-color:white;
-font-size:18px;
-outline:none;
-margin-bottom:25px;
-}
-
-.login-box button{
-width:100%;
-padding:20px;
-border:none;
-border-radius:18px;
-background:#2f6dff;
-color:white;
-font-size:20px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-.login-box button:hover{
-background:#4f84ff;
-transform:translateY(-3px);
-}
-
-/* PANEL */
-
-#adminPanel{
-display:none;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-width:320px;
-height:100vh;
-background:#04113b;
-position:fixed;
-left:0;
-top:0;
-padding:35px;
-display:flex;
-flex-direction:column;
 justify-content:space-between;
+padding:0 50px;
+position:fixed;
+top:0;
+left:0;
+z-index:999;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
 .logo{
 display:flex;
 align-items:center;
 gap:15px;
-margin-bottom:50px;
 }
 
 .logo img{
-width:70px;
-height:70px;
+width:60px;
+height:60px;
+object-fit:cover;
 background:white;
-padding:6px;
-border-radius:18px;
+padding:5px;
+border-radius:12px;
 }
 
 .logo h1{
 font-size:30px;
-font-weight:900;
-line-height:1;
+line-height:1.1;
 }
 
-.menu{
+nav{
 display:flex;
-flex-direction:column;
-gap:18px;
+gap:25px;
 }
 
-.menu button{
-width:100%;
-padding:18px;
-border:none;
-border-radius:18px;
-background:#0d235f;
+nav a{
 color:white;
+text-decoration:none;
 font-size:18px;
 font-weight:bold;
-cursor:pointer;
 transition:0.3s;
-text-align:left;
 }
 
-.menu button:hover{
-background:#2f6dff;
-transform:translateX(5px);
-}
-
-.logout{
-background:#ff3434 !important;
-}
-
-/* MAIN */
-
-.main{
-margin-left:320px;
-padding:40px;
-}
-
-/* TOPBAR */
-
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:40px;
-}
-
-.topbar h1{
-font-size:60px;
-font-weight:900;
-}
-
-.online{
-background:#0d235f;
-padding:18px 25px;
-border-radius:20px;
-}
-
-/* STATS */
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:25px;
-margin-bottom:40px;
-}
-
-.stat{
-background:#0d235f;
-padding:35px;
-border-radius:30px;
-}
-
-.stat h1{
-font-size:60px;
+nav a:hover{
 color:#4da3ff;
-margin-bottom:10px;
 }
 
-.stat p{
+/* LOGIN */
+
+.login-box{
+width:500px;
+background:white;
+color:black;
+padding:50px;
+border-radius:30px;
+margin:180px auto;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+}
+
+.login-box h1{
+font-size:45px;
+margin-bottom:30px;
+text-align:center;
+}
+
+.login-box input{
+width:100%;
+padding:18px;
+font-size:20px;
+border-radius:15px;
+border:none;
+background:#dfe7f5;
+margin-bottom:20px;
+}
+
+.login-box button{
+width:100%;
+padding:18px;
 font-size:22px;
+background:#1b4ed8;
+color:white;
+border:none;
+border-radius:15px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
 }
 
-/* CONTENT */
+.login-box button:hover{
+background:#2563eb;
+}
 
-.content{
+/* ADMIN */
+
+.admin-panel{
+display:none;
+padding-top:130px;
+width:95%;
+max-width:1600px;
+margin:auto;
+}
+
+.grid{
 display:grid;
-grid-template-columns:1fr 1fr;
+grid-template-columns:1fr 1fr 1fr;
 gap:30px;
 }
 
-/* BOX */
-
-.box{
+.card{
 background:#0d235f;
 padding:30px;
 border-radius:30px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
-.box h2{
-font-size:35px;
-margin-bottom:30px;
+.card h2{
+font-size:34px;
+margin-bottom:25px;
+color:#4da3ff;
 }
 
-/* USERS */
-
-.user{
+.item{
 background:#10296b;
 padding:20px;
-border-radius:20px;
-margin-bottom:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.user-buttons{
-display:flex;
-gap:10px;
-}
-
-.user-buttons button{
-padding:12px 18px;
-border:none;
-border-radius:14px;
-cursor:pointer;
-font-weight:bold;
-color:white;
-}
-
-.approve{
-background:#00b85b;
-}
-
-.delete{
-background:#ff3434;
-}
-
-/* APPLICATIONS */
-
-.application{
-background:#10296b;
-padding:22px;
-border-radius:20px;
-margin-bottom:18px;
-}
-
-.application-buttons{
-display:flex;
-gap:12px;
-margin-top:15px;
-}
-
-/* NEWS */
-
-.news-form{
-display:flex;
-flex-direction:column;
-gap:18px;
-}
-
-.news-form input,
-.news-form textarea{
-width:100%;
-padding:18px;
-border:none;
 border-radius:18px;
-background:#10296b;
-color:white;
-font-size:18px;
-outline:none;
+margin-bottom:15px;
 }
 
-.news-form textarea{
-height:180px;
+.item h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.item p{
+font-size:17px;
+margin-top:5px;
+color:#dbeafe;
+}
+
+textarea,
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:15px;
+font-size:17px;
+}
+
+textarea{
+height:150px;
 resize:none;
 }
 
-.news-form button{
+.publish-btn{
+width:100%;
 padding:18px;
+background:#2563eb;
 border:none;
-border-radius:18px;
-background:#2f6dff;
-color:white;
+border-radius:15px;
 font-size:20px;
+color:white;
 font-weight:bold;
 cursor:pointer;
 }
 
-.news-form button:hover{
-background:#4f84ff;
+.publish-btn:hover{
+background:#3b82f6;
 }
 
-.preview{
+.news-image{
 width:100%;
-border-radius:20px;
-margin-top:10px;
+border-radius:15px;
+margin-top:15px;
+}
+
+.delete-btn{
+margin-top:15px;
+padding:12px 18px;
+background:#dc2626;
+border:none;
+border-radius:12px;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+.delete-btn:hover{
+background:#ef4444;
+}
+
+@media(max-width:1200px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+nav{
 display:none;
+}
+
+.logo h1{
+font-size:22px;
+}
+
+.login-box{
+width:90%;
+}
+
 }
 
 </style>
@@ -352,26 +254,46 @@ display:none;
 
 <body>
 
-<!-- LOGIN -->
+<header>
 
-<div id="loginScreen">
-
-<div class="login-box">
+<div class="logo">
 
 <img src="logo.png">
 
 <h1>
-ADMIN PANEL
+Либеральная<br>
+Партия России
 </h1>
 
-<p>
-Введите пароль администратора
-</p>
+</div>
+
+<nav>
+
+<a href="index.html">Главная</a>
+<a href="news.html">Новости</a>
+<a href="leaders.html">Руководство</a>
+<a href="apply.html">Заявление</a>
+<a href="profile.html">Профиль</a>
+<a href="program.html">Программа</a>
+<a href="ustav.html">Устав</a>
+<a href="gimn.html">Гимн</a>
+
+</nav>
+
+</header>
+
+<!-- LOGIN -->
+
+<div class="login-box" id="loginBox">
+
+<h1>
+Вход в Админ Панель
+</h1>
 
 <input
 type="password"
 id="adminPassword"
-placeholder="Пароль"
+placeholder="Введите пароль"
 >
 
 <button id="loginBtn">
@@ -380,110 +302,15 @@ placeholder="Пароль"
 
 </div>
 
-</div>
+<!-- ADMIN -->
 
-<!-- PANEL -->
+<div class="admin-panel" id="adminPanel">
 
-<div id="adminPanel">
-
-<!-- SIDEBAR -->
-
-<div class="sidebar">
-
-<div>
-
-<div class="logo">
-
-<img src="logo.png">
-
-<h1>
-Ultra<br>
-Admin
-</h1>
-
-</div>
-
-<div class="menu">
-
-<button onclick="location.href='index.html'">
-🏠 Главная
-</button>
-
-<button onclick="location.href='news.html'">
-📰 Новости
-</button>
-
-<button onclick="location.href='profile.html'">
-👤 Профиль
-</button>
-
-<button onclick="location.href='apply.html'">
-📄 Заявления
-</button>
-
-<button onclick="location.href='leaders.html'">
-👑 Руководство
-</button>
-
-</div>
-
-</div>
-
-<button class="logout" id="logoutBtn">
-🚪 Выйти
-</button>
-
-</div>
-
-<!-- MAIN -->
-
-<div class="main">
-
-<div class="topbar">
-
-<h1>
-ADMIN PANEL
-</h1>
-
-<div class="online">
-🟢 Администратор онлайн
-</div>
-
-</div>
-
-<!-- STATS -->
-
-<div class="stats">
-
-<div class="stat">
-<h1 id="usersCount">0</h1>
-<p>Пользователей</p>
-</div>
-
-<div class="stat">
-<h1 id="appsCount">0</h1>
-<p>Заявлений</p>
-</div>
-
-<div class="stat">
-<h1 id="newsCount">0</h1>
-<p>Новостей</p>
-</div>
-
-<div class="stat">
-<h1>100%</h1>
-<p>Система</p>
-</div>
-
-</div>
-
-<!-- CONTENT -->
-
-<div class="content">
+<div class="grid">
 
 <!-- USERS -->
 
-<div class="box">
+<div class="card">
 
 <h2>
 Пользователи
@@ -493,51 +320,9 @@ ADMIN PANEL
 
 </div>
 
-<!-- NEWS -->
-
-<div class="box">
-
-<h2>
-Публикация новостей
-</h2>
-
-<form class="news-form" id="newsForm">
-
-<input
-type="text"
-id="newsTitle"
-placeholder="Название новости"
-required
->
-
-<textarea
-id="newsText"
-placeholder="Текст новости"
-required
-></textarea>
-
-<input
-type="file"
-id="newsImage"
-accept="image/*"
->
-
-<img
-id="preview"
-class="preview"
->
-
-<button type="submit">
-Опубликовать новость
-</button>
-
-</form>
-
-</div>
-
 <!-- APPLICATIONS -->
 
-<div class="box">
+<div class="card">
 
 <h2>
 Заявления
@@ -546,6 +331,38 @@ class="preview"
 <div id="applicationsList"></div>
 
 </div>
+
+<!-- NEWS -->
+
+<div class="card">
+
+<h2>
+Публикация новостей
+</h2>
+
+<input
+type="text"
+id="newsTitle"
+placeholder="Название новости"
+>
+
+<input
+type="text"
+id="newsImage"
+placeholder="Ссылка на фото"
+>
+
+<textarea
+id="newsText"
+placeholder="Текст новости"
+></textarea>
+
+<button
+class="publish-btn"
+id="publishBtn"
+>
+Опубликовать
+</button>
 
 </div>
 
@@ -556,48 +373,37 @@ class="preview"
 <script type="module">
 
 import {
-auth,
 db,
 collection,
-getDocs,
 addDoc,
+getDocs,
 deleteDoc,
 doc
 }
 from './firebase.js';
 
-import {
-signOut
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
 /* PASSWORD */
 
-const ADMIN_PASSWORD =
+const password =
 "1234567890mtrp9";
 
-/* LOGIN */
+document
+.getElementById("loginBtn")
+.addEventListener("click",()=>{
 
-document.getElementById(
-"loginBtn"
-).addEventListener(
-"click",
-()=>{
+const input =
+document.getElementById("adminPassword").value;
 
-const password =
-document.getElementById(
-"adminPassword"
-).value;
+if(input === password){
 
-if(password === ADMIN_PASSWORD){
+document.getElementById("loginBox").style.display =
+"none";
 
-document.getElementById(
-"loginScreen"
-).style.display = "none";
+document.getElementById("adminPanel").style.display =
+"block";
 
-document.getElementById(
-"adminPanel"
-).style.display = "block";
+loadUsers();
+loadApplications();
 
 }else{
 
@@ -607,110 +413,97 @@ alert("Неверный пароль");
 
 });
 
-/* COUNTS */
-
-const users =
-await getDocs(collection(db,"users"));
-
-document.getElementById(
-"usersCount"
-).innerText =
-users.size;
-
-const apps =
-await getDocs(collection(db,"applications"));
-
-document.getElementById(
-"appsCount"
-).innerText =
-apps.size;
-
-const news =
-await getDocs(collection(db,"news"));
-
-document.getElementById(
-"newsCount"
-).innerText =
-news.size;
-
 /* USERS */
 
-const usersList =
-document.getElementById(
-"usersList"
-);
+async function loadUsers(){
 
-users.forEach((user)=>{
+const container =
+document.getElementById("usersList");
 
-const data =
-user.data();
+container.innerHTML = "";
 
-usersList.innerHTML += `
+const snapshot =
+await getDocs(collection(db,"users"));
 
-<div class="user">
+snapshot.forEach((docSnap)=>{
 
-<div>
-<h3>${data.email || "Пользователь"}</h3>
-<p>ID: ${user.id}</p>
-</div>
+const user =
+docSnap.data();
 
-<div class="user-buttons">
+container.innerHTML += `
 
-<button class="approve">
-Онлайн
-</button>
+<div class="item">
 
-<button class="delete">
-Удалить
-</button>
+<h3>${user.email}</h3>
 
-</div>
+<p>
+Роль: ${user.role}
+</p>
+
+<p>
+Дата регистрации:
+${user.created}
+</p>
 
 </div>
 
 `;
 
 });
+
+}
 
 /* APPLICATIONS */
 
-const appsList =
-document.getElementById(
-"applicationsList"
-);
+async function loadApplications(){
 
-apps.forEach((app)=>{
+const container =
+document.getElementById("applicationsList");
 
-const data =
-app.data();
+container.innerHTML = "";
 
-appsList.innerHTML += `
+const snapshot =
+await getDocs(collection(db,"applications"));
 
-<div class="application">
+snapshot.forEach((docSnap)=>{
+
+const app =
+docSnap.data();
+
+container.innerHTML += `
+
+<div class="item">
 
 <h3>
-${data.fullname}
+${app.fullname}
 </h3>
 
 <p>
-Discord: ${data.discord}
+Discord:
+${app.discord}
 </p>
 
 <p>
-${data.why}
+IC возраст:
+${app.icage}
 </p>
 
-<div class="application-buttons">
+<p>
+OOC возраст:
+${app.oocage}
+</p>
 
-<button class="approve">
-Одобрить
-</button>
+<p>
+Почему:
+${app.why}
+</p>
 
-<button class="delete">
+<button
+class="delete-btn"
+onclick="deleteApplication('${docSnap.id}')"
+>
 Удалить
 </button>
-
-</div>
 
 </div>
 
@@ -718,111 +511,62 @@ ${data.why}
 
 });
 
-/* IMAGE PREVIEW */
+}
 
-let imageBase64 = "";
+/* DELETE */
 
-document.getElementById(
-"newsImage"
-).addEventListener(
-"change",
-(e)=>{
+window.deleteApplication =
+async(id)=>{
 
-const file =
-e.target.files[0];
-
-if(!file) return;
-
-const reader =
-new FileReader();
-
-reader.onload =
-function(event){
-
-imageBase64 =
-event.target.result;
-
-const preview =
-document.getElementById(
-"preview"
+await deleteDoc(
+doc(db,"applications",id)
 );
 
-preview.src =
-imageBase64;
-
-preview.style.display =
-"block";
+loadApplications();
 
 };
 
-reader.readAsDataURL(file);
-
-});
-
 /* NEWS */
 
-document.getElementById(
-"newsForm"
-).addEventListener(
-"submit",
-async(e)=>{
+document
+.getElementById("publishBtn")
+.addEventListener("click",async()=>{
 
-e.preventDefault();
+const title =
+document.getElementById("newsTitle").value;
+
+const image =
+document.getElementById("newsImage").value;
+
+const text =
+document.getElementById("newsText").value;
+
+if(!title || !text){
+
+alert("Заполните поля");
+return;
+
+}
 
 await addDoc(
 collection(db,"news"),
 {
 
-title:
-document.getElementById(
-"newsTitle"
-).value,
-
-text:
-document.getElementById(
-"newsText"
-).value,
-
-image:
-imageBase64,
-
-created:
-new Date()
+title:title,
+image:image,
+text:text,
+date:new Date().toLocaleString("ru-RU")
 
 }
 );
 
-alert(
-"Новость опубликована"
-);
+alert("Новость опубликована");
 
-location.reload();
+document.getElementById("newsTitle").value = "";
+document.getElementById("newsImage").value = "";
+document.getElementById("newsText").value = "";
 
-});
-
-/* LOGOUT */
-
-document.getElementById(
-"logoutBtn"
-).addEventListener(
-"click",
-async()=>{
-
-await signOut(auth);
-
-location.reload();
-
-});
-
-  <div class="admin-card">
-
-<h2>
-Пользователи
-</h2>
-
-<div id="usersList"></div>
-
-</div>
+};
 
 </script>
 
