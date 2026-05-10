@@ -1,315 +1,676 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Либеральная Партия России</title>
+<!-- index.html -->
+<!-- AI ПОМОЩНИК ТОЛЬКО ДЛЯ ГЛАВНОЙ -->
+<!-- ВСТАВЬ ПЕРЕД </body> -->
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
+/* =========================
+AI BUTTON
+========================= */
 
-body{
-background:#071739;
-overflow-x:hidden;
-}
+.ai-button{
 
-/* ШАПКА */
-
-header{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:105px;
-background:rgba(2,15,60,0.92);
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 55px;
-z-index:1000;
-backdrop-filter:blur(10px);
-}
 
-.logo{
-display:flex;
-align-items:center;
-gap:18px;
-}
+right:25px;
+bottom:25px;
 
-.logo img{
-width:58px;
-height:58px;
-background:white;
-padding:5px;
-border-radius:4px;
-}
+width:90px;
+height:90px;
 
-.logo-text{
-color:white;
-font-size:25px;
-font-weight:bold;
-line-height:1.1;
-}
-
-/* МЕНЮ */
-
-nav{
-display:flex;
-gap:38px;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:22px;
-font-weight:bold;
-transition:0.3s;
-position:relative;
-}
-
-nav a:hover{
-color:#ff3c2f;
-}
-
-nav a::after{
-content:'';
-position:absolute;
-left:0;
-bottom:-8px;
-width:0%;
-height:3px;
-background:#ff3c2f;
-transition:0.3s;
-}
-
-nav a:hover::after{
-width:100%;
-}
-
-/* HERO */
-
-.hero{
-width:100%;
-height:100vh;
+border-radius:50%;
 
 background:
-linear-gradient(
-rgba(3,24,94,0.82),
-rgba(3,24,94,0.82)
-),
-
-url('https://images.unsplash.com/photo-1513326738677-b964603b136d?q=80&w=2070&auto=format&fit=crop');
-
-background-size:cover;
-background-position:center;
+linear-gradient(135deg,#2563eb,#3b82f6);
 
 display:flex;
 align-items:center;
-padding-left:80px;
-padding-top:120px;
-}
-
-/* ТЕКСТ */
-
-.hero-content{
-max-width:850px;
-}
-
-.hero-content h1{
-font-size:95px;
-line-height:1;
-font-weight:900;
-color:white;
-margin-bottom:35px;
-text-transform:uppercase;
-}
-
-.hero-content p{
-font-size:42px;
-color:white;
-margin-bottom:45px;
-}
-
-/* КНОПКА */
-
-.hero-content a{
-display:inline-block;
-padding:22px 48px;
-background:#ff3c2f;
-color:white;
-text-decoration:none;
-font-size:28px;
-font-weight:bold;
-border-radius:18px;
-transition:0.3s;
-box-shadow:0 10px 30px rgba(255,60,47,0.4);
-}
-
-.hero-content a:hover{
-transform:translateY(-5px);
-background:#ff564b;
-}
-
-/* АДАПТИВ */
-
-@media(max-width:1400px){
-
-.hero-content h1{
-font-size:70px;
-}
-
-nav{
-gap:22px;
-}
-
-nav a{
-font-size:18px;
-}
-
-}
-
-@media(max-width:1100px){
-
-header{
-flex-direction:column;
-height:auto;
-padding:20px;
-gap:20px;
-}
-
-nav{
-flex-wrap:wrap;
 justify-content:center;
+
+cursor:pointer;
+
+z-index:99999;
+
+box-shadow:
+0 0 40px rgba(37,99,235,0.7);
+
+transition:0.3s;
+
+animation:pulse 2s infinite;
+
 }
 
-.hero{
-padding:220px 40px 0 40px;
+@keyframes pulse{
+
+0%{
+box-shadow:0 0 0 0 rgba(37,99,235,0.7);
 }
 
-.hero-content h1{
-font-size:58px;
+70%{
+box-shadow:0 0 0 25px rgba(37,99,235,0);
 }
 
-.hero-content p{
+100%{
+box-shadow:0 0 0 0 rgba(37,99,235,0);
+}
+
+}
+
+.ai-button:hover{
+
+transform:scale(1.08);
+
+}
+
+.ai-button img{
+
+width:58px;
+height:58px;
+
+object-fit:contain;
+
+background:white;
+
+padding:8px;
+
+border-radius:16px;
+
+}
+
+/* =========================
+CHAT
+========================= */
+
+.ai-chat{
+
+position:fixed;
+
+right:25px;
+bottom:130px;
+
+width:430px;
+height:700px;
+
+background:white;
+
+border-radius:35px;
+
+overflow:hidden;
+
+display:none;
+
+flex-direction:column;
+
+z-index:99999;
+
+box-shadow:
+0 0 60px rgba(0,0,0,0.35);
+
+animation:showChat 0.3s ease;
+
+}
+
+@keyframes showChat{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* =========================
+HEADER
+========================= */
+
+.ai-header{
+
+height:95px;
+
+background:
+linear-gradient(135deg,#2563eb,#3b82f6);
+
+display:flex;
+align-items:center;
+
+padding:20px;
+
+gap:15px;
+
+color:white;
+
+}
+
+.ai-header img{
+
+width:58px;
+height:58px;
+
+background:white;
+
+padding:6px;
+
+border-radius:16px;
+
+object-fit:contain;
+
+}
+
+.ai-header h2{
+
 font-size:30px;
+
+}
+
+.ai-header p{
+
+font-size:14px;
+opacity:0.9;
+
+}
+
+/* =========================
+MESSAGES
+========================= */
+
+.ai-messages{
+
+flex:1;
+
+padding:20px;
+
+overflow-y:auto;
+
+background:#f5f7ff;
+
+display:flex;
+flex-direction:column;
+
+gap:15px;
+
+}
+
+/* =========================
+MESSAGE
+========================= */
+
+.message{
+
+max-width:82%;
+
+padding:18px;
+
+border-radius:22px;
+
+font-size:17px;
+
+line-height:1.6;
+
+word-wrap:break-word;
+
+animation:messageShow 0.2s ease;
+
+}
+
+@keyframes messageShow{
+
+from{
+opacity:0;
+transform:translateY(10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
 }
 
 }
+
+.bot{
+
+background:#dbeafe;
+
+color:black;
+
+align-self:flex-start;
+
+border-bottom-left-radius:8px;
+
+}
+
+.user{
+
+background:#2563eb;
+
+color:white;
+
+align-self:flex-end;
+
+border-bottom-right-radius:8px;
+
+}
+
+/* =========================
+INPUT
+========================= */
+
+.ai-input{
+
+display:flex;
+
+padding:15px;
+
+background:white;
+
+border-top:1px solid #ddd;
+
+}
+
+.ai-input input{
+
+flex:1;
+
+padding:17px;
+
+border:none;
+
+border-radius:16px;
+
+background:#eef2ff;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+.ai-input button{
+
+margin-left:10px;
+
+padding:17px 24px;
+
+border:none;
+
+border-radius:16px;
+
+background:#2563eb;
+
+color:white;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.ai-input button:hover{
+
+background:#3b82f6;
+
+}
+
+/* =========================
+SCROLLBAR
+========================= */
+
+.ai-messages::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+.ai-messages::-webkit-scrollbar-thumb{
+
+background:#2563eb;
+border-radius:20px;
+
+}
+
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:700px){
 
-.hero-content h1{
-font-size:42px;
+.ai-chat{
+
+width:95%;
+height:82vh;
+
+right:2.5%;
+bottom:110px;
+
 }
 
-.hero-content p{
-font-size:22px;
+.ai-button{
+
+width:75px;
+height:75px;
+
 }
 
-.hero-content a{
-font-size:20px;
-padding:18px 35px;
-}
+.ai-button img{
 
-.logo-text{
-font-size:18px;
-}
+width:50px;
+height:50px;
 
-nav a{
-font-size:16px;
 }
 
 }
 
 </style>
 
-</head>
+<!-- =========================
+BUTTON
+========================= -->
 
-<body>
-
-<header>
-
-<div class="logo">
+<div class="ai-button" id="aiOpen">
 
 <img src="logo.png">
 
-<div class="logo-text">
-Либеральная<br>
-Партия России
 </div>
 
-</div>
+<!-- =========================
+CHAT
+========================= -->
 
-<nav>
+<div class="ai-chat" id="aiChat">
 
-<a href="index.html">
-Главная
-</a>
+<div class="ai-header">
 
-<a href="news.html">
-Новости
-</a>
+<img src="logo.png">
 
-<a href="leaders.html">
-Руководство
-</a>
+<div>
 
-<a href="apply.html">
-Заявление
-</a>
-
-<a href="profile.html">
-Профиль
-</a>
-
-<a href="admin.html">
-Админ
-</a>
-
-<a href="ustav.html">
-Устав
-</a>
-
-<a href="gimn.html">
-Гимн
-</a>
-
-<a href="program.html">
-Предвыборочная программа
-</a>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>
-ЛИБЕРАЛЬНАЯ<br>
-ПАРТИЯ РОССИИ
-</h1>
+<h2>
+LPR AI
+</h2>
 
 <p>
-Для Всех Вместе
+AI Помощник Партии
 </p>
-
-<a href="apply.html">
-Вступить в партию
-</a>
 
 </div>
 
-</section>
+</div>
 
-</body>
-</html>
+<div class="ai-messages" id="messages">
+
+<div class="message bot">
+
+Здравствуйте 👋<br><br>
+
+Я AI помощник Либеральной Партии России.<br><br>
+
+Я могу помочь:
+<br><br>
+
+• рассказать о партии<br>
+• показать программу<br>
+• объяснить устав<br>
+• помочь вступить<br>
+• показать новости
+
+</div>
+
+</div>
+
+<div class="ai-input">
+
+<input
+type="text"
+id="userInput"
+placeholder="Введите сообщение..."
+>
+
+<button id="sendBtn">
+➤
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+OPEN / CLOSE
+========================= */
+
+const aiOpen =
+document.getElementById("aiOpen");
+
+const aiChat =
+document.getElementById("aiChat");
+
+aiOpen.onclick = ()=>{
+
+if(aiChat.style.display === "flex"){
+
+aiChat.style.display = "none";
+
+}else{
+
+aiChat.style.display = "flex";
+
+}
+
+};
+
+/* =========================
+ELEMENTS
+========================= */
+
+const sendBtn =
+document.getElementById("sendBtn");
+
+const userInput =
+document.getElementById("userInput");
+
+const messages =
+document.getElementById("messages");
+
+/* =========================
+ENTER
+========================= */
+
+userInput.addEventListener("keypress",(e)=>{
+
+if(e.key === "Enter"){
+
+sendMessage();
+
+}
+
+});
+
+sendBtn.onclick = sendMessage;
+
+/* =========================
+SEND MESSAGE
+========================= */
+
+function sendMessage(){
+
+const text =
+userInput.value.trim();
+
+if(!text) return;
+
+/* USER */
+
+messages.innerHTML += `
+
+<div class="message user">
+
+${text}
+
+</div>
+
+`;
+
+messages.scrollTop =
+messages.scrollHeight;
+
+userInput.value = "";
+
+/* AI */
+
+setTimeout(()=>{
+
+const reply =
+getAIResponse(text);
+
+messages.innerHTML += `
+
+<div class="message bot">
+
+${reply}
+
+</div>
+
+`;
+
+messages.scrollTop =
+messages.scrollHeight;
+
+},700);
+
+}
+
+/* =========================
+AI ANSWERS
+========================= */
+
+function getAIResponse(text){
+
+text = text.toLowerCase();
+
+/* PROGRAM */
+
+if(
+text.includes("программа")
+){
+
+return `
+📘 Предвыборочная программа находится во вкладке "Программа".
+`;
+
+}
+
+/* APPLY */
+
+if(
+text.includes("вступить")
+||
+text.includes("заявление")
+){
+
+return `
+📝 Чтобы вступить в партию:
+
+<br><br>
+
+1. Откройте вкладку "Заявление"<br>
+2. Заполните форму<br>
+3. Дождитесь проверки администрации
+`;
+
+}
+
+/* LEADERS */
+
+if(
+text.includes("руководство")
+||
+text.includes("председатель")
+){
+
+return `
+👑 Руководство партии находится во вкладке "Руководство".
+`;
+
+}
+
+/* NEWS */
+
+if(
+text.includes("новости")
+){
+
+return `
+📰 Последние новости публикуются во вкладке "Новости".
+`;
+
+}
+
+/* USTAV */
+
+if(
+text.includes("устав")
+){
+
+return `
+📜 Устав партии находится во вкладке "Устав".
+`;
+
+}
+
+/* GIMN */
+
+if(
+text.includes("гимн")
+){
+
+return `
+🎵 Гимн партии доступен во вкладке "Гимн".
+`;
+
+}
+
+/* PROFILE */
+
+if(
+text.includes("профиль")
+||
+text.includes("аккаунт")
+){
+
+return `
+👤 В профиле можно:
+<br><br>
+
+• менять аватар<br>
+• смотреть статистику<br>
+• видеть свою роль
+`;
+
+}
+
+/* DEFAULT */
+
+return `
+🤖 AI помощник пока не знает ответ на этот вопрос.
+
+Попробуйте спросить:
+<br><br>
+
+• Как вступить?<br>
+• Где программа?<br>
+• Где новости?<br>
+• Где руководство?
+`;
+
+}
+
+</script>
