@@ -4,11 +4,10 @@
 <html lang="ru">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Админ Панель</title>
+<title>ADMIN PANEL</title>
 
 <style>
 
@@ -20,55 +19,13 @@ font-family:Arial;
 }
 
 body{
-background:#06153a;
+background:
+linear-gradient(rgba(0,20,70,0.85),rgba(0,20,70,0.85)),
+url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+min-height:100vh;
 color:white;
-}
-
-/* HEADER */
-
-header{
-width:100%;
-height:90px;
-background:#071c52;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 50px;
-position:fixed;
-top:0;
-left:0;
-z-index:999;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.logo img{
-width:60px;
-height:60px;
-background:white;
-padding:5px;
-border-radius:12px;
-}
-
-.logo h1{
-font-size:28px;
-line-height:1.1;
-}
-
-nav{
-display:flex;
-gap:25px;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:18px;
-font-weight:bold;
 }
 
 /* LOGIN */
@@ -77,185 +34,226 @@ font-weight:bold;
 width:100%;
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
+padding:20px;
 }
 
 .login-box{
-width:500px;
-background:white;
+width:600px;
+background:#0b1f63;
 padding:50px;
-border-radius:30px;
-color:black;
+border-radius:35px;
+box-shadow:0 0 50px rgba(0,0,0,0.5);
+text-align:center;
+}
+
+.login-logo{
+width:130px;
+height:130px;
+background:white;
+padding:15px;
+border-radius:25px;
+object-fit:contain;
+margin-bottom:30px;
 }
 
 .login-box h1{
-font-size:45px;
-margin-bottom:30px;
+font-size:70px;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.login-box p{
+font-size:24px;
+color:#8ebcff;
+margin-bottom:35px;
 }
 
 .login-box input{
 width:100%;
-padding:18px;
+padding:22px;
 border:none;
-border-radius:15px;
-background:#dbeafe;
-font-size:18px;
-margin-bottom:20px;
+border-radius:18px;
+background:#17348d;
+font-size:22px;
+color:white;
+margin-bottom:25px;
+outline:none;
 }
 
 .login-box button{
 width:100%;
-padding:18px;
+padding:22px;
 border:none;
-border-radius:15px;
-background:#2563eb;
-color:white;
-font-size:22px;
+border-radius:18px;
+background:#4c7cff;
+font-size:24px;
 font-weight:bold;
+color:white;
 cursor:pointer;
+transition:0.3s;
 }
 
-/* ADMIN */
+.login-box button:hover{
+transform:translateY(-4px);
+background:#6a92ff;
+}
+
+/* PANEL */
 
 .admin-panel{
 display:none;
-padding-top:130px;
-width:95%;
-max-width:1600px;
-margin:auto;
-padding-bottom:50px;
+padding:40px;
+}
+
+.topbar{
+background:#0b1f63;
+padding:30px;
+border-radius:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+}
+
+.topbar h1{
+font-size:42px;
+}
+
+.logout{
+background:red;
+padding:15px 30px;
+border:none;
+border-radius:14px;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
 }
 
 .grid{
 display:grid;
-grid-template-columns:1fr 1fr 1fr;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
 gap:30px;
 }
 
 .card{
-background:#0d235f;
+background:#0b1f63;
 padding:30px;
 border-radius:25px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
 }
 
 .card h2{
-font-size:32px;
-margin-bottom:20px;
-color:#60a5fa;
+font-size:34px;
+margin-bottom:25px;
+color:#77a7ff;
 }
 
-.item{
-background:#10296b;
-padding:20px;
-border-radius:15px;
-margin-bottom:15px;
-}
-
-.item h3{
-font-size:22px;
-margin-bottom:10px;
-}
-
-.item p{
-margin-top:5px;
-font-size:16px;
-}
-
-.delete-btn{
-margin-top:15px;
-padding:12px 18px;
-background:#dc2626;
-border:none;
-border-radius:12px;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-
-textarea,
-.news-input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:15px;
-font-size:17px;
-margin-bottom:15px;
-}
-
-textarea{
-height:150px;
-resize:none;
-}
-
-.publish-btn{
+.card input,
+.card textarea{
 width:100%;
 padding:18px;
 border:none;
-border-radius:15px;
-background:#2563eb;
+border-radius:14px;
+margin-bottom:18px;
+font-size:18px;
+background:#17348d;
 color:white;
+outline:none;
+}
+
+.card textarea{
+height:200px;
+resize:none;
+}
+
+.card button{
+width:100%;
+padding:18px;
+border:none;
+border-radius:14px;
+background:#4c7cff;
 font-size:20px;
 font-weight:bold;
+color:white;
 cursor:pointer;
 }
 
-.publish-btn:hover{
-background:#3b82f6;
+.card button:hover{
+background:#6a92ff;
 }
 
-@media(max-width:1200px){
-
-.grid{
-grid-template-columns:1fr;
+.news-list{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-nav{
-display:none;
+.news-item{
+background:#17348d;
+padding:18px;
+border-radius:16px;
+}
+
+.news-item img{
+width:100%;
+border-radius:16px;
+margin-top:12px;
+}
+
+.users{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.user{
+background:#17348d;
+padding:18px;
+border-radius:16px;
+font-size:18px;
+}
+
+@media(max-width:800px){
+
+.login-box h1{
+font-size:45px;
+}
+
+.topbar{
+flex-direction:column;
+gap:20px;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
-
-<div class="logo">
-
-<img src="logo.png">
-
-<h1>
-Либеральная<br>
-Партия России
-</h1>
-
-</div>
-
-<nav>
-
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="profile.html">Профиль</a>
-
-</nav>
-
-</header>
-
 <!-- LOGIN -->
 
-<div class="login-page" id="loginPage">
+<div class="login-page">
 
 <div class="login-box">
 
+<img
+src="logo.png"
+class="login-logo"
+>
+
 <h1>
-Вход в Админку
+ADMIN PANEL
 </h1>
+
+<p>
+Введите пароль администратора
+</p>
 
 <input
 type="password"
@@ -271,9 +269,21 @@ placeholder="Введите пароль"
 
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- PANEL -->
 
-<div class="admin-panel" id="adminPanel">
+<div class="admin-panel">
+
+<div class="topbar">
+
+<h1>
+Панель управления
+</h1>
+
+<button class="logout" id="logoutBtn">
+Выйти
+</button>
+
+</div>
 
 <div class="grid">
 
@@ -285,19 +295,13 @@ placeholder="Введите пароль"
 Пользователи
 </h2>
 
-<div id="usersList"></div>
+<div class="users" id="usersList">
 
+<div class="user">
+Загрузка...
 </div>
 
-<!-- APPLICATIONS -->
-
-<div class="card">
-
-<h2>
-Заявления
-</h2>
-
-<div id="applicationsList"></div>
+</div>
 
 </div>
 
@@ -306,20 +310,18 @@ placeholder="Введите пароль"
 <div class="card">
 
 <h2>
-Публикация новостей
+Публикация новости
 </h2>
 
 <input
 type="text"
 id="newsTitle"
-class="news-input"
-placeholder="Название новости"
+placeholder="Заголовок"
 >
 
 <input
 type="text"
 id="newsImage"
-class="news-input"
 placeholder="Ссылка на фото"
 >
 
@@ -328,12 +330,23 @@ id="newsText"
 placeholder="Текст новости"
 ></textarea>
 
-<button
-class="publish-btn"
-id="publishBtn"
->
+<button id="publishBtn">
 Опубликовать
 </button>
+
+</div>
+
+<!-- NEWS LIST -->
+
+<div class="card">
+
+<h2>
+Последние новости
+</h2>
+
+<div class="news-list" id="newsList">
+
+</div>
 
 </div>
 
@@ -346,10 +359,8 @@ id="publishBtn"
 import {
 db,
 collection,
-getDocs,
 addDoc,
-deleteDoc,
-doc
+getDocs
 }
 from './firebase.js';
 
@@ -367,14 +378,14 @@ document.getElementById("password").value;
 
 if(pass === ADMIN_PASSWORD){
 
-document.getElementById("loginPage").style.display =
+document.querySelector(".login-page").style.display =
 "none";
 
-document.getElementById("adminPanel").style.display =
+document.querySelector(".admin-panel").style.display =
 "block";
 
 loadUsers();
-loadApplications();
+loadNews();
 
 }else{
 
@@ -384,7 +395,17 @@ alert("Неверный пароль");
 
 });
 
-/* USERS */
+/* LOGOUT */
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click",()=>{
+
+location.reload();
+
+});
+
+/* LOAD USERS */
 
 async function loadUsers(){
 
@@ -393,27 +414,22 @@ document.getElementById("usersList");
 
 usersList.innerHTML = "";
 
-const snapshot =
+const snap =
 await getDocs(collection(db,"users"));
 
-snapshot.forEach((docSnap)=>{
+snap.forEach(doc=>{
 
-const user =
-docSnap.data();
+const data = doc.data();
 
 usersList.innerHTML += `
 
-<div class="item">
+<div class="user">
 
-<h3>${user.email}</h3>
+<b>Email:</b> ${data.email}<br><br>
 
-<p>
-Роль: ${user.role}
-</p>
+<b>Роль:</b> ${data.role}<br><br>
 
-<p>
-Дата: ${user.created}
-</p>
+<b>Дата:</b> ${data.created}
 
 </div>
 
@@ -423,66 +439,7 @@ usersList.innerHTML += `
 
 }
 
-/* APPLICATIONS */
-
-async function loadApplications(){
-
-const applicationsList =
-document.getElementById("applicationsList");
-
-applicationsList.innerHTML = "";
-
-const snapshot =
-await getDocs(collection(db,"applications"));
-
-snapshot.forEach((docSnap)=>{
-
-const app =
-docSnap.data();
-
-applicationsList.innerHTML += `
-
-<div class="item">
-
-<h3>${app.fullname}</h3>
-
-<p>Discord: ${app.discord}</p>
-
-<p>IC возраст: ${app.icage}</p>
-
-<p>OOC возраст: ${app.oocage}</p>
-
-<p>${app.why}</p>
-
-<button
-class="delete-btn"
-onclick="deleteApplication('${docSnap.id}')"
->
-Удалить
-</button>
-
-</div>
-
-`;
-
-});
-
-}
-
-/* DELETE */
-
-window.deleteApplication =
-async(id)=>{
-
-await deleteDoc(
-doc(db,"applications",id)
-);
-
-loadApplications();
-
-};
-
-/* NEWS */
+/* PUBLISH NEWS */
 
 document
 .getElementById("publishBtn")
@@ -491,11 +448,11 @@ document
 const title =
 document.getElementById("newsTitle").value;
 
-const image =
-document.getElementById("newsImage").value;
-
 const text =
 document.getElementById("newsText").value;
+
+const image =
+document.getElementById("newsImage").value;
 
 if(!title || !text){
 
@@ -504,23 +461,71 @@ return;
 
 }
 
-await addDoc(
-collection(db,"news"),
-{
-title:title,
-image:image,
-text:text,
+await addDoc(collection(db,"news"),{
+
+title,
+text,
+image,
+
 date:new Date().toLocaleString("ru-RU")
-}
-);
+
+});
 
 alert("Новость опубликована");
 
-document.getElementById("newsTitle").value = "";
-document.getElementById("newsImage").value = "";
-document.getElementById("newsText").value = "";
+document.getElementById("newsTitle").value="";
+document.getElementById("newsText").value="";
+document.getElementById("newsImage").value="";
+
+loadNews();
 
 });
+
+/* LOAD NEWS */
+
+async function loadNews(){
+
+const newsList =
+document.getElementById("newsList");
+
+newsList.innerHTML = "";
+
+const snap =
+await getDocs(collection(db,"news"));
+
+snap.forEach(doc=>{
+
+const data = doc.data();
+
+newsList.innerHTML += `
+
+<div class="news-item">
+
+<h3>${data.title}</h3>
+
+<p style="margin-top:10px;">
+${data.text}
+</p>
+
+${
+data.image
+?
+`<img src="${data.image}">`
+:
+""
+}
+
+<p style="margin-top:10px;color:#8ebcff;">
+${data.date}
+</p>
+
+</div>
+
+`;
+
+});
+
+}
 
 </script>
 
