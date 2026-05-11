@@ -26,10 +26,8 @@ font-family:Arial;
 }
 
 body{
-
 background:#07153b;
 color:white;
-
 }
 
 /* LOGIN */
@@ -73,7 +71,6 @@ box-shadow:
 .login-card h1{
 
 font-size:42px;
-
 margin-bottom:30px;
 
 }
@@ -81,11 +78,9 @@ margin-bottom:30px;
 .login-card input{
 
 width:100%;
-
 padding:18px;
 
 border:none;
-
 border-radius:15px;
 
 margin-bottom:20px;
@@ -99,11 +94,9 @@ outline:none;
 .login-card button{
 
 width:100%;
-
 padding:18px;
 
 border:none;
-
 border-radius:15px;
 
 background:#2563eb;
@@ -111,7 +104,6 @@ background:#2563eb;
 color:white;
 
 font-size:18px;
-
 font-weight:bold;
 
 cursor:pointer;
@@ -121,17 +113,13 @@ transition:0.3s;
 }
 
 .login-card button:hover{
-
 background:#3b82f6;
-
 }
 
 /* PANEL */
 
 .admin-panel{
-
 display:none;
-
 }
 
 /* HEADER */
@@ -150,9 +138,7 @@ align-items:center;
 }
 
 header h1{
-
 font-size:38px;
-
 }
 
 .logout-btn{
@@ -162,11 +148,9 @@ padding:14px 25px;
 background:#ef4444;
 
 border:none;
-
 border-radius:15px;
 
 color:white;
-
 font-weight:bold;
 
 cursor:pointer;
@@ -178,20 +162,20 @@ cursor:pointer;
 .page{
 
 width:95%;
-max-width:1600px;
+max-width:1700px;
 
 margin:50px auto;
 
 }
 
-/* CARDS */
+/* GRID */
 
 .grid{
 
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(350px,1fr));
+repeat(auto-fit,minmax(500px,1fr));
 
 gap:30px;
 
@@ -273,16 +257,12 @@ transition:0.3s;
 }
 
 button:hover{
-
 background:#3b82f6;
-
 }
 
-/* NEWS LIST */
+/* LIST */
 
-.news-list{
-
-margin-top:30px;
+.list{
 
 display:flex;
 flex-direction:column;
@@ -290,7 +270,9 @@ gap:20px;
 
 }
 
-.news-item{
+/* ITEM */
+
+.item{
 
 background:#10296b;
 
@@ -298,11 +280,28 @@ padding:25px;
 
 border-radius:25px;
 
-position:relative;
+}
+
+.item h3{
+
+font-size:28px;
+margin-bottom:10px;
 
 }
 
-.news-item img{
+.item p{
+
+font-size:18px;
+
+line-height:1.7;
+
+color:#dbeafe;
+
+margin-top:10px;
+
+}
+
+.item img{
 
 width:100%;
 max-height:250px;
@@ -315,38 +314,40 @@ margin-top:15px;
 
 }
 
-.news-item h3{
+/* ACTIONS */
 
-font-size:28px;
+.actions{
 
-margin-bottom:10px;
-
-}
-
-.news-item p{
-
-font-size:18px;
-
-line-height:1.7;
-
-color:#dbeafe;
-
-margin-top:10px;
-
-}
-
-.delete-btn{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 
 margin-top:20px;
 
-background:#ef4444;
+}
 
+.accept-btn{
+background:#22c55e;
+}
+
+.accept-btn:hover{
+background:#34d399;
+}
+
+.reject-btn{
+background:#ef4444;
+}
+
+.reject-btn:hover{
+background:#ff5a5a;
+}
+
+.delete-btn{
+background:#ef4444;
 }
 
 .delete-btn:hover{
-
 background:#ff5a5a;
-
 }
 
 /* MOBILE */
@@ -354,25 +355,22 @@ background:#ff5a5a;
 @media(max-width:800px){
 
 header{
-
 padding:20px;
 flex-direction:column;
 gap:20px;
-
 }
 
 header h1{
-
 font-size:28px;
-
 }
 
 .login-card{
-
 width:92%;
-
 padding:35px;
+}
 
+.grid{
+grid-template-columns:1fr;
 }
 
 }
@@ -430,7 +428,7 @@ onclick="logout()"
 
 <div class="grid">
 
-<!-- NEWS CREATE -->
+<!-- CREATE NEWS -->
 
 <div class="card">
 
@@ -461,17 +459,32 @@ accept="image/*"
 
 </div>
 
-<!-- NEWS LIST -->
+<!-- NEWS -->
 
 <div class="card">
 
 <h2>
-Все новости
+Управление новостями
 </h2>
 
 <div
-class="news-list"
+class="list"
 id="newsList"
+></div>
+
+</div>
+
+<!-- APPLICATIONS -->
+
+<div class="card">
+
+<h2>
+Проверка заявок
+</h2>
+
+<div
+class="list"
+id="applicationsList"
 ></div>
 
 </div>
@@ -503,6 +516,20 @@ localStorage.setItem(
 "true"
 );
 
+showPanel();
+
+}else{
+
+alert("Неверный пароль");
+
+}
+
+}
+
+/* SHOW PANEL */
+
+function showPanel(){
+
 document.getElementById("loginBox")
 .style.display = "none";
 
@@ -510,12 +537,7 @@ document.getElementById("adminPanel")
 .style.display = "block";
 
 loadNews();
-
-}else{
-
-alert("Неверный пароль");
-
-}
+loadApplications();
 
 }
 
@@ -526,13 +548,7 @@ localStorage.getItem("adminAccess")
 === "true"
 ){
 
-document.getElementById("loginBox")
-.style.display = "none";
-
-document.getElementById("adminPanel")
-.style.display = "block";
-
-loadNews();
+showPanel();
 
 }
 
@@ -599,9 +615,9 @@ localStorage.setItem(
 JSON.stringify(newsArray)
 );
 
-document.getElementById("title").value = "";
-document.getElementById("text").value = "";
-document.getElementById("imageInput").value = "";
+document.getElementById("title").value="";
+document.getElementById("text").value="";
+document.getElementById("imageInput").value="";
 
 loadNews();
 
@@ -652,7 +668,7 @@ newsArray.forEach(news=>{
 
 newsList.innerHTML += `
 
-<div class="news-item">
+<div class="item">
 
 <h3>
 ${news.title}
@@ -670,12 +686,16 @@ news.image
 ""
 }
 
+<div class="actions">
+
 <button
 class="delete-btn"
 onclick="deleteNews(${news.id})"
 >
-Удалить новость
+Удалить
 </button>
+
+</div>
 
 </div>
 
@@ -705,6 +725,172 @@ JSON.stringify(newsArray)
 );
 
 loadNews();
+
+}
+
+/* LOAD APPLICATIONS */
+
+function loadApplications(){
+
+const applicationsList =
+document.getElementById("applicationsList");
+
+applicationsList.innerHTML = "";
+
+let apps =
+JSON.parse(
+localStorage.getItem("applications")
+) || [];
+
+if(apps.length === 0){
+
+applicationsList.innerHTML =
+"<p>Заявок пока нет</p>";
+
+return;
+
+}
+
+apps.forEach(app=>{
+
+applicationsList.innerHTML += `
+
+<div class="item">
+
+<h3>
+${app.name}
+</h3>
+
+<p>
+Email: ${app.email}
+</p>
+
+<p>
+Возраст: ${app.age}
+</p>
+
+<p>
+Город: ${app.city}
+</p>
+
+<p>
+Статус:
+<b>${app.status || "На рассмотрении"}</b>
+</p>
+
+<div class="actions">
+
+<button
+class="accept-btn"
+onclick="acceptApplication(${app.id})"
+>
+Одобрить
+</button>
+
+<button
+class="reject-btn"
+onclick="rejectApplication(${app.id})"
+>
+Отклонить
+</button>
+
+<button
+class="delete-btn"
+onclick="deleteApplication(${app.id})"
+>
+Удалить
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* ACCEPT */
+
+function acceptApplication(id){
+
+let apps =
+JSON.parse(
+localStorage.getItem("applications")
+) || [];
+
+apps = apps.map(app=>{
+
+if(app.id === id){
+
+app.status = "Одобрено";
+
+}
+
+return app;
+
+});
+
+localStorage.setItem(
+"applications",
+JSON.stringify(apps)
+);
+
+loadApplications();
+
+}
+
+/* REJECT */
+
+function rejectApplication(id){
+
+let apps =
+JSON.parse(
+localStorage.getItem("applications")
+) || [];
+
+apps = apps.map(app=>{
+
+if(app.id === id){
+
+app.status = "Отклонено";
+
+}
+
+return app;
+
+});
+
+localStorage.setItem(
+"applications",
+JSON.stringify(apps)
+);
+
+loadApplications();
+
+}
+
+/* DELETE APPLICATION */
+
+function deleteApplication(id){
+
+let apps =
+JSON.parse(
+localStorage.getItem("applications")
+) || [];
+
+apps =
+apps.filter(
+app => app.id !== id
+);
+
+localStorage.setItem(
+"applications",
+JSON.stringify(apps)
+);
+
+loadApplications();
 
 }
 
