@@ -32,7 +32,7 @@ color:white;
 
 /* LOGIN */
 
-.login-box{
+.login{
 
 position:fixed;
 top:0;
@@ -47,11 +47,9 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-z-index:9999;
-
 }
 
-.login-card{
+.login-box{
 
 background:#0d235f;
 
@@ -63,40 +61,40 @@ width:420px;
 
 text-align:center;
 
-box-shadow:
-0 0 40px rgba(0,0,0,0.4);
-
 }
 
-.login-card h1{
+.login-box h1{
 
 font-size:42px;
+
 margin-bottom:30px;
 
 }
 
-.login-card input{
+.login-box input{
 
 width:100%;
+
 padding:18px;
 
 border:none;
+
 border-radius:15px;
 
 margin-bottom:20px;
 
 font-size:18px;
 
-outline:none;
-
 }
 
-.login-card button{
+.login-box button{
 
 width:100%;
+
 padding:18px;
 
 border:none;
+
 border-radius:15px;
 
 background:#2563eb;
@@ -104,32 +102,28 @@ background:#2563eb;
 color:white;
 
 font-size:18px;
+
 font-weight:bold;
 
 cursor:pointer;
 
-transition:0.3s;
-
-}
-
-.login-card button:hover{
-background:#3b82f6;
 }
 
 /* PANEL */
 
-.admin-panel{
+.panel{
+
 display:none;
+
 }
 
 /* HEADER */
 
 header{
 
-width:100%;
-padding:25px 50px;
-
 background:#0d235f;
+
+padding:25px 50px;
 
 display:flex;
 justify-content:space-between;
@@ -138,22 +132,8 @@ align-items:center;
 }
 
 header h1{
-font-size:38px;
-}
 
-.logout-btn{
-
-padding:14px 25px;
-
-background:#ef4444;
-
-border:none;
-border-radius:15px;
-
-color:white;
-font-weight:bold;
-
-cursor:pointer;
+font-size:40px;
 
 }
 
@@ -162,22 +142,9 @@ cursor:pointer;
 .page{
 
 width:95%;
-max-width:1700px;
+max-width:1600px;
 
 margin:50px auto;
-
-}
-
-/* GRID */
-
-.grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(500px,1fr));
-
-gap:30px;
 
 }
 
@@ -191,20 +158,17 @@ padding:35px;
 
 border-radius:30px;
 
-box-shadow:
-0 0 30px rgba(0,0,0,0.3);
+margin-bottom:30px;
 
 }
 
 .card h2{
 
-font-size:32px;
+font-size:34px;
 
 margin-bottom:25px;
 
 }
-
-/* INPUTS */
 
 input,
 textarea{
@@ -217,11 +181,9 @@ border:none;
 
 border-radius:15px;
 
-margin-bottom:18px;
+margin-bottom:20px;
 
 font-size:17px;
-
-outline:none;
 
 }
 
@@ -232,11 +194,9 @@ resize:none;
 
 }
 
-/* BUTTON */
-
 button{
 
-padding:16px 25px;
+padding:15px 25px;
 
 border:none;
 
@@ -252,27 +212,9 @@ font-weight:bold;
 
 cursor:pointer;
 
-transition:0.3s;
-
 }
 
-button:hover{
-background:#3b82f6;
-}
-
-/* LIST */
-
-.list{
-
-display:flex;
-flex-direction:column;
-gap:20px;
-
-}
-
-/* ITEM */
-
-.item{
+.news{
 
 background:#10296b;
 
@@ -280,98 +222,15 @@ padding:25px;
 
 border-radius:25px;
 
-}
-
-.item h3{
-
-font-size:28px;
-margin-bottom:10px;
-
-}
-
-.item p{
-
-font-size:18px;
-
-line-height:1.7;
-
-color:#dbeafe;
-
-margin-top:10px;
-
-}
-
-.item img{
-
-width:100%;
-max-height:250px;
-
-object-fit:cover;
-
-border-radius:20px;
-
-margin-top:15px;
-
-}
-
-/* ACTIONS */
-
-.actions{
-
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-
 margin-top:20px;
 
 }
 
-.accept-btn{
-background:#22c55e;
-}
+.delete{
 
-.accept-btn:hover{
-background:#34d399;
-}
-
-.reject-btn{
 background:#ef4444;
-}
 
-.reject-btn:hover{
-background:#ff5a5a;
-}
-
-.delete-btn{
-background:#ef4444;
-}
-
-.delete-btn:hover{
-background:#ff5a5a;
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-header{
-padding:20px;
-flex-direction:column;
-gap:20px;
-}
-
-header h1{
-font-size:28px;
-}
-
-.login-card{
-width:92%;
-padding:35px;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
+margin-top:15px;
 
 }
 
@@ -383,12 +242,12 @@ grid-template-columns:1fr;
 
 <!-- LOGIN -->
 
-<div class="login-box" id="loginBox">
+<div class="login" id="login">
 
-<div class="login-card">
+<div class="login-box">
 
 <h1>
-Вход в Админ Панель
+Вход
 </h1>
 
 <input
@@ -407,7 +266,7 @@ placeholder="Введите пароль"
 
 <!-- PANEL -->
 
-<div class="admin-panel" id="adminPanel">
+<div class="panel" id="panel">
 
 <header>
 
@@ -415,10 +274,7 @@ placeholder="Введите пароль"
 Админ Панель
 </h1>
 
-<button
-class="logout-btn"
-onclick="logout()"
->
+<button onclick="logout()">
 Выйти
 </button>
 
@@ -426,9 +282,7 @@ onclick="logout()"
 
 <div class="page">
 
-<div class="grid">
-
-<!-- CREATE NEWS -->
+<!-- NEWS -->
 
 <div class="card">
 
@@ -447,47 +301,21 @@ id="text"
 placeholder="Текст новости"
 ></textarea>
 
-<input
-type="file"
-id="imageInput"
-accept="image/*"
->
-
 <button onclick="addNews()">
 Опубликовать
 </button>
 
 </div>
 
-<!-- NEWS -->
+<!-- NEWS LIST -->
 
 <div class="card">
 
 <h2>
-Управление новостями
+Все новости
 </h2>
 
-<div
-class="list"
-id="newsList"
-></div>
-
-</div>
-
-<!-- APPLICATIONS -->
-
-<div class="card">
-
-<h2>
-Проверка заявок
-</h2>
-
-<div
-class="list"
-id="applicationsList"
-></div>
-
-</div>
+<div id="newsList"></div>
 
 </div>
 
@@ -497,22 +325,20 @@ id="applicationsList"
 
 <script>
 
-/* PASSWORD */
-
-const ADMIN_PASSWORD =
-"1234567890mtrp9";
+const PASSWORD =
+"1234567890mtrp999";
 
 /* LOGIN */
 
 function login(){
 
-const password =
+const pass =
 document.getElementById("password").value;
 
-if(password === ADMIN_PASSWORD){
+if(pass === PASSWORD){
 
 localStorage.setItem(
-"adminAccess",
+"admin",
 "true"
 );
 
@@ -526,25 +352,24 @@ alert("Неверный пароль");
 
 }
 
-/* SHOW PANEL */
+/* SHOW */
 
 function showPanel(){
 
-document.getElementById("loginBox")
+document.getElementById("login")
 .style.display = "none";
 
-document.getElementById("adminPanel")
+document.getElementById("panel")
 .style.display = "block";
 
 loadNews();
-loadApplications();
 
 }
 
 /* AUTO LOGIN */
 
 if(
-localStorage.getItem("adminAccess")
+localStorage.getItem("admin")
 === "true"
 ){
 
@@ -556,7 +381,7 @@ showPanel();
 
 function logout(){
 
-localStorage.removeItem("adminAccess");
+localStorage.removeItem("admin");
 
 location.reload();
 
@@ -572,9 +397,6 @@ document.getElementById("title").value;
 const text =
 document.getElementById("text").value;
 
-const imageInput =
-document.getElementById("imageInput");
-
 if(!title || !text){
 
 alert("Заполните поля");
@@ -583,61 +405,32 @@ return;
 
 }
 
-const reader =
-new FileReader();
-
-reader.onload = function(e){
-
-const image =
-e.target.result;
-
 const news = {
 
 id:Date.now(),
 
 title:title,
 
-text:text,
-
-image:image
+text:text
 
 };
 
-let newsArray =
+let allNews =
 JSON.parse(
 localStorage.getItem("news")
 ) || [];
 
-newsArray.unshift(news);
+allNews.unshift(news);
 
 localStorage.setItem(
 "news",
-JSON.stringify(newsArray)
+JSON.stringify(allNews)
 );
 
 document.getElementById("title").value="";
 document.getElementById("text").value="";
-document.getElementById("imageInput").value="";
 
 loadNews();
-
-};
-
-if(imageInput.files[0]){
-
-reader.readAsDataURL(
-imageInput.files[0]
-);
-
-}else{
-
-reader.onload({
-target:{
-result:""
-}
-});
-
-}
 
 }
 
@@ -645,30 +438,30 @@ result:""
 
 function loadNews(){
 
-const newsList =
+const list =
 document.getElementById("newsList");
 
-newsList.innerHTML = "";
+list.innerHTML = "";
 
-let newsArray =
+let allNews =
 JSON.parse(
 localStorage.getItem("news")
 ) || [];
 
-if(newsArray.length === 0){
+if(allNews.length === 0){
 
-newsList.innerHTML =
-"<p>Новостей пока нет</p>";
+list.innerHTML =
+"<p>Новостей нет</p>";
 
 return;
 
 }
 
-newsArray.forEach(news=>{
+allNews.forEach(news=>{
 
-newsList.innerHTML += `
+list.innerHTML += `
 
-<div class="item">
+<div class="news">
 
 <h3>
 ${news.title}
@@ -678,18 +471,8 @@ ${news.title}
 ${news.text}
 </p>
 
-${
-news.image
-?
-`<img src="${news.image}">`
-:
-""
-}
-
-<div class="actions">
-
 <button
-class="delete-btn"
+class="delete"
 onclick="deleteNews(${news.id})"
 >
 Удалить
@@ -697,200 +480,32 @@ onclick="deleteNews(${news.id})"
 
 </div>
 
-</div>
-
 `;
 
 });
 
 }
 
-/* DELETE NEWS */
+/* DELETE */
 
 function deleteNews(id){
 
-let newsArray =
+let allNews =
 JSON.parse(
 localStorage.getItem("news")
 ) || [];
 
-newsArray =
-newsArray.filter(
-news => news.id !== id
+allNews =
+allNews.filter(
+n => n.id !== id
 );
 
 localStorage.setItem(
 "news",
-JSON.stringify(newsArray)
+JSON.stringify(allNews)
 );
 
 loadNews();
-
-}
-
-/* LOAD APPLICATIONS */
-
-function loadApplications(){
-
-const applicationsList =
-document.getElementById("applicationsList");
-
-applicationsList.innerHTML = "";
-
-let apps =
-JSON.parse(
-localStorage.getItem("applications")
-) || [];
-
-if(apps.length === 0){
-
-applicationsList.innerHTML =
-"<p>Заявок пока нет</p>";
-
-return;
-
-}
-
-apps.forEach(app=>{
-
-applicationsList.innerHTML += `
-
-<div class="item">
-
-<h3>
-${app.name}
-</h3>
-
-<p>
-Email: ${app.email}
-</p>
-
-<p>
-Возраст: ${app.age}
-</p>
-
-<p>
-Город: ${app.city}
-</p>
-
-<p>
-Статус:
-<b>${app.status || "На рассмотрении"}</b>
-</p>
-
-<div class="actions">
-
-<button
-class="accept-btn"
-onclick="acceptApplication(${app.id})"
->
-Одобрить
-</button>
-
-<button
-class="reject-btn"
-onclick="rejectApplication(${app.id})"
->
-Отклонить
-</button>
-
-<button
-class="delete-btn"
-onclick="deleteApplication(${app.id})"
->
-Удалить
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-/* ACCEPT */
-
-function acceptApplication(id){
-
-let apps =
-JSON.parse(
-localStorage.getItem("applications")
-) || [];
-
-apps = apps.map(app=>{
-
-if(app.id === id){
-
-app.status = "Одобрено";
-
-}
-
-return app;
-
-});
-
-localStorage.setItem(
-"applications",
-JSON.stringify(apps)
-);
-
-loadApplications();
-
-}
-
-/* REJECT */
-
-function rejectApplication(id){
-
-let apps =
-JSON.parse(
-localStorage.getItem("applications")
-) || [];
-
-apps = apps.map(app=>{
-
-if(app.id === id){
-
-app.status = "Отклонено";
-
-}
-
-return app;
-
-});
-
-localStorage.setItem(
-"applications",
-JSON.stringify(apps)
-);
-
-loadApplications();
-
-}
-
-/* DELETE APPLICATION */
-
-function deleteApplication(id){
-
-let apps =
-JSON.parse(
-localStorage.getItem("applications")
-) || [];
-
-apps =
-apps.filter(
-app => app.id !== id
-);
-
-localStorage.setItem(
-"applications",
-JSON.stringify(apps)
-);
-
-loadApplications();
 
 }
 
