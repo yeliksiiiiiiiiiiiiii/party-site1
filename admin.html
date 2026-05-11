@@ -6,10 +6,14 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>
-Ultra Admin Panel
+Админ Панель
 </title>
 
 <style>
@@ -22,292 +26,353 @@ font-family:Arial;
 }
 
 body{
-background:#06153a;
+
+background:#07153b;
 color:white;
-overflow-x:hidden;
+
 }
 
 /* LOGIN */
 
-.login-page{
+.login-box{
+
+position:fixed;
+top:0;
+left:0;
+
 width:100%;
 height:100vh;
+
+background:#07153b;
+
 display:flex;
-align-items:center;
 justify-content:center;
-background:
-linear-gradient(rgba(0,20,70,0.92),rgba(0,20,70,0.95)),
-url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070");
-background-size:cover;
-background-position:center;
+align-items:center;
+
+z-index:9999;
+
 }
 
-.login-box{
-width:600px;
+.login-card{
+
 background:#0d235f;
+
 padding:50px;
-border-radius:35px;
+
+border-radius:30px;
+
+width:420px;
+
 text-align:center;
-box-shadow:0 0 40px rgba(0,0,0,0.5);
+
+box-shadow:
+0 0 40px rgba(0,0,0,0.4);
+
 }
 
-.login-logo{
-width:120px;
-height:120px;
-background:white;
-padding:10px;
-border-radius:25px;
-margin-bottom:25px;
-object-fit:contain;
+.login-card h1{
+
+font-size:42px;
+
+margin-bottom:30px;
+
 }
 
-.login-box h1{
-font-size:65px;
-margin-bottom:10px;
-}
+.login-card input{
 
-.login-box p{
-font-size:22px;
-color:#9ecbff;
-margin-bottom:35px;
-}
-
-.login-box input{
 width:100%;
-padding:22px;
+
+padding:18px;
+
 border:none;
-border-radius:18px;
-background:#17348d;
-color:white;
-font-size:22px;
-margin-bottom:25px;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+font-size:18px;
+
 outline:none;
+
 }
 
-.login-box button{
+.login-card button{
+
 width:100%;
-padding:22px;
+
+padding:18px;
+
 border:none;
-border-radius:18px;
-background:#4c7cff;
-font-size:24px;
-font-weight:bold;
+
+border-radius:15px;
+
+background:#2563eb;
+
 color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
 cursor:pointer;
+
 transition:0.3s;
+
 }
 
-.login-box button:hover{
-background:#6a92ff;
-transform:translateY(-3px);
+.login-card button:hover{
+
+background:#3b82f6;
+
 }
 
 /* PANEL */
 
 .admin-panel{
+
 display:none;
-padding:40px;
+
 }
 
-.topbar{
+/* HEADER */
+
+header{
+
+width:100%;
+padding:25px 50px;
+
+background:#0d235f;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:#0d235f;
-padding:30px;
-border-radius:25px;
-margin-bottom:35px;
+
 }
 
-.topbar h1{
-font-size:45px;
+header h1{
+
+font-size:38px;
+
 }
 
 .logout-btn{
-padding:15px 30px;
+
+padding:14px 25px;
+
+background:#ef4444;
+
 border:none;
+
 border-radius:15px;
-background:#dc2626;
+
 color:white;
-font-size:18px;
+
 font-weight:bold;
+
 cursor:pointer;
+
 }
 
+/* PAGE */
+
+.page{
+
+width:95%;
+max-width:1600px;
+
+margin:50px auto;
+
+}
+
+/* CARDS */
+
 .grid{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
+
 gap:30px;
+
 }
 
 /* CARD */
 
 .card{
+
 background:#0d235f;
-padding:30px;
+
+padding:35px;
+
 border-radius:30px;
-box-shadow:0 0 25px rgba(0,0,0,0.4);
+
+box-shadow:
+0 0 30px rgba(0,0,0,0.3);
+
 }
 
 .card h2{
-font-size:34px;
+
+font-size:32px;
+
 margin-bottom:25px;
-color:#77a7ff;
+
 }
 
-/* USERS */
+/* INPUTS */
 
-.user{
-background:#17348d;
-padding:18px;
-border-radius:18px;
-margin-bottom:15px;
-}
+input,
+textarea{
 
-.user h3{
-font-size:22px;
-margin-bottom:10px;
-}
-
-.user p{
-margin-top:5px;
-font-size:17px;
-color:#dbeafe;
-}
-
-.role-select{
 width:100%;
-padding:12px;
+
+padding:16px;
+
 border:none;
-border-radius:12px;
-margin-top:15px;
-background:#0d235f;
-color:white;
-font-size:16px;
-}
 
-.role-btn{
-margin-top:15px;
-width:100%;
-padding:14px;
-border:none;
-border-radius:14px;
-background:#2563eb;
-color:white;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* APPLICATIONS */
-
-.application{
-background:#17348d;
-padding:20px;
-border-radius:18px;
-margin-bottom:15px;
-}
-
-.application h3{
-font-size:24px;
-margin-bottom:12px;
-}
-
-.application p{
-margin-top:8px;
-font-size:16px;
-}
-
-.app-buttons{
-display:flex;
-gap:12px;
-margin-top:20px;
-}
-
-.accept-btn{
-flex:1;
-padding:14px;
-border:none;
-border-radius:14px;
-background:#16a34a;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-
-.reject-btn{
-flex:1;
-padding:14px;
-border:none;
-border-radius:14px;
-background:#dc2626;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* NEWS */
-
-.card input,
-.card textarea{
-width:100%;
-padding:18px;
-border:none;
 border-radius:15px;
-background:#17348d;
-color:white;
-font-size:18px;
+
 margin-bottom:18px;
+
+font-size:17px;
+
 outline:none;
+
 }
 
-.card textarea{
+textarea{
+
 height:180px;
 resize:none;
+
 }
 
-.publish-btn{
-width:100%;
-padding:18px;
+/* BUTTON */
+
+button{
+
+padding:16px 25px;
+
 border:none;
+
 border-radius:15px;
+
 background:#2563eb;
+
 color:white;
-font-size:20px;
+
+font-size:17px;
+
 font-weight:bold;
+
 cursor:pointer;
+
+transition:0.3s;
+
 }
 
-.publish-btn:hover{
+button:hover{
+
 background:#3b82f6;
+
+}
+
+/* NEWS LIST */
+
+.news-list{
+
+margin-top:30px;
+
+display:flex;
+flex-direction:column;
+gap:20px;
+
 }
 
 .news-item{
-background:#17348d;
-padding:18px;
-border-radius:18px;
-margin-top:20px;
+
+background:#10296b;
+
+padding:25px;
+
+border-radius:25px;
+
+position:relative;
+
 }
 
 .news-item img{
+
 width:100%;
-border-radius:16px;
-margin-top:12px;
+max-height:250px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+margin-top:15px;
+
 }
 
-@media(max-width:900px){
+.news-item h3{
 
-.topbar{
+font-size:28px;
+
+margin-bottom:10px;
+
+}
+
+.news-item p{
+
+font-size:18px;
+
+line-height:1.7;
+
+color:#dbeafe;
+
+margin-top:10px;
+
+}
+
+.delete-btn{
+
+margin-top:20px;
+
+background:#ef4444;
+
+}
+
+.delete-btn:hover{
+
+background:#ff5a5a;
+
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+header{
+
+padding:20px;
 flex-direction:column;
 gap:20px;
+
 }
 
-.login-box{
-width:95%;
+header h1{
+
+font-size:28px;
+
 }
 
-.login-box h1{
-font-size:42px;
+.login-card{
+
+width:92%;
+
+padding:35px;
+
 }
 
 }
@@ -320,30 +385,21 @@ font-size:42px;
 
 <!-- LOGIN -->
 
-<div class="login-page">
+<div class="login-box" id="loginBox">
 
-<div class="login-box">
-
-<img
-src="logo.png"
-class="login-logo"
->
+<div class="login-card">
 
 <h1>
-ADMIN PANEL
+Вход в Админ Панель
 </h1>
-
-<p>
-Введите пароль администратора
-</p>
 
 <input
 type="password"
 id="password"
-placeholder="Пароль"
+placeholder="Введите пароль"
 >
 
-<button id="loginBtn">
+<button onclick="login()">
 Войти
 </button>
 
@@ -353,82 +409,70 @@ placeholder="Пароль"
 
 <!-- PANEL -->
 
-<div class="admin-panel">
+<div class="admin-panel" id="adminPanel">
 
-<div class="topbar">
+<header>
 
 <h1>
-Ultra Admin Panel
+Админ Панель
 </h1>
 
 <button
 class="logout-btn"
-id="logoutBtn"
+onclick="logout()"
 >
 Выйти
 </button>
 
-</div>
+</header>
+
+<div class="page">
 
 <div class="grid">
 
-<!-- USERS -->
+<!-- NEWS CREATE -->
 
 <div class="card">
 
 <h2>
-Пользователи
-</h2>
-
-<div id="usersList"></div>
-
-</div>
-
-<!-- APPLICATIONS -->
-
-<div class="card">
-
-<h2>
-Проверка заявок
-</h2>
-
-<div id="applicationsList"></div>
-
-</div>
-
-<!-- NEWS -->
-
-<div class="card">
-
-<h2>
-Публикация новости
+Создать новость
 </h2>
 
 <input
 type="text"
-id="newsTitle"
-placeholder="Название новости"
->
-
-<input
-type="text"
-id="newsImage"
-placeholder="Ссылка на фото"
+id="title"
+placeholder="Заголовок"
 >
 
 <textarea
-id="newsText"
+id="text"
 placeholder="Текст новости"
 ></textarea>
 
-<button
-class="publish-btn"
-id="publishBtn"
+<input
+type="file"
+id="imageInput"
+accept="image/*"
 >
+
+<button onclick="addNews()">
 Опубликовать
 </button>
 
-<div id="newsList"></div>
+</div>
+
+<!-- NEWS LIST -->
+
+<div class="card">
+
+<h2>
+Все новости
+</h2>
+
+<div
+class="news-list"
+id="newsList"
+></div>
 
 </div>
 
@@ -436,41 +480,35 @@ id="publishBtn"
 
 </div>
 
-<script type="module">
+</div>
 
-import {
-db,
-collection,
-addDoc,
-getDocs,
-deleteDoc,
-doc,
-updateDoc
-}
-from './firebase.js';
+<script>
 
 /* PASSWORD */
 
 const ADMIN_PASSWORD =
 "1234567890mtrp9";
 
-document
-.getElementById("loginBtn")
-.addEventListener("click",()=>{
+/* LOGIN */
 
-const pass =
+function login(){
+
+const password =
 document.getElementById("password").value;
 
-if(pass === ADMIN_PASSWORD){
+if(password === ADMIN_PASSWORD){
 
-document.querySelector(".login-page").style.display =
-"none";
+localStorage.setItem(
+"adminAccess",
+"true"
+);
 
-document.querySelector(".admin-panel").style.display =
-"block";
+document.getElementById("loginBox")
+.style.display = "none";
 
-loadUsers();
-loadApplications();
+document.getElementById("adminPanel")
+.style.display = "block";
+
 loadNews();
 
 }else{
@@ -479,317 +517,194 @@ alert("Неверный пароль");
 
 }
 
-});
+}
+
+/* AUTO LOGIN */
+
+if(
+localStorage.getItem("adminAccess")
+=== "true"
+){
+
+document.getElementById("loginBox")
+.style.display = "none";
+
+document.getElementById("adminPanel")
+.style.display = "block";
+
+loadNews();
+
+}
 
 /* LOGOUT */
 
-document
-.getElementById("logoutBtn")
-.addEventListener("click",()=>{
+function logout(){
+
+localStorage.removeItem("adminAccess");
 
 location.reload();
 
-});
-
-/* USERS */
-
-async function loadUsers(){
-
-const usersList =
-document.getElementById("usersList");
-
-usersList.innerHTML = "";
-
-const snap =
-await getDocs(collection(db,"users"));
-
-snap.forEach(docSnap=>{
-
-const data = docSnap.data();
-
-usersList.innerHTML += `
-
-<div class="user">
-
-<h3>
-${data.email}
-</h3>
-
-<p>
-Роль:
-${data.role || "Участник"}
-</p>
-
-<p>
-Дата:
-${data.created || "Неизвестно"}
-</p>
-
-<select
-class="role-select"
-id="role-${docSnap.id}"
->
-
-<option>
-Участник
-</option>
-
-<option>
-Ветеран Партии
-</option>
-
-<option>
-Председатель Партии
-</option>
-
-<option>
-Заместитель
-</option>
-
-<option>
-Модератор
-</option>
-
-<option>
-Пресс-служба
-</option>
-
-</select>
-
-<button
-class="role-btn"
-onclick="setRole('${docSnap.id}')"
->
-Выдать роль
-</button>
-
-</div>
-
-`;
-
-});
-
 }
 
-/* ROLE */
+/* ADD NEWS */
 
-window.setRole =
-async(id)=>{
-
-const role =
-document.getElementById(
-`role-${id}`
-).value;
-
-await updateDoc(
-doc(db,"users",id),
-{
-role:role
-}
-);
-
-alert("Роль выдана");
-
-loadUsers();
-
-};
-
-/* APPLICATIONS */
-
-async function loadApplications(){
-
-const applicationsList =
-document.getElementById("applicationsList");
-
-applicationsList.innerHTML = "";
-
-const snap =
-await getDocs(collection(db,"applications"));
-
-snap.forEach(docSnap=>{
-
-const app = docSnap.data();
-
-applicationsList.innerHTML += `
-
-<div class="application">
-
-<h3>
-${app.fullname}
-</h3>
-
-<p>
-Discord:
-${app.discord}
-</p>
-
-<p>
-IC возраст:
-${app.icage}
-</p>
-
-<p>
-OOC возраст:
-${app.oocage}
-</p>
-
-<p>
-${app.why}
-</p>
-
-<div class="app-buttons">
-
-<button
-class="accept-btn"
-onclick="acceptApplication('${docSnap.id}')"
->
-Одобрить
-</button>
-
-<button
-class="reject-btn"
-onclick="rejectApplication('${docSnap.id}')"
->
-Отклонить
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-/* ACCEPT */
-
-window.acceptApplication =
-async(id)=>{
-
-await updateDoc(
-doc(db,"applications",id),
-{
-status:"accepted"
-}
-);
-
-alert("Заявка одобрена");
-
-loadApplications();
-
-};
-
-/* REJECT */
-
-window.rejectApplication =
-async(id)=>{
-
-await deleteDoc(
-doc(db,"applications",id)
-);
-
-alert("Заявка отклонена");
-
-loadApplications();
-
-};
-
-/* PUBLISH NEWS */
-
-document
-.getElementById("publishBtn")
-.addEventListener("click",async()=>{
+function addNews(){
 
 const title =
-document.getElementById("newsTitle").value;
-
-const image =
-document.getElementById("newsImage").value;
+document.getElementById("title").value;
 
 const text =
-document.getElementById("newsText").value;
+document.getElementById("text").value;
+
+const imageInput =
+document.getElementById("imageInput");
 
 if(!title || !text){
 
 alert("Заполните поля");
+
 return;
 
 }
 
-await addDoc(
-collection(db,"news"),
-{
+const reader =
+new FileReader();
 
-title,
-image,
-text,
+reader.onload = function(e){
 
-date:
-new Date().toLocaleString("ru-RU")
+const image =
+e.target.result;
 
-}
+const news = {
+
+id:Date.now(),
+
+title:title,
+
+text:text,
+
+image:image
+
+};
+
+let newsArray =
+JSON.parse(
+localStorage.getItem("news")
+) || [];
+
+newsArray.unshift(news);
+
+localStorage.setItem(
+"news",
+JSON.stringify(newsArray)
 );
 
-alert("Новость опубликована");
-
-document.getElementById("newsTitle").value="";
-document.getElementById("newsImage").value="";
-document.getElementById("newsText").value="";
+document.getElementById("title").value = "";
+document.getElementById("text").value = "";
+document.getElementById("imageInput").value = "";
 
 loadNews();
 
+};
+
+if(imageInput.files[0]){
+
+reader.readAsDataURL(
+imageInput.files[0]
+);
+
+}else{
+
+reader.onload({
+target:{
+result:""
+}
 });
+
+}
+
+}
 
 /* LOAD NEWS */
 
-async function loadNews(){
+function loadNews(){
 
 const newsList =
 document.getElementById("newsList");
 
 newsList.innerHTML = "";
 
-const snap =
-await getDocs(collection(db,"news"));
+let newsArray =
+JSON.parse(
+localStorage.getItem("news")
+) || [];
 
-snap.forEach(docSnap=>{
+if(newsArray.length === 0){
 
-const data = docSnap.data();
+newsList.innerHTML =
+"<p>Новостей пока нет</p>";
+
+return;
+
+}
+
+newsArray.forEach(news=>{
 
 newsList.innerHTML += `
 
 <div class="news-item">
 
 <h3>
-${data.title}
+${news.title}
 </h3>
 
-<p style="margin-top:10px;">
-${data.text}
+<p>
+${news.text}
 </p>
 
 ${
-data.image
+news.image
 ?
-`<img src="${data.image}">`
+`<img src="${news.image}">`
 :
 ""
 }
 
-<p style="
-margin-top:10px;
-color:#9ecbff;
-">
-${data.date}
-</p>
+<button
+class="delete-btn"
+onclick="deleteNews(${news.id})"
+>
+Удалить новость
+</button>
 
 </div>
 
 `;
 
 });
+
+}
+
+/* DELETE NEWS */
+
+function deleteNews(id){
+
+let newsArray =
+JSON.parse(
+localStorage.getItem("news")
+) || [];
+
+newsArray =
+newsArray.filter(
+news => news.id !== id
+);
+
+localStorage.setItem(
+"news",
+JSON.stringify(newsArray)
+);
+
+loadNews();
 
 }
 
