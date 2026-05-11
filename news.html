@@ -1,13 +1,20 @@
-<!-- NEWS.HTML -->
+<!-- news.html -->
 
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Новости | Либеральная Партия России</title>
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Новости партии
+</title>
 
 <style>
 
@@ -19,200 +26,174 @@ font-family:Arial;
 }
 
 body{
-background:#071739;
-color:white;
+background:#f4f7fb;
 }
 
-/* ШАПКА */
+/* HEADER */
 
 header{
-width:100%;
-height:100px;
-background:rgba(0,22,70,0.95);
+
+background:#0b2d82;
+
+padding:20px 50px;
+
 display:flex;
-align-items:center;
 justify-content:space-between;
-padding:0 60px;
-position:fixed;
-top:0;
-left:0;
-z-index:1000;
-backdrop-filter:blur(10px);
+align-items:center;
+
 }
 
 .logo{
+
 display:flex;
 align-items:center;
-gap:20px;
+gap:15px;
+
 }
 
 .logo img{
+
 width:60px;
-height:60px;
 background:white;
 padding:5px;
 border-radius:10px;
+
 }
 
 .logo h1{
-font-size:22px;
-line-height:1.2;
+
+color:white;
+font-size:32px;
+
 }
 
-/* МЕНЮ */
-
 nav{
+
 display:flex;
 gap:15px;
-flex-wrap:wrap;
+
 }
 
 nav a{
-text-decoration:none;
+
 color:white;
-font-size:17px;
+text-decoration:none;
 font-weight:bold;
-padding:12px 18px;
-border-radius:12px;
-transition:0.3s;
+
 }
 
-nav a:hover{
-background:#1140b5;
+/* PAGE */
+
+.page{
+
+width:92%;
+max-width:1500px;
+
+margin:60px auto;
+
 }
 
-/* HERO */
+.page h2{
 
-.hero{
-width:100%;
-height:350px;
-background:
-linear-gradient(rgba(0,40,120,0.7),
-rgba(0,20,70,0.9)),
-url('https://images.unsplash.com/photo-1520637836862-4d197d17c38a?q=80&w=1974&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-padding:120px 80px 40px;
+font-size:60px;
+color:#0b2d82;
+
+margin-bottom:40px;
+
 }
 
-.hero-content h2{
-font-size:70px;
-margin-bottom:20px;
-}
-
-.hero-content p{
-font-size:28px;
-color:#d8e4ff;
-}
-
-/* НОВОСТИ */
-
-.news-section{
-padding:80px;
-}
-
-.news-title{
-font-size:50px;
-margin-bottom:50px;
-}
+/* NEWS */
 
 .news-grid{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-gap:35px;
+
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
+
+gap:30px;
+
 }
 
 .news-card{
-background:#0d245f;
-border-radius:25px;
+
+background:white;
+
+border-radius:30px;
+
 overflow:hidden;
-transition:0.3s;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
-}
 
-.news-card:hover{
-transform:translateY(-10px);
-}
+box-shadow:
+0 10px 30px rgba(0,0,0,0.08);
 
-.news-card img{
-width:100%;
-height:230px;
-object-fit:cover;
-}
-
-.news-content{
 padding:30px;
+
+text-align:center;
+
 }
 
-.news-content h3{
-font-size:28px;
+.news-card h3{
+
+font-size:32px;
 margin-bottom:15px;
+
+color:#0b2d82;
+
 }
 
-.news-content p{
+.news-card p{
+
 font-size:18px;
 line-height:1.7;
-color:#d7e3ff;
-margin-bottom:20px;
+
+color:#444;
+
 }
 
-.news-date{
-font-size:15px;
-color:#7ea2ff;
+/* EMPTY */
+
+.empty{
+
+background:white;
+
+padding:60px;
+
+border-radius:30px;
+
+text-align:center;
+
+font-size:26px;
+
+color:#555;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.08);
+
 }
 
-/* ФУТЕР */
+/* FOOTER */
 
 footer{
-background:#021031;
+
+margin-top:80px;
+
+background:#0b2d82;
+
 padding:40px;
+
 text-align:center;
+
+color:white;
+
 font-size:18px;
-margin-top:50px;
-}
-
-/* АДАПТИВ */
-
-@media(max-width:900px){
-
-header{
-padding:20px;
-height:auto;
-flex-direction:column;
-gap:20px;
-}
-
-nav{
-justify-content:center;
-}
-
-.hero{
-padding:180px 30px 50px;
-height:auto;
-}
-
-.hero-content h2{
-font-size:45px;
-}
-
-.news-section{
-padding:40px 20px;
-}
-
-.news-title{
-font-size:40px;
-}
 
 }
 
 </style>
+
 </head>
 
 <body>
-
-<!-- ШАПКА -->
 
 <header>
 
@@ -221,132 +202,66 @@ font-size:40px;
 <img src="logo.png">
 
 <h1>
-Либеральная<br>
-Партия России
+Либеральная Партия России
 </h1>
 
 </div>
 
 <nav>
 
-<a href="index.html">Главная</a>
-<a href="news.html">Новости</a>
-<a href="leaders.html">Руководство</a>
-<a href="apply.html">Заявление</a>
-<a href="program.html">Предвыборочная программа</a>
-<a href="ustav.html">Устав</a>
-<a href="gimn.html">Гимн</a>
-<a href="admin.html">Админ</a>
+<a href="index.html">
+Главная
+</a>
+
+<a href="leaders.html">
+Руководство
+</a>
+
+<a href="apply.html">
+Заявление
+</a>
+
+<a href="profile.html">
+Профиль
+</a>
 
 </nav>
 
 </header>
 
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
+<div class="page">
 
 <h2>
-НОВОСТИ
+Новости партии
 </h2>
 
-<p>
-Последние события партии
-</p>
+<div id="newsContainer">
+
+<div class="empty">
+
+Новостей пока нет
 
 </div>
 
-</section>
-
-<!-- НОВОСТИ -->
-
-<section class="news-section">
-
-<h2 class="news-title">
-Последние новости
-</h2>
-
-<div class="news-grid" id="newsContainer">
-
 </div>
 
-</section>
-
-<!-- ФУТЕР -->
+</div>
 
 <footer>
 
-© 2025 Либеральная Партия России — Для Всех Вместе
+© 2026 Либеральная Партия России
+
+<br><br>
+
+Россия Для Всех Вместе
 
 </footer>
 
-<!-- FIREBASE -->
+<script>
 
-<script type="module">
+/* ПОЛНАЯ ОЧИСТКА НОВОСТЕЙ */
 
-import {
-db,
-collection,
-getDocs
-}
-from './firebase.js';
-
-const newsContainer =
-document.getElementById(
-"newsContainer"
-);
-
-async function loadNews(){
-
-const querySnapshot =
-await getDocs(
-collection(db,"news")
-);
-
-newsContainer.innerHTML = "";
-
-querySnapshot.forEach((doc)=>{
-
-const news = doc.data();
-
-newsContainer.innerHTML += `
-
-<div class="news-card">
-
-<img src="${
-news.image ||
-'https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1974&auto=format&fit=crop'
-}">
-
-<div class="news-content">
-
-<h3>
-${news.title}
-</h3>
-
-<p>
-${news.text}
-</p>
-
-<div class="news-date">
-
-${news.date || "Новая публикация"}
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-loadNews();
+localStorage.removeItem("news");
 
 </script>
 
